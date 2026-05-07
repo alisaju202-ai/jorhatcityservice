@@ -9,9 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-    /* ==========================================
-       CSS VARIABLES & RESET
-    ========================================== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -21,6 +18,7 @@
       --accent:     #00d4ff;
       --accent2:    #ff6b35;
       --accent3:    #7c3aed;
+      --whatsapp:   #25D366;
       --text:       #e8edf5;
       --muted:      #7a8499;
       --glass:      rgba(255,255,255,0.05);
@@ -40,9 +38,7 @@
       cursor: none;
     }
 
-    /* ==========================================
-       CUSTOM CURSOR
-    ========================================== */
+    /* CUSTOM CURSOR */
     .cursor-dot {
       width: 8px; height: 8px;
       background: var(--accent);
@@ -67,16 +63,12 @@
       border-color: var(--accent2);
     }
 
-    /* ==========================================
-       SCROLLBAR
-    ========================================== */
+    /* SCROLLBAR */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg-deep); }
     ::-webkit-scrollbar-thumb { background: var(--accent3); border-radius: 2px; }
 
-    /* ==========================================
-       REVEAL ANIMATIONS
-    ========================================== */
+    /* REVEAL ANIMATIONS */
     .reveal {
       opacity: 0;
       transform: translateY(48px);
@@ -87,9 +79,7 @@
     .reveal-right { opacity:0; transform: translateX(60px);  transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1); }
     .reveal-left.visible, .reveal-right.visible { opacity:1; transform: translateX(0); }
 
-    /* ==========================================
-       NOISE OVERLAY
-    ========================================== */
+    /* NOISE OVERLAY */
     body::before {
       content:'';
       position: fixed; inset: 0;
@@ -97,18 +87,14 @@
       pointer-events: none; z-index: 9990; opacity:.4;
     }
 
-    /* ==========================================
-       CANVAS PARTICLES
-    ========================================== */
+    /* CANVAS PARTICLES */
     #particle-canvas {
       position: fixed; top: 0; left: 0;
       width: 100%; height: 100%;
       pointer-events: none; z-index: 0;
     }
 
-    /* ==========================================
-       SIDE NAV DOTS
-    ========================================== */
+    /* SIDE NAV DOTS */
     .side-nav {
       position: fixed; right: 28px; top: 50%;
       transform: translateY(-50%);
@@ -144,9 +130,7 @@
       box-shadow: 0 0 10px var(--accent);
     }
 
-    /* ==========================================
-       SECTION COMMON
-    ========================================== */
+    /* SECTION COMMON */
     section {
       position: relative; z-index: 1;
       padding: 120px 24px;
@@ -173,9 +157,7 @@
       background-clip: text;
     }
 
-    /* ==========================================
-       HERO SECTION
-    ========================================== */
+    /* HERO SECTION */
     #hero {
       min-height: 100vh;
       display: flex; align-items: center;
@@ -271,16 +253,18 @@
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
+    /* HERO CTA BUTTONS */
     .hero-cta {
       display: flex; gap: 16px; flex-wrap: wrap;
       animation: fade-up .8s .8s both;
     }
+
     .btn-primary {
       padding: 16px 40px;
       background: linear-gradient(135deg, var(--accent), var(--accent3));
       color: #fff; font-family: var(--font-body); font-weight: 700;
       font-size: .95rem; letter-spacing: 1px;
-      border: none; border-radius: 100px; cursor: none;
+      border: none; border-radius: 100px; cursor: pointer;
       position: relative; overflow: hidden;
       transition: transform .25s, box-shadow .25s;
       text-decoration: none;
@@ -299,19 +283,161 @@
       background: transparent;
       color: var(--text); font-family: var(--font-body); font-weight: 600;
       font-size: .95rem; letter-spacing: 1px;
-      border: 1px solid var(--border); border-radius: 100px; cursor: none;
+      border: 1px solid var(--border); border-radius: 100px; cursor: pointer;
       transition: all .25s; text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
     }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,212,255,.06); transform: translateY(-3px); }
 
+    /* CALL BUTTON */
+    .btn-call {
+      padding: 15px 36px;
+      background: linear-gradient(135deg, #ff4757, #ff6b35);
+      color: #fff; font-family: var(--font-body); font-weight: 700;
+      font-size: .95rem; letter-spacing: 1px;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: all .25s; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 4px 24px rgba(255,71,87,0.25);
+    }
+    .btn-call:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(255,71,87,.4); }
+    .btn-call i { animation: ring-shake 2s ease-in-out infinite; }
+    @keyframes ring-shake {
+      0%,100% { transform: rotate(0deg); }
+      10%      { transform: rotate(-15deg); }
+      20%      { transform: rotate(15deg); }
+      30%      { transform: rotate(-10deg); }
+      40%      { transform: rotate(10deg); }
+      50%      { transform: rotate(0deg); }
+    }
+
+    /* WHATSAPP BUTTON */
+    .btn-whatsapp {
+      padding: 15px 36px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff; font-family: var(--font-body); font-weight: 700;
+      font-size: .95rem; letter-spacing: 1px;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: all .25s; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.25);
+    }
+    .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(37,211,102,.4); }
+    .btn-whatsapp i { font-size: 1.1rem; }
+
+    /* FLOATING ACTION BUTTONS (always visible on screen) */
+    .floating-actions {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      display: flex; flex-direction: column; gap: 14px;
+      z-index: 800;
+    }
+    .fab {
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: #fff;
+      text-decoration: none;
+      transition: all .3s cubic-bezier(.16,1,.3,1);
+      position: relative;
+    }
+    .fab::before {
+      content: attr(data-tooltip);
+      position: absolute; right: 70px; top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-family: var(--font-light);
+      font-size: 13px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s;
+    }
+    .fab:hover::before { opacity: 1; }
+    .fab-call {
+      background: linear-gradient(135deg, #ff4757, #ff6b35);
+      box-shadow: 0 6px 28px rgba(255,71,87,0.4);
+    }
+    .fab-call:hover { transform: scale(1.12) translateY(-2px); box-shadow: 0 12px 40px rgba(255,71,87,0.6); }
+    .fab-call i { animation: ring-shake 3s ease-in-out infinite; }
+
+    .fab-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.4);
+    }
+    .fab-whatsapp:hover { transform: scale(1.12) translateY(-2px); box-shadow: 0 12px 40px rgba(37,211,102,0.6); }
+
+    /* CONTACT STRIP */
+    .contact-strip {
+      background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(124,58,237,0.06));
+      border: 1px solid rgba(0,212,255,0.15);
+      border-radius: 20px;
+      padding: 28px 36px;
+      margin-top: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      animation: fade-up .8s 1.1s both;
+    }
+    .contact-strip-info {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .contact-strip-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(0,212,255,.2), rgba(0,212,255,.05));
+      border: 1px solid rgba(0,212,255,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: var(--accent);
+    }
+    .contact-strip-text { }
+    .contact-strip-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .contact-strip-number {
+      font-family: var(--font-head);
+      font-size: 1.6rem; letter-spacing: 2px;
+      background: linear-gradient(135deg, var(--accent), #4fc3f7);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .contact-strip-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .strip-btn-call {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #ff4757, #ff6b35);
+      color: #fff; font-family: var(--font-body); font-weight: 700;
+      font-size: .88rem; letter-spacing: .5px;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: all .25s; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 20px rgba(255,71,87,0.3);
+    }
+    .strip-btn-call:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,71,87,.4); }
+
+    .strip-btn-whatsapp {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff; font-family: var(--font-body); font-weight: 700;
+      font-size: .88rem; letter-spacing: .5px;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: all .25s; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+    }
+    .strip-btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,.4); }
+
+    /* HERO STATS */
     .hero-stats {
       display: flex; gap: 48px; flex-wrap: wrap;
-      margin-top: 80px; padding-top: 50px;
+      margin-top: 60px; padding-top: 50px;
       border-top: 1px solid var(--border);
       animation: fade-up .8s 1s both;
     }
-    .stat-item { }
     .stat-num {
       font-family: var(--font-head);
       font-size: 2.8rem; line-height: 1;
@@ -337,18 +463,12 @@
     @keyframes fade-up   { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
     @keyframes fade-down { from { opacity:0; transform: translateY(-20px); } to { opacity:1; transform: translateY(0); } }
 
-    /* ==========================================
-       ABOUT SECTION
-    ========================================== */
+    /* ABOUT SECTION */
     #about { background: linear-gradient(180deg, transparent 0%, rgba(0,212,255,.02) 50%, transparent 100%); }
-
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px; align-items: center;
-    }
-    .about-img-wrap {
-      position: relative;
     }
     .about-img-inner {
       background: var(--glass);
@@ -383,11 +503,7 @@
     .about-icon-card:nth-child(4) i { color: #10b981; }
     .about-icon-card p { font-size: .8rem; color: var(--muted); margin-top: 4px; }
     .about-icon-card strong { font-family: var(--font-body); font-size: .9rem; }
-
-    .about-text p {
-      font-size: 1.05rem; line-height: 1.85;
-      color: #a0aec0; margin-bottom: 20px;
-    }
+    .about-text p { font-size: 1.05rem; line-height: 1.85; color: #a0aec0; margin-bottom: 20px; }
     .about-text strong { color: var(--accent); }
     .about-highlight {
       background: linear-gradient(135deg, rgba(0,212,255,.08), rgba(124,58,237,.08));
@@ -395,893 +511,557 @@
       border-radius: 16px; padding: 24px;
       margin-top: 30px;
     }
-    .about-highlight p {
-      margin: 0; font-size: .95rem; font-style: italic; color: var(--text);
-    }
+    .about-highlight p { margin: 0; font-size: .95rem; font-style: italic; color: var(--text); }
 
-    /* ==========================================
-       SKILLS SECTION
-    ========================================== */
-    #skills {
-      background: linear-gradient(180deg, transparent, rgba(124,58,237,.03), transparent);
-    }
-    .skills-grid {
+    /* PHOTO SERVICE CARDS */
+    .photo-service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 64px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 48px;
     }
-    .skill-card {
-      background: var(--glass);
+    .photo-card {
+      border-radius: 24px;
+      overflow: hidden;
       border: 1px solid var(--border);
-      border-radius: 20px; padding: 36px 30px;
-      position: relative; overflow: hidden;
+      background: var(--glass);
       backdrop-filter: blur(12px);
-      transition: all .4s cubic-bezier(.16,1,.3,1);
+      transition: all .45s cubic-bezier(.16,1,.3,1);
+      position: relative;
     }
-    .skill-card::before {
-      content:''; position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
-      transform: scaleX(0); transform-origin: left;
+    .photo-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: rgba(0,212,255,.3);
+      box-shadow: 0 30px 80px rgba(0,0,0,.5), var(--glow);
+    }
+    .photo-card-img {
+      width: 100%; height: 220px;
+      object-fit: cover;
+      display: block;
       transition: transform .5s cubic-bezier(.16,1,.3,1);
+      filter: brightness(0.85) saturate(1.1);
     }
-    .skill-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,.15); box-shadow: var(--glow); }
-    .skill-card:hover::before { transform: scaleX(1); }
-    .skill-card:nth-child(1) { --card-accent: var(--accent); }
-    .skill-card:nth-child(2) { --card-accent: var(--accent2); }
-    .skill-card:nth-child(3) { --card-accent: var(--accent3); }
-    .skill-card:nth-child(4) { --card-accent: #10b981; }
-    .skill-card:nth-child(5) { --card-accent: #f59e0b; }
-
-    .skill-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-    .skill-icon {
-      width: 52px; height: 52px; border-radius: 14px;
+    .photo-card:hover .photo-card-img {
+      transform: scale(1.07);
+      filter: brightness(0.95) saturate(1.2);
+    }
+    .photo-card-img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+    .photo-card-img-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(6,10,18,0.85) 100%);
+      pointer-events: none;
+    }
+    .photo-card-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: rgba(0,212,255,0.15);
+      border: 1px solid rgba(0,212,255,0.4);
+      border-radius: 100px;
+      padding: 4px 14px;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent);
+      font-family: var(--font-light);
+      z-index: 2;
+      backdrop-filter: blur(8px);
+    }
+    .photo-card:nth-child(2) .photo-card-badge { color: var(--accent2); border-color: rgba(255,107,53,.4); background: rgba(255,107,53,.12); }
+    .photo-card:nth-child(3) .photo-card-badge { color: #10b981; border-color: rgba(16,185,129,.4); background: rgba(16,185,129,.12); }
+    .photo-card-body {
+      padding: 28px 28px 32px;
+    }
+    .photo-card-icon {
+      width: 48px; height: 48px; border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      background: linear-gradient(135deg, rgba(0,212,255,.15), rgba(0,212,255,.05));
-      border: 1px solid rgba(0,212,255,.2);
-    }
-    .skill-card:nth-child(2) .skill-icon { background: linear-gradient(135deg,rgba(255,107,53,.15),rgba(255,107,53,.05)); border-color: rgba(255,107,53,.2); }
-    .skill-card:nth-child(3) .skill-icon { background: linear-gradient(135deg,rgba(124,58,237,.15),rgba(124,58,237,.05)); border-color: rgba(124,58,237,.2); }
-    .skill-card:nth-child(4) .skill-icon { background: linear-gradient(135deg,rgba(16,185,129,.15),rgba(16,185,129,.05)); border-color: rgba(16,185,129,.2); }
-    .skill-card:nth-child(5) .skill-icon { background: linear-gradient(135deg,rgba(245,158,11,.15),rgba(245,158,11,.05)); border-color: rgba(245,158,11,.2); }
-    .skill-icon i { color: var(--card-accent, var(--accent)); }
-    .skill-percent { font-family: var(--font-head); font-size: 1.5rem; color: var(--card-accent, var(--accent)); }
-    .skill-name { font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
-    .skill-sub  { font-size: .8rem; color: var(--muted); margin-bottom: 18px; }
-    .skill-bar  { background: rgba(255,255,255,.06); border-radius: 100px; height: 5px; overflow: hidden; }
-    .skill-fill {
-      height: 100%; border-radius: 100px;
-      background: linear-gradient(90deg, var(--card-accent, var(--accent)), rgba(255,255,255,.2));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 1.2s cubic-bezier(.16,1,.3,1);
-    }
-    .skill-fill.animate { transform: scaleX(1); }
-
-    /* ==========================================
-       SERVICES SECTION
-    ========================================== */
-    #services { background: linear-gradient(180deg, transparent, rgba(0,212,255,.02), transparent); }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
-      gap: 28px; margin-top: 64px;
-    }
-    .service-card {
-      background: var(--glass);
-      border: 1px solid var(--border);
-      border-radius: 24px; padding: 44px 38px;
-      position: relative; overflow: hidden;
-      backdrop-filter: blur(16px);
-      cursor: default;
-      transition: all .5s cubic-bezier(.16,1,.3,1);
-    }
-    .service-card::after {
-      content:''; position: absolute; inset: 0;
-      background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(0,212,255,.06), transparent 60%);
-      opacity: 0; transition: opacity .3s;
-    }
-    .service-card:hover::after { opacity: 1; }
-    .service-card:hover { transform: translateY(-10px) scale(1.01); border-color: rgba(0,212,255,.25); box-shadow: 0 30px 80px rgba(0,0,0,.4), var(--glow); }
-
-    .service-num {
-      font-family: var(--font-head);
-      font-size: 4rem; line-height: 1;
-      color: rgba(255,255,255,.04);
-      position: absolute; top: 20px; right: 30px;
-    }
-    .service-icon-wrap {
-      width: 68px; height: 68px; border-radius: 20px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 28px; position: relative; z-index: 1;
-      font-size: 1.8rem;
-    }
-    .service-card:nth-child(1) .service-icon-wrap {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
       background: linear-gradient(135deg, rgba(0,212,255,.2), rgba(0,212,255,.05));
-      border: 1px solid rgba(0,212,255,.3); color: var(--accent);
+      border: 1px solid rgba(0,212,255,.25);
     }
-    .service-card:nth-child(2) .service-icon-wrap {
-      background: linear-gradient(135deg, rgba(255,107,53,.2), rgba(255,107,53,.05));
-      border: 1px solid rgba(255,107,53,.3); color: var(--accent2);
+    .photo-card:nth-child(2) .photo-card-icon { background: linear-gradient(135deg,rgba(255,107,53,.2),rgba(255,107,53,.05)); border-color: rgba(255,107,53,.25); }
+    .photo-card:nth-child(3) .photo-card-icon { background: linear-gradient(135deg,rgba(16,185,129,.2),rgba(16,185,129,.05)); border-color: rgba(16,185,129,.25); }
+    .photo-card-icon i { color: var(--accent); }
+    .photo-card:nth-child(2) .photo-card-icon i { color: var(--accent2); }
+    .photo-card:nth-child(3) .photo-card-icon i { color: #10b981; }
+    .photo-card-title {
+      font-family: var(--font-body); font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 10px; color: var(--text);
     }
-    .service-card:nth-child(3) .service-icon-wrap {
-      background: linear-gradient(135deg, rgba(124,58,237,.2), rgba(124,58,237,.05));
-      border: 1px solid rgba(124,58,237,.3); color: var(--accent3);
+    .photo-card-desc {
+      font-size: .9rem; color: var(--muted); line-height: 1.7;
+      margin-bottom: 22px;
     }
-    .service-title { font-family: var(--font-body); font-size: 1.35rem; font-weight: 800; margin-bottom: 12px; }
-    .service-desc  { font-size: .9rem; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
-    .service-tags  { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tag {
-      font-size: .73rem; letter-spacing: .5px;
-      padding: 5px 12px; border-radius: 100px;
+    .photo-card-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .photo-card-tag {
+      font-size: 11px; letter-spacing: 1px;
+      padding: 4px 12px; border-radius: 100px;
       background: rgba(255,255,255,.05);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,.1);
       color: var(--muted);
-      transition: all .25s;
     }
-    .service-card:hover .tag { border-color: rgba(0,212,255,.25); color: var(--accent); }
+    .photo-card-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 20px;
+      font-family: var(--font-body); font-size: .85rem; font-weight: 700;
+      color: var(--accent); text-decoration: none;
+      letter-spacing: .5px;
+      transition: gap .2s;
+    }
+    .photo-card:nth-child(2) .photo-card-cta { color: var(--accent2); }
+    .photo-card:nth-child(3) .photo-card-cta { color: #10b981; }
+    .photo-card-cta:hover { gap: 14px; }
 
-    /* ==========================================
-       WHY CHOOSE US
-    ========================================== */
-    #why {
-      background: linear-gradient(180deg, transparent, rgba(124,58,237,.03), transparent);
-    }
-    .why-grid {
+    /* OTHER SERVICES MINI GRID */
+    .mini-services-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px; margin-top: 64px;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 18px;
+      margin-top: 32px;
     }
-    .why-card {
-      background: var(--glass);
+    .mini-service-card {
+      background: rgba(255,255,255,.03);
       border: 1px solid var(--border);
-      border-radius: 20px; padding: 40px 36px;
-      display: flex; gap: 24px; align-items: flex-start;
-      backdrop-filter: blur(12px);
-      transition: all .4s cubic-bezier(.16,1,.3,1);
-      position: relative; overflow: hidden;
-    }
-    .why-card::before {
-      content:''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(0,212,255,.04), transparent);
-      opacity: 0; transition: opacity .3s;
-    }
-    .why-card:hover { transform: translateY(-6px); border-color: rgba(0,212,255,.2); }
-    .why-card:hover::before { opacity:1; }
-    .why-card:nth-child(2) { --wc: var(--accent2); }
-    .why-card:nth-child(3) { --wc: var(--accent3); }
-    .why-card:nth-child(4) { --wc: #10b981; }
-
-    .why-icon-wrap {
-      width: 56px; height: 56px; flex-shrink: 0;
-      border-radius: 16px; background: linear-gradient(135deg, rgba(0,212,255,.15), rgba(0,212,255,.04));
-      border: 1px solid rgba(0,212,255,.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; color: var(--accent);
+      border-radius: 16px; padding: 24px 22px;
+      display: flex; align-items: center; gap: 16px;
       transition: all .3s;
     }
-    .why-card:nth-child(2) .why-icon-wrap { background: linear-gradient(135deg,rgba(255,107,53,.15),rgba(255,107,53,.04)); border-color: rgba(255,107,53,.2); color: var(--accent2); }
-    .why-card:nth-child(3) .why-icon-wrap { background: linear-gradient(135deg,rgba(124,58,237,.15),rgba(124,58,237,.04)); border-color: rgba(124,58,237,.2); color: var(--accent3); }
-    .why-card:nth-child(4) .why-icon-wrap { background: linear-gradient(135deg,rgba(16,185,129,.15),rgba(16,185,129,.04)); border-color: rgba(16,185,129,.2); color: #10b981; }
-    .why-card:hover .why-icon-wrap { transform: scale(1.1) rotate(-5deg); }
-    .why-body h3 { font-family: var(--font-body); font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-    .why-body p  { font-size: .88rem; color: var(--muted); line-height: 1.7; }
+    .mini-service-card:hover { border-color: rgba(255,255,255,.15); background: rgba(255,255,255,.06); transform: translateY(-3px); }
+    .mini-service-card i { font-size: 1.5rem; flex-shrink: 0; }
+    .mini-service-card strong { font-family: var(--font-body); font-size: .95rem; display: block; margin-bottom: 3px; }
+    .mini-service-card span { font-size: .78rem; color: var(--muted); }
 
-    /* ==========================================
-       CONTACT SECTION
-    ========================================== */
-    #contact {}
-
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1.2fr;
-      gap: 60px; margin-top: 64px;
-    }
-    .contact-info {}
-    .contact-info h3 {
-      font-family: var(--font-body); font-size: 1.3rem; font-weight: 700;
-      margin-bottom: 8px; color: var(--text);
-    }
-    .contact-info p { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-bottom: 36px; }
-
-    .contact-item {
-      display: flex; align-items: center; gap: 16px;
-      padding: 18px 24px; border-radius: 16px;
-      background: var(--glass); border: 1px solid var(--border);
-      margin-bottom: 14px; transition: all .3s;
-      text-decoration: none; color: var(--text);
-    }
-    .contact-item:hover { border-color: var(--accent); background: rgba(0,212,255,.06); transform: translateX(6px); }
-    .contact-item-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: linear-gradient(135deg,rgba(0,212,255,.15),rgba(0,212,255,.04));
-      border: 1px solid rgba(0,212,255,.2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent); font-size: 1.1rem;
-    }
-    .contact-item-text span { display: block; font-size: .7rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
-    .contact-item-text strong { font-family: var(--font-body); font-size: 1rem; }
-
-    .social-row { display: flex; gap: 12px; margin-top: 30px; }
-    .social-btn {
-      width: 46px; height: 46px; border-radius: 14px;
-      background: var(--glass); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: 1.1rem;
-      transition: all .3s; text-decoration: none; cursor: none;
-    }
-    .social-btn:hover { transform: translateY(-4px) scale(1.1); }
-    .social-btn.li:hover { background: rgba(10,102,194,.15); border-color: rgba(10,102,194,.4); color: #0a66c2; box-shadow: 0 8px 24px rgba(10,102,194,.2); }
-    .social-btn.gh:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2); color: #fff; }
-    .social-btn.ig:hover { background: rgba(225,48,108,.1); border-color: rgba(225,48,108,.3); color: #e1306c; box-shadow: 0 8px 24px rgba(225,48,108,.2); }
-
-    /* Contact Form */
-    .contact-form {
-      background: var(--glass);
-      border: 1px solid var(--border);
-      border-radius: 24px; padding: 44px 40px;
-      backdrop-filter: blur(20px);
-    }
-    .contact-form h3 { font-family: var(--font-body); font-size: 1.2rem; font-weight: 700; margin-bottom: 28px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-group { margin-bottom: 18px; }
-    .form-group label { display: block; font-size: .75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%; padding: 14px 18px;
-      background: rgba(255,255,255,.04); border: 1px solid var(--border);
-      border-radius: 12px; color: var(--text); font-family: var(--font-light); font-size: .95rem;
-      outline: none; transition: all .3s; resize: none;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(255,255,255,.2); }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus { border-color: var(--accent); background: rgba(0,212,255,.04); box-shadow: 0 0 0 3px rgba(0,212,255,.08); }
-    .form-group textarea { height: 120px; }
-    .form-group select { appearance: none; cursor: pointer; }
-    option { background: #0f1420; }
-    .btn-submit {
-      width: 100%; padding: 16px;
-      background: linear-gradient(135deg, var(--accent), var(--accent3));
-      border: none; border-radius: 12px; color: #fff;
-      font-family: var(--font-body); font-size: 1rem; font-weight: 700;
-      letter-spacing: 1px; cursor: pointer;
-      transition: all .3s; position: relative; overflow: hidden;
-    }
-    .btn-submit::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,transparent,rgba(255,255,255,.12)); opacity:0; transition:opacity .3s; }
-    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,212,255,.25); }
-    .btn-submit:hover::before { opacity:1; }
-
-    /* ==========================================
-       FOOTER
-    ========================================== */
-    footer {
-      position: relative; z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 48px 24px;
-    }
-    .footer-inner {
-      max-width: 1160px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
-      gap: 20px;
-    }
-    .footer-brand { font-family: var(--font-head); font-size: 1.5rem; letter-spacing: 2px; }
-    .footer-brand span { color: var(--accent); }
-    .footer-copy { font-size: .8rem; color: var(--muted); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: .8rem; color: var(--muted); text-decoration: none; transition: color .2s; cursor: none; }
-    .footer-links a:hover { color: var(--accent); }
-
-    /* ==========================================
-       RESPONSIVE
-    ========================================== */
-    @media (max-width: 900px) {
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .why-grid { grid-template-columns: 1fr; }
       .hero-visual { display: none; }
-      .side-nav { display: none; }
-    }
-    @media (max-width: 600px) {
-      section { padding: 80px 20px; }
-      .hero-stats { gap: 30px; }
-      .form-row { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; text-align: center; }
-      .footer-links { justify-content: center; }
-      body { cursor: auto; }
-      .cursor-dot, .cursor-ring { display: none; }
+      .contact-strip { flex-direction: column; text-align: center; }
+      .contact-strip-info { flex-direction: column; text-align: center; }
+      .floating-actions { bottom: 20px; right: 16px; }
+      .fab { width: 50px; height: 50px; font-size: 1.2rem; }
+      .hero-cta { flex-direction: column; }
+      .btn-primary, .btn-call, .btn-whatsapp, .btn-outline { justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div class="cursor-dot" id="cursor-dot"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
+  <!-- CURSOR -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- Particle Canvas -->
-<canvas id="particle-canvas"></canvas>
+  <!-- CANVAS -->
+  <canvas id="particle-canvas"></canvas>
 
-<!-- Side Navigation Dots -->
-<nav class="side-nav">
-  <a href="#hero"     data-label="Home"     class="active"></a>
-  <a href="#about"    data-label="About"           ></a>
-  <a href="#skills"   data-label="Skills"          ></a>
-  <a href="#services" data-label="Services"        ></a>
-  <a href="#why"      data-label="Why Us"          ></a>
-  <a href="#contact"  data-label="Contact"         ></a>
-</nav>
+  <!-- SIDE NAV -->
+  <nav class="side-nav">
+    <a href="#hero"     data-label="Home"     class="active"></a>
+    <a href="#about"    data-label="About"></a>
+    <a href="#services" data-label="Services"></a>
+    <a href="#contact"  data-label="Contact"></a>
+  </nav>
 
-<!-- ============================================================
-     HERO SECTION
-============================================================ -->
-<section id="hero">
-  <div class="hero-bg-orb orb1"></div>
-  <div class="hero-bg-orb orb2"></div>
-  <div class="hero-bg-orb orb3"></div>
-
-  <div class="hero-visual" aria-hidden="true">
-    <div class="hero-ring ring1"></div>
-    <div class="hero-ring ring2"></div>
-    <div class="hero-ring ring3"></div>
+  <!-- ========================================
+       FLOATING ACTION BUTTONS (always visible)
+  ======================================== -->
+  <div class="floating-actions">
+    <a href="https://wa.me/918453345670?text=Hello!%20I%20need%20home%20appliance%20repair%20service."
+       target="_blank"
+       class="fab fab-whatsapp"
+       data-tooltip="Book via WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+918453345670"
+       class="fab fab-call"
+       data-tooltip="Call Now: 8453345670">
+      <i class="fas fa-phone"></i>
+    </a>
   </div>
 
-  <div class="hero-content container">
-    <div class="hero-badge"><span class="badge-dot"></span> Available for Home Visits</div>
+  <!-- ========================================
+       HERO SECTION
+  ======================================== -->
+  <section id="hero">
+    <div class="hero-bg-orb orb1"></div>
+    <div class="hero-bg-orb orb2"></div>
+    <div class="hero-bg-orb orb3"></div>
 
-    <h1 class="hero-name">
-      Jorhat<br/><span>City</span><br/>Service
-    </h1>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available 24/7 in Jorhat
+      </div>
 
-    <p class="hero-tagline">Fast &amp; Reliable Home Appliance Repair</p>
+      <h1 class="hero-name">
+        JORHAT<br><span>CITY SERVICE</span>
+      </h1>
 
-    <div class="typing-wrapper">
-      <span class="typing-prefix">I'm a</span>
-      <span id="typed-text"></span><span class="typing-cursor"></span>
+      <p class="hero-tagline">Professional Home Appliance Repair — Fast, Reliable & Affordable</p>
+
+      <div class="typing-wrapper">
+        <span class="typing-prefix">We Fix →</span>
+        <span id="typed-text"></span>
+        <span class="typing-cursor"></span>
+      </div>
+
+      <!-- CTA BUTTONS -->
+      <div class="hero-cta">
+        <a href="tel:+918453345670" class="btn-call">
+          <i class="fas fa-phone"></i> Call Now
+        </a>
+        <a href="https://wa.me/918453345670?text=Hello!%20I%20need%20home%20appliance%20repair%20service."
+           target="_blank"
+           class="btn-whatsapp">
+          <i class="fab fa-whatsapp"></i> WhatsApp Booking
+        </a>
+        <a href="#services" class="btn-outline">
+          <i class="fas fa-tools"></i> Our Services
+        </a>
+      </div>
+
+      <!-- CONTACT STRIP -->
+      <div class="contact-strip reveal">
+        <div class="contact-strip-info">
+          <div class="contact-strip-icon">
+            <i class="fas fa-phone-volume"></i>
+          </div>
+          <div class="contact-strip-text">
+            <div class="contact-strip-label">Call or WhatsApp Us</div>
+            <div class="contact-strip-number">+91 84533 45670</div>
+          </div>
+        </div>
+        <div class="contact-strip-btns">
+          <a href="tel:+918453345670" class="strip-btn-call">
+            <i class="fas fa-phone"></i> Direct Call
+          </a>
+          <a href="https://wa.me/918453345670?text=Hello!%20I%20need%20home%20appliance%20repair%20service."
+             target="_blank"
+             class="strip-btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Book on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Repairs Done</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Available</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Satisfaction</div>
+        </div>
+      </div>
     </div>
 
-    <div class="hero-cta">
-      <a href="#contact" class="btn-primary"><i class="fa-solid fa-phone"></i> Book a Repair</a>
-      <a href="#services" class="btn-outline"><i class="fa-solid fa-wrench"></i> View Services</a>
+    <!-- Hero Visual Rings -->
+    <div class="hero-visual">
+      <div class="hero-ring ring1"></div>
+      <div class="hero-ring ring2"></div>
+      <div class="hero-ring ring3"></div>
     </div>
+  </section>
 
-    <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Repairs Done</div></div>
-      <div class="stat-item"><div class="stat-num">5★</div><div class="stat-label">Customer Rating</div></div>
-      <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">Years Experience</div></div>
-      <div class="stat-item"><div class="stat-num">24h</div><div class="stat-label">Quick Response</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     ABOUT SECTION
-============================================================ -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="reveal-left">
-        <div class="about-img-wrap">
+  <!-- ========================================
+       ABOUT SECTION
+  ======================================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal-left">
           <div class="about-img-inner">
             <div class="about-icon-grid">
               <div class="about-icon-card">
-                <i class="fa-solid fa-snowflake"></i>
+                <i class="fas fa-snowflake"></i>
                 <strong>AC Repair</strong>
-                <p>All brands &amp; models</p>
+                <p>All brands & models</p>
               </div>
               <div class="about-icon-card">
-                <i class="fa-solid fa-shirt"></i>
+                <i class="fas fa-tv"></i>
+                <strong>TV Repair</strong>
+                <p>LED, LCD, Smart TV</p>
+              </div>
+              <div class="about-icon-card">
+                <i class="fas fa-wind"></i>
                 <strong>Washing Machine</strong>
-                <p>Front &amp; Top load</p>
+                <p>Top & front load</p>
               </div>
               <div class="about-icon-card">
-                <i class="fa-solid fa-box"></i>
-                <strong>Refrigerator</strong>
-                <p>Cooling &amp; compressor</p>
+                <i class="fas fa-blender"></i>
+                <strong>Kitchen Appliances</strong>
+                <p>Fridge, microwave & more</p>
               </div>
-              <div class="about-icon-card">
-                <i class="fa-solid fa-bolt"></i>
-                <strong>Electrical</strong>
-                <p>Safe troubleshooting</p>
-              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text reveal-right">
+          <div class="section-label">About Us</div>
+          <h2 class="section-title">Your Trusted <span class="gradient-text">Repair Partner</span></h2>
+          <p>Jorhat City Service has been Jorhat's most trusted home appliance repair center for over <strong>10 years</strong>. We repair all major brands with genuine spare parts and a satisfaction guarantee.</p>
+          <p>Our certified technicians come to your doorstep, diagnose the problem, and fix it — fast. No hidden charges. Transparent pricing.</p>
+          <div class="about-highlight">
+            <p>📞 Call or WhatsApp us at <strong>+91 84533 45670</strong> and we'll reach you within hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       SERVICES SECTION
+  ======================================== -->
+  <section id="services">
+    <div class="container">
+      <div class="section-label">What We Fix</div>
+      <h2 class="section-title reveal">Our <span class="gradient-text">Services</span></h2>
+      <p style="color:var(--muted); font-size:1rem; max-width:560px; margin-top:12px;" class="reveal">
+        Expert repair for all major home appliances — at your doorstep in Jorhat.
+      </p>
+
+      <!-- PHOTO CARDS: AC, Washing Machine, Fridge -->
+      <div class="photo-service-grid">
+
+        <!-- AC REPAIR -->
+        <div class="photo-card reveal">
+          <div class="photo-card-img-wrap">
+            <span class="photo-card-badge">AC Repair</span>
+            <img
+              class="photo-card-img"
+              src="https://burkhardt-ac.com/wp-content/uploads/2019/09/residential-ac-repair.jpg"
+              alt="Air Conditioner Repair Technician"
+              onerror="this.src='https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80'; this.onerror=null;"
+            />
+          </div>
+          <div class="photo-card-body">
+            <div class="photo-card-icon"><i class="fas fa-snowflake"></i></div>
+            <div class="photo-card-title">Air Conditioner Repair</div>
+            <p class="photo-card-desc">Complete AC service — installation, gas refill, compressor repair, PCB faults & all brand repairs at your doorstep.</p>
+            <div class="photo-card-tags">
+              <span class="photo-card-tag">Split AC</span>
+              <span class="photo-card-tag">Window AC</span>
+              <span class="photo-card-tag">Gas Refill</span>
+              <span class="photo-card-tag">All Brands</span>
+            </div>
+            <a href="tel:+918453345670" class="photo-card-cta">
+              Book Now <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- WASHING MACHINE REPAIR -->
+        <div class="photo-card reveal">
+          <div class="photo-card-img-wrap">
+            <span class="photo-card-badge">Washer Repair</span>
+            <img
+              class="photo-card-img"
+              src="https://www.samatechnicalservices.com/wp-content/uploads/2023/01/washing-machine-repair.jpg"
+              alt="Washing Machine Repair Technician"
+              onerror="this.src='https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&q=80'; this.onerror=null;"
+            />
+          </div>
+          <div class="photo-card-body">
+            <div class="photo-card-icon"><i class="fas fa-tshirt"></i></div>
+            <div class="photo-card-title">Washing Machine Repair</div>
+            <p class="photo-card-desc">Top load & front load washing machine repairs — drum, motor, PCB, pump, bearing & all mechanical faults fixed fast.</p>
+            <div class="photo-card-tags">
+              <span class="photo-card-tag">Top Load</span>
+              <span class="photo-card-tag">Front Load</span>
+              <span class="photo-card-tag">Motor Repair</span>
+              <span class="photo-card-tag">PCB Fix</span>
+            </div>
+            <a href="tel:+918453345670" class="photo-card-cta">
+              Book Now <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- FRIDGE REPAIR -->
+        <div class="photo-card reveal">
+          <div class="photo-card-img-wrap">
+            <span class="photo-card-badge">Fridge Repair</span>
+            <img
+              class="photo-card-img"
+              src="https://wilshirerefrigeration.com/wp-content/uploads/2020/07/commercial-appliance-repair-service.jpg"
+              alt="Refrigerator Repair Technician"
+              onerror="this.src='https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=80'; this.onerror=null;"
+            />
+          </div>
+          <div class="photo-card-body">
+            <div class="photo-card-icon"><i class="fas fa-temperature-low"></i></div>
+            <div class="photo-card-title">Refrigerator Repair</div>
+            <p class="photo-card-desc">Fridge not cooling? We fix compressor, thermostat, gas leaks, ice maker, freezer & all refrigerator problems on-site.</p>
+            <div class="photo-card-tags">
+              <span class="photo-card-tag">Compressor</span>
+              <span class="photo-card-tag">Gas Leak</span>
+              <span class="photo-card-tag">Thermostat</span>
+              <span class="photo-card-tag">All Brands</span>
+            </div>
+            <a href="tel:+918453345670" class="photo-card-cta">
+              Book Now <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /photo-service-grid -->
+
+      <!-- OTHER SERVICES MINI CARDS -->
+      <div style="margin-top:60px;">
+        <div class="section-label" style="margin-bottom:24px;">Also Available</div>
+        <div class="mini-services-grid">
+          <div class="mini-service-card reveal">
+            <i class="fas fa-tv" style="color:var(--accent2);"></i>
+            <div>
+              <strong>TV Repair</strong>
+              <span>LED, LCD, OLED & Smart TV</span>
+            </div>
+          </div>
+          <div class="mini-service-card reveal">
+            <i class="fas fa-fire" style="color:#f59e0b;"></i>
+            <div>
+              <strong>Microwave & Oven</strong>
+              <span>All models & brands</span>
+            </div>
+          </div>
+          <div class="mini-service-card reveal">
+            <i class="fas fa-fan" style="color:#e879f9;"></i>
+            <div>
+              <strong>Fans & Geysers</strong>
+              <span>Ceiling, table & water heaters</span>
+            </div>
+          </div>
+          <div class="mini-service-card reveal">
+            <i class="fas fa-blender" style="color:var(--accent3);"></i>
+            <div>
+              <strong>Kitchen Appliances</strong>
+              <span>Mixer, grinder, juicer & more</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="about-text reveal-right">
-        <div class="section-label">About Us</div>
-        <h2 class="section-title">Trusted <span class="gradient-text">Repair</span> Service in Jorhat</h2>
-        <p>
-          We are Jorhat's most reliable home appliance repair service, delivering <strong>expert, honest, and affordable</strong> solutions right to your doorstep. From air conditioners to refrigerators and washing machines, we handle it all with precision.
-        </p>
-        <p>
-          Our certified technician brings years of hands-on experience servicing all major brands. We believe in transparent pricing — no hidden charges, no unnecessary part replacements. Just quality workmanship you can count on.
-        </p>
-        <div class="about-highlight">
-          <p>"Your appliances are in safe hands. We treat every repair like it's in our own home — with care, skill, and respect for your time."</p>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================================================
-     SKILLS SECTION
-============================================================ -->
-<section id="skills">
-  <div class="container">
-    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto 0;">
-      <div class="section-label" style="justify-content:center;">Expertise</div>
-      <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
-      <p style="color:var(--muted); font-size:.95rem; line-height:1.7;">
-        Years of hands-on experience translate into precise, reliable repairs with the highest success rates in the city.
-      </p>
-    </div>
-
-    <div class="skills-grid">
-      <div class="skill-card reveal" style="transition-delay:.05s">
-        <div class="skill-header">
-          <div class="skill-icon"><i class="fa-solid fa-snowflake"></i></div>
-          <span class="skill-percent" data-target="95">0%</span>
-        </div>
-        <div class="skill-name">AC Repair</div>
-        <div class="skill-sub">Gas refill, cooling fix, full servicing</div>
-        <div class="skill-bar"><div class="skill-fill" data-width=".95"></div></div>
-      </div>
-
-      <div class="skill-card reveal" style="transition-delay:.12s">
-        <div class="skill-header">
-          <div class="skill-icon"><i class="fa-solid fa-shirt"></i></div>
-          <span class="skill-percent" data-target="92">0%</span>
-        </div>
-        <div class="skill-name">Washing Machine Repair</div>
-        <div class="skill-sub">Motor, drum, belt &amp; leakage issues</div>
-        <div class="skill-bar"><div class="skill-fill" data-width=".92"></div></div>
-      </div>
-
-      <div class="skill-card reveal" style="transition-delay:.18s">
-        <div class="skill-header">
-          <div class="skill-icon"><i class="fa-solid fa-box"></i></div>
-          <span class="skill-percent" data-target="90">0%</span>
-        </div>
-        <div class="skill-name">Refrigerator Repair</div>
-        <div class="skill-sub">Cooling, compressor &amp; thermostat</div>
-        <div class="skill-bar"><div class="skill-fill" data-width=".90"></div></div>
-      </div>
-
-      <div class="skill-card reveal" style="transition-delay:.24s">
-        <div class="skill-header">
-          <div class="skill-icon"><i class="fa-solid fa-bolt"></i></div>
-          <span class="skill-percent" data-target="88">0%</span>
-        </div>
-        <div class="skill-name">Electrical Troubleshooting</div>
-        <div class="skill-sub">Safe diagnostics &amp; repairs</div>
-        <div class="skill-bar"><div class="skill-fill" data-width=".88"></div></div>
-      </div>
-
-      <div class="skill-card reveal" style="transition-delay:.30s">
-        <div class="skill-header">
-          <div class="skill-icon"><i class="fa-solid fa-star"></i></div>
-          <span class="skill-percent" data-target="98">0%</span>
-        </div>
-        <div class="skill-name">Customer Service</div>
-        <div class="skill-sub">Transparent, punctual &amp; respectful</div>
-        <div class="skill-bar"><div class="skill-fill" data-width=".98"></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     SERVICES SECTION
-============================================================ -->
-<section id="services">
-  <div class="container">
-    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto;">
-      <div class="section-label" style="justify-content:center;">What We Fix</div>
-      <h2 class="section-title">Our <span class="gradient-text">Services</span></h2>
-      <p style="color:var(--muted); font-size:.95rem; line-height:1.7;">
-        Comprehensive repair solutions for all your home appliances, delivered at your doorstep with guaranteed satisfaction.
-      </p>
-    </div>
-
-    <div class="services-grid">
-      <div class="service-card reveal" style="transition-delay:.05s">
-        <div class="service-num">01</div>
-        <div class="service-icon-wrap"><i class="fa-solid fa-snowflake"></i></div>
-        <h3 class="service-title">AC Repair &amp; Service</h3>
-        <p class="service-desc">
-          Full air conditioner diagnosis and repair for all major brands. From cooling failures to gas leaks, we handle it fast and safely.
-        </p>
-        <div class="service-tags">
-          <span class="tag">Cooling Issues</span>
-          <span class="tag">Gas Refill</span>
-          <span class="tag">Deep Servicing</span>
-          <span class="tag">Noise Fix</span>
-        </div>
-      </div>
-
-      <div class="service-card reveal" style="transition-delay:.12s">
-        <div class="service-num">02</div>
-        <div class="service-icon-wrap"><i class="fa-solid fa-shirt"></i></div>
-        <h3 class="service-title">Washing Machine Repair</h3>
-        <p class="service-desc">
-          Expert repairs for both front-load and top-load washing machines. We fix motor failures, drum issues, leakages, and more.
-        </p>
-        <div class="service-tags">
-          <span class="tag">Motor Repair</span>
-          <span class="tag">Drum Fix</span>
-          <span class="tag">Leakage Stop</span>
-          <span class="tag">PCB Repair</span>
-        </div>
-      </div>
-
-      <div class="service-card reveal" style="transition-delay:.18s">
-        <div class="service-num">03</div>
-        <div class="service-icon-wrap"><i class="fa-solid fa-box"></i></div>
-        <h3 class="service-title">Refrigerator Repair</h3>
-        <p class="service-desc">
-          Restore your fridge to peak performance. We specialize in cooling problems, compressor replacements, and thermostat fixes.
-        </p>
-        <div class="service-tags">
-          <span class="tag">Cooling Restore</span>
-          <span class="tag">Compressor</span>
-          <span class="tag">Thermostat</span>
-          <span class="tag">Gas Charging</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     WHY CHOOSE US
-============================================================ -->
-<section id="why">
-  <div class="container">
-    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto;">
-      <div class="section-label" style="justify-content:center;">Our Edge</div>
-      <h2 class="section-title">Why <span class="gradient-text">Choose Us</span></h2>
-    </div>
-
-    <div class="why-grid">
-      <div class="why-card reveal" style="transition-delay:.05s">
-        <div class="why-icon-wrap"><i class="fa-solid fa-bolt"></i></div>
-        <div class="why-body">
-          <h3>Same-Day Fast Service</h3>
-          <p>We understand your appliance is urgent. Our technician typically arrives within hours of booking — no long waiting periods.</p>
-        </div>
-      </div>
-      <div class="why-card reveal" style="transition-delay:.12s">
-        <div class="why-icon-wrap"><i class="fa-solid fa-tag"></i></div>
-        <div class="why-body">
-          <h3>Affordable Pricing</h3>
-          <p>Transparent, competitive pricing with zero hidden costs. Get an upfront estimate before any work begins — always.</p>
-        </div>
-      </div>
-      <div class="why-card reveal" style="transition-delay:.18s">
-        <div class="why-icon-wrap"><i class="fa-solid fa-user-shield"></i></div>
-        <div class="why-body">
-          <h3>Certified Technician</h3>
-          <p>Years of hands-on experience with all major appliance brands. Every repair is done with precision and care.</p>
-        </div>
-      </div>
-      <div class="why-card reveal" style="transition-delay:.24s">
-        <div class="why-icon-wrap"><i class="fa-solid fa-house"></i></div>
-        <div class="why-body">
-          <h3>Doorstep Service</h3>
-          <p>No need to haul heavy appliances anywhere. We come to your home across Jorhat city for a seamless repair experience.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     CONTACT SECTION
-============================================================ -->
-<section id="contact">
-  <div class="container">
-    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto;">
+  <!-- ========================================
+       CONTACT SECTION
+  ======================================== -->
+  <section id="contact" style="background: linear-gradient(180deg, transparent, rgba(0,212,255,.03), transparent);">
+    <div class="container" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">Get In Touch</div>
-      <h2 class="section-title">Book a <span class="gradient-text">Repair</span></h2>
-      <p style="color:var(--muted); font-size:.95rem; line-height:1.7;">
-        Reach out via phone or fill the form below. We'll get back to you quickly and schedule a convenient visit.
+      <h2 class="section-title reveal">Book a <span class="gradient-text">Repair Today</span></h2>
+      <p style="color:var(--muted); font-size:1.1rem; max-width:520px; margin:0 auto 48px;" class="reveal">
+        One call or WhatsApp message is all it takes. We'll send a technician to your door.
       </p>
-    </div>
 
-    <div class="contact-grid">
-      <div class="reveal-left">
-        <h3>Contact Details</h3>
-        <p>Available Monday–Sunday, 8 AM to 8 PM. Emergency calls welcome anytime.</p>
-
-        <a href="tel:6003983785" class="contact-item">
-          <div class="contact-item-icon"><i class="fa-solid fa-phone"></i></div>
-          <div class="contact-item-text">
-            <span>Phone / WhatsApp</span>
-            <strong>6003983785</strong>
-          </div>
+      <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;" class="reveal">
+        <a href="tel:+918453345670" class="btn-call" style="font-size:1.05rem; padding:18px 48px;">
+          <i class="fas fa-phone"></i> Call +91 84533 45670
         </a>
-
-        <a href="mailto:jorhatcityservice@gmail.com" class="contact-item">
-          <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
-          <div class="contact-item-text">
-            <span>Email</span>
-            <strong>jorhatcityservice@gmail.com</strong>
-          </div>
+        <a href="https://wa.me/918453345670?text=Hello!%20I%20need%20home%20appliance%20repair%20service."
+           target="_blank"
+           class="btn-whatsapp"
+           style="font-size:1.05rem; padding:18px 48px;">
+          <i class="fab fa-whatsapp"></i> WhatsApp Booking
         </a>
-
-        <div class="contact-item" style="cursor:default;">
-          <div class="contact-item-icon"><i class="fa-solid fa-location-dot"></i></div>
-          <div class="contact-item-text">
-            <span>Location</span>
-            <strong>Jorhat, Assam, India</strong>
-          </div>
-        </div>
-
-        <div class="social-row">
-          <a href="#" class="social-btn li" title="LinkedIn"  aria-label="LinkedIn" ><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" class="social-btn gh" title="GitHub"    aria-label="GitHub"   ><i class="fa-brands fa-github"></i></a>
-          <a href="#" class="social-btn ig" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        </div>
       </div>
 
-      <div class="reveal-right">
-        <div class="contact-form">
-          <h3>Send a Message</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Your Name</label>
-              <input type="text" placeholder="e.g. Rahul Das"/>
-            </div>
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" placeholder="Your contact number"/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="your@email.com"/>
-          </div>
-          <div class="form-group">
-            <label>Service Required</label>
-            <select>
-              <option value="">Select a service…</option>
-              <option>AC Repair &amp; Servicing</option>
-              <option>Washing Machine Repair</option>
-              <option>Refrigerator Repair</option>
-              <option>Electrical Troubleshooting</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea placeholder="Describe your issue briefly…"></textarea>
-          </div>
-          <button class="btn-submit" onclick="handleSubmit(this)">
-            <span>Send Message &nbsp;<i class="fa-solid fa-paper-plane"></i></span>
-          </button>
-        </div>
+      <div style="margin-top:60px; padding-top:40px; border-top:1px solid var(--border); color:var(--muted); font-size:.85rem;" class="reveal">
+        © 2024 Jorhat City Service · Jorhat, Assam · +91 84533 45670
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================================================
-     FOOTER
-============================================================ -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">Jorhat <span>City</span> Service</div>
-    <div class="footer-copy">© 2025 Jorhat City Service. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="#hero">Home</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</footer>
+  <script>
+    // CURSOR
+    const dot  = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      dot.style.left  = e.clientX + 'px'; dot.style.top  = e.clientY + 'px';
+      ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+    });
 
-<!-- ============================================================
-     JAVASCRIPT
-============================================================ -->
-<script>
-  // ==========================================
-  // CURSOR
-  // ==========================================
-  const dot  = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
+    // TYPING EFFECT
+    const phrases = ['AC Repairs','TV Repairs','Washing Machines','Refrigerators','Microwaves','All Appliances'];
+    let pi = 0, ci = 0, deleting = false;
+    const el = document.getElementById('typed-text');
+    function type() {
+      const word = phrases[pi];
+      if (!deleting) {
+        el.textContent = word.slice(0, ++ci);
+        if (ci === word.length) { deleting = true; setTimeout(type, 1400); return; }
+      } else {
+        el.textContent = word.slice(0, --ci);
+        if (ci === 0) { deleting = false; pi = (pi+1) % phrases.length; }
+      }
+      setTimeout(type, deleting ? 55 : 90);
+    }
+    type();
 
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-  function animateCursor() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    dot.style.left  = mx + 'px';
-    dot.style.top   = my + 'px';
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
-
-  // ==========================================
-  // PARTICLE CANVAS
-  // ==========================================
-  (function() {
+    // PARTICLES
     const canvas = document.getElementById('particle-canvas');
-    const ctx    = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d');
     let W, H, particles = [];
-
-    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-    window.addEventListener('resize', resize); resize();
-
-    class Particle {
-      constructor() { this.reset(); }
-      reset() {
-        this.x  = Math.random() * W;
-        this.y  = Math.random() * H;
-        this.vx = (Math.random() - .5) * .3;
-        this.vy = (Math.random() - .5) * .3;
-        this.r  = Math.random() * 1.5 + .3;
-        this.a  = Math.random() * .35 + .05;
-        const cols = ['rgba(0,212,255,', 'rgba(124,58,237,', 'rgba(255,107,53,'];
-        this.color = cols[Math.floor(Math.random() * cols.length)];
-      }
-      update() {
-        this.x += this.vx; this.y += this.vy;
-        if (this.x < 0||this.x > W||this.y < 0||this.y > H) this.reset();
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
-        ctx.fillStyle = this.color + this.a + ')';
-        ctx.fill();
-      }
+    function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+    for (let i = 0; i < 70; i++) {
+      particles.push({
+        x: Math.random()*1920, y: Math.random()*1080,
+        r: Math.random()*1.5+.5,
+        vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3,
+        o: Math.random()*.5+.1
+      });
     }
-
-    for (let i = 0; i < 100; i++) particles.push(new Particle());
-
-    function connectParticles() {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i+1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const d  = Math.sqrt(dx*dx + dy*dy);
-          if (d < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(0,212,255,${.04 * (1 - d/120)})`;
-            ctx.lineWidth = .5;
-            ctx.stroke();
-          }
-        }
-      }
+    function animParticles() {
+      ctx.clearRect(0,0,W,H);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if(p.x<0) p.x=W; if(p.x>W) p.x=0;
+        if(p.y<0) p.y=H; if(p.y>H) p.y=0;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(0,212,255,${p.o})`; ctx.fill();
+      });
+      requestAnimationFrame(animParticles);
     }
+    animParticles();
 
-    function loop() {
-      ctx.clearRect(0, 0, W, H);
-      particles.forEach(p => { p.update(); p.draw(); });
-      connectParticles();
-      requestAnimationFrame(loop);
-    }
-    loop();
-  })();
+    // REVEAL ON SCROLL
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    reveals.forEach(r => io.observe(r));
 
-  // ==========================================
-  // TYPING ANIMATION
-  // ==========================================
-  const phrases = ['AC Repair Expert', 'Washing Machine Technician', 'Fridge Repair Specialist'];
-  let pIdx = 0, cIdx = 0, deleting = false;
-  const typedEl = document.getElementById('typed-text');
-
-  function type() {
-    const phrase = phrases[pIdx];
-    if (!deleting) {
-      typedEl.textContent = phrase.slice(0, ++cIdx);
-      if (cIdx === phrase.length) { deleting = true; setTimeout(type, 2000); return; }
-    } else {
-      typedEl.textContent = phrase.slice(0, --cIdx);
-      if (cIdx === 0) { deleting = false; pIdx = (pIdx+1) % phrases.length; setTimeout(type, 400); return; }
-    }
-    setTimeout(type, deleting ? 45 : 80);
-  }
-  type();
-
-  // ==========================================
-  // SCROLL REVEAL
-  // ==========================================
-  const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    // SERVICE CARD MOUSE GLOW
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX-rect.left)/rect.width*100)+'%');
+        card.style.setProperty('--my', ((e.clientY-rect.top)/rect.height*100)+'%');
+      });
     });
-  }, { threshold: .12 });
-  reveals.forEach(r => revealObs.observe(r));
 
-  // ==========================================
-  // SKILL BAR ANIMATION
-  // ==========================================
-  const skillCards = document.querySelectorAll('.skill-card');
-  const skillObs   = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const card   = e.target;
-      const fill   = card.querySelector('.skill-fill');
-      const pctEl  = card.querySelector('.skill-percent');
-      const target = parseInt(pctEl.dataset.target);
-      const width  = parseFloat(fill.dataset.width);
-
-      setTimeout(() => {
-        fill.style.transform = `scaleX(${width})`;
-        fill.classList.add('animate');
-        let count = 0;
-        const inc = target / 60;
-        const interval = setInterval(() => {
-          count = Math.min(count + inc, target);
-          pctEl.textContent = Math.round(count) + '%';
-          if (count >= target) clearInterval(interval);
-        }, 20);
-      }, 200);
-
-      skillObs.unobserve(card);
+    // ACTIVE SIDE NAV
+    const sections = document.querySelectorAll('section[id]');
+    const navDots  = document.querySelectorAll('.side-nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if(scrollY >= s.offsetTop - 300) current = s.id; });
+      navDots.forEach(d => {
+        d.classList.toggle('active', d.getAttribute('href') === '#'+current);
+      });
     });
-  }, { threshold: .4 });
-  skillCards.forEach(c => skillObs.observe(c));
-
-  // ==========================================
-  // SERVICE CARD MOUSE GLOW
-  // ==========================================
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = ((e.clientX - r.left) / r.width * 100).toFixed(1);
-      const y = ((e.clientY - r.top)  / r.height* 100).toFixed(1);
-      card.style.setProperty('--mx', x + '%');
-      card.style.setProperty('--my', y + '%');
-    });
-  });
-
-  // ==========================================
-  // SIDE NAV ACTIVE STATE
-  // ==========================================
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks  = document.querySelectorAll('.side-nav a');
-
-  const navObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector(`.side-nav a[href="#${e.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { threshold: .5 });
-  sections.forEach(s => navObs.observe(s));
-
-  // ==========================================
-  // FORM SUBMIT
-  // ==========================================
-  function handleSubmit(btn) {
-    const span = btn.querySelector('span');
-    span.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending…';
-    btn.disabled = true;
-    setTimeout(() => {
-      span.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
-      btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
-      setTimeout(() => {
-        span.innerHTML = 'Send Message &nbsp;<i class="fa-solid fa-paper-plane"></i>';
-        btn.style.background = '';
-        btn.disabled = false;
-      }, 3000);
-    }, 1600);
-  }
-</script>
+  </script>
 </body>
 </html>
