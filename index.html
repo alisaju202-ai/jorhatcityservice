@@ -11,43 +11,21 @@
   --border:rgba(255,255,255,0.06);
   --accent:#f97316; --accent2:#06b6d4;
   --text:#f1f5f9; --muted:#64748b; --soft:#94a3b8;
+  --saffron:#FF9933; --white:#FFFFFF; --green:#138808; --navy:#000080;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
 
-/* ══════════════════════════════════════════
-   BACKGROUND LAYERS
-══════════════════════════════════════════ */
+/* ══ BACKGROUND LAYERS ══ */
+.bg-flag{position:fixed;inset:0;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.bg-flag svg{width:min(92vw,860px);height:auto;opacity:0.042;animation:flagPulse 9s ease-in-out infinite;}
+@keyframes flagPulse{0%,100%{opacity:0.035;transform:scale(1);}50%{opacity:0.055;transform:scale(1.012);}}
 
-/* 1) INDIA FLAG — huge watermark, fixed centered */
-.bg-flag{
-  position:fixed;inset:0;z-index:0;pointer-events:none;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
-.bg-flag svg{
-  width:min(92vw,860px);height:auto;
-  opacity:0.042;
-  animation:flagPulse 9s ease-in-out infinite;
-}
-@keyframes flagPulse{
-  0%,100%{opacity:0.035;transform:scale(1);}
-  50%{opacity:0.055;transform:scale(1.012);}
-}
-
-/* 2) Tricolour glow bands top & bottom */
 .bg-triband{position:fixed;inset:0;z-index:0;pointer-events:none;}
-.bg-triband::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:38%;
-  background:linear-gradient(180deg,rgba(255,153,51,0.06) 0%,transparent 100%);
-}
-.bg-triband::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:38%;
-  background:linear-gradient(0deg,rgba(19,136,8,0.06) 0%,transparent 100%);
-}
+.bg-triband::before{content:'';position:absolute;top:0;left:0;right:0;height:38%;background:linear-gradient(180deg,rgba(255,153,51,0.06) 0%,transparent 100%);}
+.bg-triband::after{content:'';position:absolute;bottom:0;left:0;right:0;height:38%;background:linear-gradient(0deg,rgba(19,136,8,0.06) 0%,transparent 100%);}
 
-/* 3) Aurora blobs */
 .aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
 .ab{position:absolute;border-radius:50%;filter:blur(140px);animation:drift 22s ease-in-out infinite alternate;}
 .ab1{width:700px;height:700px;background:#FF9933;top:-220px;left:-180px;opacity:0.08;animation-duration:26s;}
@@ -57,90 +35,55 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);over
 .ab5{width:320px;height:320px;background:#f97316;top:12%;right:8%;opacity:0.07;animation-duration:24s;}
 @keyframes drift{0%{transform:translate(0,0) scale(1);}50%{transform:translate(55px,-45px) scale(1.07);}100%{transform:translate(-35px,55px) scale(0.95);}}
 
-/* 4) Particle canvas */
 #bgCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px;}
 
-/* 5) Noise grain overlay */
-.noise{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.025;
-background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-background-size:180px 180px;}
-
-/* ══════════════════════════════════════════
-   INDIA FLAG POLE — fixed left
-══════════════════════════════════════════ */
-.flag-stand{
-  position:fixed;left:16px;bottom:0;z-index:800;
-  display:flex;flex-direction:column;align-items:center;
-  animation:poleRise 1.2s .4s cubic-bezier(.34,1.56,.64,1) both;
+/* ══ TRICOLOR BORDER ANIMATION ══ */
+@keyframes tricolorFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
+.tricolor-glow {
+  background: linear-gradient(90deg,#FF9933,#FF9933,#FFFFFF,#138808,#138808,#FF9933);
+  background-size: 300% 300%;
+  animation: tricolorFlow 4s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══ INDIA FLAG POLE ══ */
+.flag-stand{position:fixed;left:16px;bottom:0;z-index:800;display:flex;flex-direction:column;align-items:center;animation:poleRise 1.2s .4s cubic-bezier(.34,1.56,.64,1) both;}
 @keyframes poleRise{from{transform:translateY(70px);opacity:0;}to{transform:none;opacity:1;}}
-
-.pole-tip{
-  width:12px;height:12px;border-radius:50%;
-  background:radial-gradient(circle at 38% 32%,#fffde0,#ffd700,#b8860b);
-  box-shadow:0 0 16px 5px rgba(255,215,0,.75);
-  animation:tipGlow 2s ease-in-out infinite alternate;
-}
+.pole-tip{width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#fffde0,#ffd700,#b8860b);box-shadow:0 0 16px 5px rgba(255,215,0,.75);animation:tipGlow 2s ease-in-out infinite alternate;}
 @keyframes tipGlow{from{box-shadow:0 0 10px 3px rgba(255,215,0,.5);}to{box-shadow:0 0 24px 9px rgba(255,215,0,.9);}}
-
 .flag-wrap{position:relative;width:4px;}
-.pole-shaft{
-  width:4px;height:210px;
-  background:linear-gradient(180deg,#f0d060,#9a7820,#e8c840,#9a7820,#f0d060);
-  border-radius:2px;
-  box-shadow:1px 0 8px rgba(0,0,0,.5),inset -1px 0 3px rgba(255,255,255,.1);
-}
-.india-flag{
-  position:absolute;top:0;left:4px;
-  width:84px;height:56px;
-  display:flex;flex-direction:column;
-  border-radius:0 4px 4px 0;overflow:hidden;
-  transform-origin:left top;
-  animation:flagWave 4s ease-in-out infinite;
-  box-shadow:3px 3px 14px rgba(0,0,0,.55);
-}
-@keyframes flagWave{
-  0%  {transform:perspective(300px) rotateY(0deg)   skewY(0);}
-  20% {transform:perspective(300px) rotateY(-5deg)  skewY(-1.8deg);}
-  40% {transform:perspective(300px) rotateY(2.5deg) skewY(0.9deg);}
-  60% {transform:perspective(300px) rotateY(-4deg)  skewY(-1.2deg);}
-  80% {transform:perspective(300px) rotateY(3deg)   skewY(0.6deg);}
-  100%{transform:perspective(300px) rotateY(0deg)   skewY(0);}
-}
+.pole-shaft{width:4px;height:210px;background:linear-gradient(180deg,#f0d060,#9a7820,#e8c840,#9a7820,#f0d060);border-radius:2px;box-shadow:1px 0 8px rgba(0,0,0,.5),inset -1px 0 3px rgba(255,255,255,.1);}
+.india-flag{position:absolute;top:0;left:4px;width:84px;height:56px;display:flex;flex-direction:column;border-radius:0 4px 4px 0;overflow:hidden;transform-origin:left top;animation:flagWave 4s ease-in-out infinite;box-shadow:3px 3px 14px rgba(0,0,0,.55);}
+@keyframes flagWave{0%{transform:perspective(300px) rotateY(0deg) skewY(0);}20%{transform:perspective(300px) rotateY(-5deg) skewY(-1.8deg);}40%{transform:perspective(300px) rotateY(2.5deg) skewY(0.9deg);}60%{transform:perspective(300px) rotateY(-4deg) skewY(-1.2deg);}80%{transform:perspective(300px) rotateY(3deg) skewY(0.6deg);}100%{transform:perspective(300px) rotateY(0deg) skewY(0);}}
 .fs{flex:1;background:#FF9933;}
 .fw{flex:1;background:#FFFFFF;display:flex;align-items:center;justify-content:center;}
 .fg2{flex:1;background:#138808;}
-
 .chakra-wrap{width:20px;height:20px;animation:chakraSpin 6s linear infinite;}
 @keyframes chakraSpin{to{transform:rotate(360deg);}}
-
-.pole-base{
-  width:38px;height:10px;
-  background:linear-gradient(90deg,#7a6018,#d4af37,#7a6018);
-  border-radius:4px;margin-top:2px;
-  box-shadow:0 4px 10px rgba(0,0,0,.6);
-}
+.pole-base{width:38px;height:10px;background:linear-gradient(90deg,#7a6018,#d4af37,#7a6018);border-radius:4px;margin-top:2px;box-shadow:0 4px 10px rgba(0,0,0,.6);}
 .pole-foot{width:26px;height:6px;background:linear-gradient(90deg,#5a4410,#b8962c,#5a4410);border-radius:3px;margin-top:2px;}
 .flag-label{font-size:7px;font-weight:800;letter-spacing:1.5px;color:#FF9933;text-transform:uppercase;margin-top:5px;opacity:.75;}
 
-/* ══════════════════════════════════════════
-   NAVBAR
-══════════════════════════════════════════ */
-nav{
-  position:fixed;top:0;width:100%;z-index:900;
-  background:rgba(7,11,20,.9);backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-  padding:0 28px 0 112px;height:68px;
-  display:flex;align-items:center;justify-content:space-between;
-  animation:slideDown .7s ease both;
+/* ══ TRICOLOR SCROLL PROGRESS ══ */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+  z-index: 9999; transition: width 0.1s;
+  box-shadow: 0 0 10px rgba(255,153,51,0.6);
 }
+
+/* ══ NAVBAR ══ */
+nav{position:fixed;top:0;width:100%;z-index:900;background:rgba(7,11,20,.9);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:0 28px 0 112px;height:68px;display:flex;align-items:center;justify-content:space-between;animation:slideDown .7s ease both;}
 @keyframes slideDown{from{transform:translateY(-100%);opacity:0}to{transform:none;opacity:1}}
-/* tricolour line at nav bottom */
-nav::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,#FF9933 33.33%,#FFFFFF 33.33% 66.66%,#138808 66.66%);
-  opacity:0.5;
-}
+nav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#FF9933 33.33%,#FFFFFF 33.33% 66.66%,#138808 66.66%);opacity:0.6;animation:tricolorPulse 3s ease-in-out infinite;}
+@keyframes tricolorPulse{0%,100%{opacity:0.5;}50%{opacity:1;box-shadow:0 0 12px rgba(255,153,51,0.4);}}
 
 .logo{display:flex;align-items:center;gap:13px;}
 .logo-svg-wrap{width:48px;height:48px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(249,115,22,.5));animation:logoGlow 4s ease-in-out infinite alternate;}
@@ -154,21 +97,29 @@ nav::after{
 .nc-wa{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;}
 .nc-wa:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(34,197,94,.45);}
 
-/* ══════════════════════════════════════════
-   HERO
-══════════════════════════════════════════ */
-.hero{
-  position:relative;z-index:1;min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  padding:100px 36px 60px 118px;overflow:hidden;
-}
+/* ══ HERO ══ */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 36px 60px 118px;overflow:hidden;}
 .hero-inner{max-width:1140px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
-
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(249,115,22,.35);background:rgba(249,115,22,.08);border-radius:100px;padding:5px 16px;font-size:12px;font-weight:600;letter-spacing:2.5px;color:var(--accent);text-transform:uppercase;margin-bottom:22px;animation:fadeUp .8s .2s both;}
 .live-dot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:lp 1.5s infinite;}
 @keyframes lp{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
 .hero-left h1{font-family:'Syne';font-size:clamp(40px,5.5vw,74px);font-weight:800;line-height:1.02;letter-spacing:-1px;margin-bottom:20px;animation:fadeUp .8s .4s both;}
 .h1-or{color:#f97316;}.h1-cy{color:#06b6d4;}
+
+/* Tricolor animated text */
+.h1-tri {
+  background: linear-gradient(90deg, #FF9933, #FF9933, #cccccc, #138808, #138808);
+  background-size: 200% 200%;
+  animation: triSlide 3s ease-in-out infinite alternate;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+@keyframes triSlide {
+  0%  { background-position: 0% 50%; }
+  100%{ background-position: 100% 50%; }
+}
+
 .hero-desc{font-size:16px;color:var(--soft);line-height:1.75;margin-bottom:32px;animation:fadeUp .8s .6s both;max-width:440px;}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .8s .8s both;}
 .btn{padding:13px 26px;border-radius:10px;font-family:'Outfit';font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s;border:none;cursor:pointer;}
@@ -183,107 +134,78 @@ nav::after{
 .hs-label{font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;}
 .hs-div{width:1px;background:var(--border);align-self:stretch;}
 
-/* ── HERO PHOTO COLLAGE ── */
+/* ══ HERO PHOTO COLLAGE ══ */
 .hero-right{position:relative;animation:fadeUp .8s .5s both;height:460px;}
-
-.ph-main{
-  position:absolute;top:0;right:0;
-  width:80%;height:290px;
-  border-radius:20px;object-fit:cover;
-  border:2px solid rgba(249,115,22,.4);
-  box-shadow:0 24px 64px rgba(0,0,0,.75);
-  transition:transform .35s;
-  background:#111827;
-}
+.ph-main{position:absolute;top:0;right:0;width:80%;height:290px;border-radius:20px;object-fit:cover;border:2px solid rgba(249,115,22,.4);box-shadow:0 24px 64px rgba(0,0,0,.75);transition:transform .35s;background:#111827;overflow:hidden;}
 .ph-main:hover{transform:scale(1.025);}
-
-.ph-bl{
-  position:absolute;bottom:8px;left:0;
-  width:47%;height:185px;
-  border-radius:16px;object-fit:cover;
-  border:2px solid rgba(6,182,212,.4);
-  box-shadow:0 14px 40px rgba(0,0,0,.65);
-  transition:transform .35s;z-index:2;
-  background:#111827;
-}
+.ph-bl{position:absolute;bottom:8px;left:0;width:47%;height:185px;border-radius:16px;object-fit:cover;border:2px solid rgba(6,182,212,.4);box-shadow:0 14px 40px rgba(0,0,0,.65);transition:transform .35s;z-index:2;background:#111827;overflow:hidden;}
 .ph-bl:hover{transform:scale(1.03);}
-
-.ph-br{
-  position:absolute;bottom:8px;right:6px;
-  width:35%;height:150px;
-  border-radius:14px;object-fit:cover;
-  border:2px solid rgba(139,92,246,.4);
-  box-shadow:0 10px 30px rgba(0,0,0,.65);
-  transition:transform .35s;z-index:2;
-  background:#111827;
-}
+.ph-br{position:absolute;bottom:8px;right:6px;width:35%;height:150px;border-radius:14px;object-fit:cover;border:2px solid rgba(139,92,246,.4);box-shadow:0 10px 30px rgba(0,0,0,.65);transition:transform .35s;z-index:2;background:#111827;overflow:hidden;}
 .ph-br:hover{transform:scale(1.03);}
 
-/* placeholder icons shown before images load */
-.ph-placeholder{
-  position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:6px;
-  background:linear-gradient(135deg,#0d1424,#111827);border-radius:inherit;
-  pointer-events:none;transition:opacity .4s;
-}
-.ph-placeholder.hidden{opacity:0;}
-.ph-placeholder-icon{font-size:44px;filter:drop-shadow(0 0 10px rgba(249,115,22,.3));}
-.ph-placeholder-txt{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;}
+.ph-img{width:100%;height:100%;object-fit:cover;border-radius:inherit;transition:transform .5s;}
+.ph-main:hover .ph-img,.ph-bl:hover .ph-img,.ph-br:hover .ph-img{transform:scale(1.07);}
 
-.ph-lbl{
-  position:absolute;background:rgba(7,11,20,.88);backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.1);border-radius:8px;
-  padding:5px 11px;font-size:10px;font-weight:700;letter-spacing:.8px;z-index:6;
-}
+.ph-lbl{position:absolute;background:rgba(7,11,20,.88);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:5px 11px;font-size:10px;font-weight:700;letter-spacing:.8px;z-index:6;}
 .ph-lbl-ac{top:12px;left:12px;color:#f97316;border-color:rgba(249,115,22,.35);}
 .ph-lbl-wm{bottom:24px;left:10px;color:#06b6d4;border-color:rgba(6,182,212,.35);}
 .ph-lbl-rf{bottom:24px;right:18px;color:#a78bfa;border-color:rgba(167,139,250,.35);}
 
-.hero-badge{
-  position:absolute;bottom:176px;left:-12px;
-  background:var(--card);border:1px solid var(--border);border-radius:14px;
-  padding:11px 15px;display:flex;align-items:center;gap:10px;
-  backdrop-filter:blur(16px);box-shadow:0 20px 40px rgba(0,0,0,.6);
-  z-index:8;animation:floatY 3.5s ease-in-out infinite;
-}
+.hero-badge{position:absolute;bottom:176px;left:-12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:11px 15px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(16px);box-shadow:0 20px 40px rgba(0,0,0,.6);z-index:8;animation:floatY 3.5s ease-in-out infinite;}
 .hb-icon{font-size:22px;}
 .hb-text{font-size:13px;font-weight:700;}
 .hb-sub{font-size:11px;color:var(--muted);}
-.hero-cert{
-  position:absolute;top:12px;left:0;
-  background:linear-gradient(135deg,#f97316,#ea580c);
-  border-radius:10px;padding:7px 13px;font-size:11px;font-weight:800;color:#fff;
-  box-shadow:0 8px 24px rgba(249,115,22,.45);
-  animation:floatY 3s ease-in-out infinite .6s;z-index:6;
-}
+.hero-cert{position:absolute;top:12px;left:0;background:linear-gradient(135deg,#f97316,#ea580c);border-radius:10px;padding:7px 13px;font-size:11px;font-weight:800;color:#fff;box-shadow:0 8px 24px rgba(249,115,22,.45);animation:floatY 3s ease-in-out infinite .6s;z-index:6;}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 
-/* ══════════════════════════════════════════
-   SECTIONS
-══════════════════════════════════════════ */
+/* ══ INDIAN FLAG COLORS ANIMATED DIVIDER ══ */
+.tricolor-divider {
+  height: 4px;
+  background: linear-gradient(90deg, #FF9933 0%, #FF9933 33%, #ffffff 33%, #ffffff 66%, #138808 66%, #138808 100%);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.tricolor-divider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: shimmer 2s infinite;
+}
+@keyframes shimmer { from{transform:translateX(-100%)} to{transform:translateX(100%)} }
+
+/* ══ SECTIONS ══ */
 section{position:relative;z-index:1;padding:90px 36px;}
 .sec-lbl{text-align:center;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px;}
 .sec-title{text-align:center;font-family:'Syne';font-size:clamp(30px,5vw,50px);font-weight:800;letter-spacing:-.5px;margin-bottom:14px;}
-.sec-bar{width:48px;height:4px;border-radius:4px;background:linear-gradient(90deg,#f97316,#06b6d4);margin:0 auto 56px;}
+.sec-bar{width:48px;height:4px;border-radius:4px;background:linear-gradient(90deg,#FF9933,#ffffff,#138808);margin:0 auto 56px;animation:tricolorFlow 3s ease infinite;}
 .max{max-width:1100px;margin:0 auto;}
 
-/* ── SERVICES ── */
+/* ══ SERVICES ══ */
 .svc-bg{background:var(--surface);}
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:24px;}
 .scard{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .4s cubic-bezier(.34,1.56,.64,1);}
 .scard:hover{transform:translateY(-10px);border-color:rgba(249,115,22,.35);box-shadow:0 30px 60px rgba(0,0,0,.55);}
-
 .scard-img-wrap{position:relative;height:220px;overflow:hidden;}
-/* emoji fallback behind real image */
-.scard-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;background:linear-gradient(135deg,#0d1424,#111827);}
-.scard-ph-icon{font-size:52px;filter:drop-shadow(0 0 12px rgba(249,115,22,.35));}
-.scard-ph-txt{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;}
-.scard-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s,transform .5s;}
-.scard-img.ready{opacity:1;}
-.scard:hover .scard-img.ready{transform:scale(1.05);}
+.scard-img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.scard:hover .scard-img{transform:scale(1.07);}
 .scard-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 42%,rgba(7,11,20,.92) 100%);}
 .scard-chip{position:absolute;top:12px;left:12px;background:rgba(7,11,20,.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--accent2);letter-spacing:1px;z-index:3;}
+
+/* Tricolor card border on hover */
+.scard::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #FF9933, #FFFFFF, #138808);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: -1;
+}
+.scard:hover::before { opacity: 1; }
 
 .scard-body{padding:22px;}
 .scard-icon{font-size:30px;margin-bottom:10px;display:block;}
@@ -298,15 +220,17 @@ section{position:relative;z-index:1;padding:90px 36px;}
 .scb-gr{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;}
 .scb-gr:hover{transform:scale(1.03);box-shadow:0 4px 16px rgba(34,197,94,.3);}
 
-/* ── WHY ── */
+/* ══ WHY ══ */
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
-.wcard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px 20px;text-align:center;transition:all .3s;}
+.wcard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px 20px;text-align:center;transition:all .3s;position:relative;overflow:hidden;}
+.wcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF9933,#FFFFFF,#138808);transform:scaleX(0);transition:transform .3s;}
+.wcard:hover::after{transform:scaleX(1);}
 .wcard:hover{border-color:rgba(6,182,212,.35);transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.3);}
 .wcard-icon{font-size:36px;margin-bottom:12px;display:block;}
 .wcard h4{font-family:'Syne';font-size:16px;font-weight:800;margin-bottom:7px;}
 .wcard p{font-size:13px;color:var(--soft);line-height:1.65;}
 
-/* ── TESTIMONIALS ── */
+/* ══ TESTIMONIALS ══ */
 .tstrip{background:var(--bg);overflow:hidden;padding:48px 0;position:relative;z-index:1;}
 .tstrip-inner{display:flex;gap:20px;animation:marquee 40s linear infinite;width:max-content;}
 .tstrip:hover .tstrip-inner{animation-play-state:paused;}
@@ -316,7 +240,7 @@ section{position:relative;z-index:1;padding:90px 36px;}
 .tcard-name{font-size:12px;font-weight:700;color:#f97316;}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ── BOOKING ── */
+/* ══ BOOKING ══ */
 .bk-bg{background:var(--surface);}
 .bk-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;max-width:1000px;margin:0 auto;}
 .bk-left h2{font-family:'Syne';font-size:32px;font-weight:800;margin-bottom:14px;line-height:1.1;}
@@ -326,7 +250,8 @@ section{position:relative;z-index:1;padding:90px 36px;}
 .ic-or{background:rgba(249,115,22,.12);}.ic-gr{background:rgba(34,197,94,.12);}.ic-cy{background:rgba(6,182,212,.12);}
 .cr-text{font-size:15px;font-weight:700;}.cr-sub{font-size:12px;color:var(--muted);}
 .bk-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
-.bform{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px;}
+.bform{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px;position:relative;overflow:hidden;}
+.bform::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF9933 33%,#ffffff 33% 66%,#138808 66%);animation:shimmer 2s infinite;}
 .bform h3{font-family:'Syne';font-size:21px;font-weight:800;margin-bottom:20px;color:#f97316;}
 .fg{margin-bottom:14px;}
 .fg label{display:block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
@@ -341,581 +266,587 @@ section{position:relative;z-index:1;padding:90px 36px;}
 .fb-gr{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;}
 .fb-gr:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,197,94,.35);}
 
-/* ── FLOAT BUTTONS ── */
+/* ══ FLOAT BUTTONS ══ */
 .floats{position:fixed;right:20px;bottom:28px;z-index:999;display:flex;flex-direction:column;gap:12px;}
 .fbtn{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none;transition:all .3s;position:relative;}
 .fbtn-or{background:linear-gradient(135deg,#f97316,#ea580c);box-shadow:0 4px 20px rgba(249,115,22,.5);animation:popIn .5s .2s both;}
 .fbtn-gr{background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 4px 20px rgba(34,197,94,.4);animation:popIn .5s .4s both;}
 .fbtn:hover{transform:scale(1.15);}
-@keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-.ftip{position:absolute;right:64px;top:50%;transform:translateY(-50%);background:var(--card);border:1px solid var(--border);padding:4px 12px;border-radius:6px;font-size:13px;font-weight:600;white-space:nowrap;opacity:0;pointer-events:none;transition:.25s;}
-.fbtn:hover .ftip{opacity:1;}
+@keyframes popIn{from{transform:scale(0);opacity:0}to{transform:none;opacity:1}}
+.fbtn-tip{position:absolute;right:64px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:5px 11px;font-size:12px;font-weight:700;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;}
+.fbtn:hover .fbtn-tip{opacity:1;}
 
-/* ── FOOTER ── */
-footer{background:#040710;border-top:1px solid var(--border);padding:48px 36px 24px;text-align:center;position:relative;z-index:1;}
-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF9933 33.33%,#FFFFFF 33.33% 66.66%,#138808 66.66%);}
-.footer-logo-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px;}
-.footer-logo-text{font-family:'Syne';font-size:24px;font-weight:800;color:#f97316;letter-spacing:1px;}
-.footer-sub{font-size:13px;color:var(--muted);margin-bottom:20px;}
-.footer-india{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;}
-.mf{display:inline-flex;flex-direction:column;width:28px;height:19px;border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,.15);}
-.mfs{flex:1;background:#FF9933;}.mfw{flex:1;background:#fff;}.mfg{flex:1;background:#138808;}
-.footer-india-text{font-size:12px;color:var(--muted);}
-.footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
-.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .25s;}
-.footer-links a:hover{color:#f97316;}
-.footer-copy{font-size:11px;color:var(--muted);opacity:.55;border-top:1px solid var(--border);padding-top:14px;margin-top:6px;}
+/* ══ FOOTER ══ */
+footer{position:relative;z-index:1;background:var(--surface);border-top:1px solid var(--border);padding:48px 36px 24px;padding-left:118px;}
+.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:36px;}
+.foot-brand .logo-name{font-size:20px;}
+.foot-brand p{font-size:14px;color:var(--soft);line-height:1.7;margin-top:12px;max-width:280px;}
+.foot-col h5{font-family:'Syne';font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+.foot-col a{display:block;font-size:14px;color:var(--soft);text-decoration:none;margin-bottom:8px;transition:color .2s;}
+.foot-col a:hover{color:var(--text);}
+.foot-bottom{max-width:1100px;margin:0 auto;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-bottom p{font-size:12px;color:var(--muted);}
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.visible{opacity:1;transform:none;}
+/* ══ TRICOLOR BADGE ══ */
+.tri-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+}
+.tri-badge span { position: relative; z-index: 1; color: #fff; }
+.tri-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,#FF9933 33%,#444 33% 66%,#138808 66%);
+  animation: triSlide 2s infinite alternate;
+}
 
-/* RESPONSIVE */
+/* India Independence Day banner */
+.india-banner {
+  position: relative; z-index: 1;
+  background: linear-gradient(135deg, rgba(255,153,51,0.12), rgba(19,136,8,0.12));
+  border-top: 1px solid rgba(255,153,51,0.2);
+  border-bottom: 1px solid rgba(19,136,8,0.2);
+  padding: 12px 36px 12px 118px;
+  display: flex; align-items: center; gap: 16px;
+  font-size: 13px; font-weight: 600;
+}
+.india-banner-flag { font-size: 20px; animation: flagWave 2s ease-in-out infinite; }
+.india-banner-text { color: var(--soft); }
+.india-banner-text strong { color: var(--saffron); }
+
+/* ══ RESPONSIVE ══ */
 @media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr;}
-  .hero-right{height:340px;}
+  .hero{padding:100px 20px 60px 20px;}
+  .hero-inner{grid-template-columns:1fr;gap:36px;}
+  .hero-right{height:320px;}
+  nav{padding:0 16px;}
+  .flag-stand{display:none;}
   .bk-grid{grid-template-columns:1fr;}
-  nav{padding:0 14px 0 84px;}
-  .logo-name{font-size:13px;}
-  .nc span{display:none;}.nc{padding:9px 13px;}
-  section{padding:60px 18px 60px 84px;}
-  .hero{padding:96px 18px 60px 90px;}
-  .flag-stand{left:10px;}
-  .pole-shaft{height:150px;}
-  .india-flag{width:62px;height:42px;}
-  .chakra-wrap{width:15px;height:15px;}
+  .foot-grid{grid-template-columns:1fr;}
+  .india-banner{padding-left:20px;}
 }
-@media(max-width:620px){
-  .hero-right{display:none;}
-  nav{padding:0 10px 0 72px;}
-  section{padding:48px 14px 48px 72px;}
-  .hero{padding:96px 14px 56px 72px;}
-  .flag-stand{left:6px;}
-  .pole-shaft{height:120px;}
-  .india-flag{width:50px;height:34px;}
-  .chakra-wrap{width:12px;height:12px;}
-  .pole-tip{width:9px;height:9px;}
-}
+
+/* ══ SCROLL ANIMATIONS ══ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s;}
+.reveal.visible{opacity:1;transform:none;}
 </style>
 </head>
 <body>
 
-<!-- ════ BACKGROUND LAYER 1: INDIA FLAG WATERMARK ════ -->
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress"></div>
+
+<!-- Background layers -->
 <div class="bg-flag">
   <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0"   width="900" height="200" fill="#FF9933"/>
-    <rect x="0" y="200" width="900" height="200" fill="#FFFFFF"/>
-    <rect x="0" y="400" width="900" height="200" fill="#138808"/>
-    <!-- Ashoka Chakra centred at 450,300 -->
-    <g transform="translate(450,300)">
-      <circle r="92" fill="none" stroke="#000080" stroke-width="11"/>
-      <circle r="13" fill="#000080"/>
-      <g stroke="#000080" stroke-width="4.5">
-        <line x1="0" y1="0" x2="0"     y2="-92"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(15  0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(30  0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(45  0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(60  0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(75  0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(90  0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(105 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(120 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(135 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(150 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(165 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(180 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(195 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(210 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(225 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(240 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(255 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(270 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(285 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(300 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(315 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(330 0 0)"/>
-        <line x1="0" y1="0" x2="23.8"  y2="-89.4" transform="rotate(345 0 0)"/>
-      </g>
-      <g fill="#000080">
-        <circle cx="0" cy="-92" r="6"/>
-        <circle r="6" transform="rotate(15)  translate(0,-92)"/>
-        <circle r="6" transform="rotate(30)  translate(0,-92)"/>
-        <circle r="6" transform="rotate(45)  translate(0,-92)"/>
-        <circle r="6" transform="rotate(60)  translate(0,-92)"/>
-        <circle r="6" transform="rotate(75)  translate(0,-92)"/>
-        <circle r="6" transform="rotate(90)  translate(0,-92)"/>
-        <circle r="6" transform="rotate(105) translate(0,-92)"/>
-        <circle r="6" transform="rotate(120) translate(0,-92)"/>
-        <circle r="6" transform="rotate(135) translate(0,-92)"/>
-        <circle r="6" transform="rotate(150) translate(0,-92)"/>
-        <circle r="6" transform="rotate(165) translate(0,-92)"/>
-        <circle r="6" transform="rotate(180) translate(0,-92)"/>
-        <circle r="6" transform="rotate(195) translate(0,-92)"/>
-        <circle r="6" transform="rotate(210) translate(0,-92)"/>
-        <circle r="6" transform="rotate(225) translate(0,-92)"/>
-        <circle r="6" transform="rotate(240) translate(0,-92)"/>
-        <circle r="6" transform="rotate(255) translate(0,-92)"/>
-        <circle r="6" transform="rotate(270) translate(0,-92)"/>
-        <circle r="6" transform="rotate(285) translate(0,-92)"/>
-        <circle r="6" transform="rotate(300) translate(0,-92)"/>
-        <circle r="6" transform="rotate(315) translate(0,-92)"/>
-        <circle r="6" transform="rotate(330) translate(0,-92)"/>
-        <circle r="6" transform="rotate(345) translate(0,-92)"/>
-      </g>
+    <rect width="900" height="200" fill="#FF9933"/>
+    <rect y="200" width="900" height="200" fill="#FFFFFF"/>
+    <rect y="400" width="900" height="200" fill="#138808"/>
+    <circle cx="450" cy="300" r="70" fill="none" stroke="#000080" stroke-width="6"/>
+    <g stroke="#000080" stroke-width="2" fill="none">
+      <line x1="450" y1="230" x2="450" y2="370"/>
+      <line x1="380" y1="300" x2="520" y2="300"/>
+      <line x1="400.5" y1="250.5" x2="499.5" y2="349.5"/>
+      <line x1="499.5" y1="250.5" x2="400.5" y2="349.5"/>
+      <line x1="380" y1="270" x2="520" y2="330"/>
+      <line x1="380" y1="330" x2="520" y2="270"/>
+      <line x1="420" y1="232" x2="480" y2="368"/>
+      <line x1="480" y1="232" x2="420" y2="368"/>
+      <line x1="398" y1="263" x2="502" y2="337"/>
+      <line x1="398" y1="337" x2="502" y2="263"/>
+      <line x1="408" y1="240" x2="492" y2="360"/>
+      <line x1="492" y1="240" x2="408" y2="360"/>
+      <circle cx="450" cy="300" r="12" fill="#000080"/>
     </g>
   </svg>
 </div>
-
-<!-- BACKGROUND LAYER 2: Saffron/green glow bands -->
 <div class="bg-triband"></div>
-
-<!-- BACKGROUND LAYER 3: Aurora blobs -->
 <div class="aurora">
-  <div class="ab ab1"></div><div class="ab ab2"></div>
-  <div class="ab ab3"></div><div class="ab ab4"></div><div class="ab ab5"></div>
+  <div class="ab ab1"></div>
+  <div class="ab ab2"></div>
+  <div class="ab ab3"></div>
+  <div class="ab ab4"></div>
+  <div class="ab ab5"></div>
 </div>
-
-<!-- BACKGROUND LAYER 4: Particle canvas -->
 <canvas id="bgCanvas"></canvas>
-
-<!-- BACKGROUND LAYER 5: Noise grain -->
 <div class="noise"></div>
 
-<!-- ════ INDIA FLAG POLE — left side ════ -->
+<!-- India Flag Pole -->
 <div class="flag-stand">
   <div class="pole-tip"></div>
   <div class="flag-wrap">
+    <div class="pole-shaft"></div>
     <div class="india-flag">
       <div class="fs"></div>
       <div class="fw">
         <div class="chakra-wrap">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="44" fill="none" stroke="#000080" stroke-width="7"/>
-            <circle cx="50" cy="50" r="9" fill="#000080"/>
-            <g stroke="#000080" stroke-width="3">
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(0   50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(15  50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(30  50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(45  50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(60  50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(75  50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(90  50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(105 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(120 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(135 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(150 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(165 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(180 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(195 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(210 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(225 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(240 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(255 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(270 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(285 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(300 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(315 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(330 50 50)"/>
-              <line x1="50" y1="50" x2="50" y2="6" transform="rotate(345 50 50)"/>
+          <svg viewBox="0 0 40 40" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="#000080" stroke-width="2" fill="none"/>
+            <circle cx="20" cy="20" r="4" fill="#000080"/>
+            <g stroke="#000080" stroke-width="1.2" fill="none">
+              <line x1="20" y1="2" x2="20" y2="8"/>
+              <line x1="20" y1="32" x2="20" y2="38"/>
+              <line x1="2" y1="20" x2="8" y2="20"/>
+              <line x1="32" y1="20" x2="38" y2="20"/>
+              <line x1="6.8" y1="6.8" x2="11" y2="11"/>
+              <line x1="29" y1="29" x2="33.2" y2="33.2"/>
+              <line x1="33.2" y1="6.8" x2="29" y2="11"/>
+              <line x1="11" y1="29" x2="6.8" y2="33.2"/>
+              <line x1="13" y1="2.7" x2="14.5" y2="8.5"/>
+              <line x1="25.5" y1="31.5" x2="27" y2="37.3"/>
+              <line x1="2.7" y1="27" x2="8.5" y2="25.5"/>
+              <line x1="31.5" y1="14.5" x2="37.3" y2="13"/>
+              <line x1="27" y1="2.7" x2="25.5" y2="8.5"/>
+              <line x1="14.5" y1="31.5" x2="13" y2="37.3"/>
+              <line x1="37.3" y1="27" x2="31.5" y2="25.5"/>
+              <line x1="8.5" y1="14.5" x2="2.7" y2="13"/>
+              <line x1="3.6" y1="13.5" x2="9.3" y2="15"/>
+              <line x1="30.7" y1="25" x2="36.4" y2="26.5"/>
+              <line x1="13.5" y1="36.4" x2="15" y2="30.7"/>
+              <line x1="25" y1="9.3" x2="26.5" y2="3.6"/>
+              <line x1="36.4" y1="13.5" x2="30.7" y2="15"/>
+              <line x1="9.3" y1="25" x2="3.6" y2="26.5"/>
+              <line x1="26.5" y1="36.4" x2="25" y2="30.7"/>
+              <line x1="15" y1="9.3" x2="13.5" y2="3.6"/>
             </g>
           </svg>
         </div>
       </div>
       <div class="fg2"></div>
     </div>
-    <div class="pole-shaft"></div>
   </div>
   <div class="pole-base"></div>
   <div class="pole-foot"></div>
-  <div class="flag-label">🇮🇳 India</div>
+  <div class="flag-label">🇮🇳 Bharat</div>
 </div>
 
-<!-- ════ NAVBAR ════ -->
+<!-- Navbar -->
 <nav>
   <div class="logo">
     <div class="logo-svg-wrap">
-      <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#ea580c"/></linearGradient>
-          <linearGradient id="lg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#0891b2"/></linearGradient>
-        </defs>
-        <circle cx="24" cy="24" r="22" fill="url(#lg1)"/>
-        <!-- gear teeth -->
-        <g fill="#f97316">
-          <rect x="20" y="1" width="8" height="6" rx="2"/>
-          <rect x="20" y="41" width="8" height="6" rx="2"/>
-          <rect x="1" y="20" width="6" height="8" rx="2"/>
-          <rect x="41" y="20" width="6" height="8" rx="2"/>
-          <rect x="5" y="7" width="6" height="6" rx="2" transform="rotate(45 8 10)"/>
-          <rect x="36" y="7" width="6" height="6" rx="2" transform="rotate(45 39 10)"/>
-          <rect x="5" y="35" width="6" height="6" rx="2" transform="rotate(45 8 38)"/>
-          <rect x="36" y="35" width="6" height="6" rx="2" transform="rotate(45 39 38)"/>
-        </g>
-        <circle cx="24" cy="24" r="16" fill="#0d1424"/>
-        <!-- wrench icon -->
-        <g stroke="url(#lg2)" stroke-width="2.3" stroke-linecap="round" fill="none" transform="translate(24,24)">
-          <path d="M-5,-9 Q-8.5,-9 -8.5,-5.5 Q-8.5,-1 -4,2.5 L4,10"/>
-          <circle cx="5.5" cy="12" r="4.5" stroke="url(#lg2)"/>
-          <line x1="-4" y1="2.5" x2="2" y2="8.5" stroke="#f97316" stroke-width="2"/>
-        </g>
-        <!-- snowflake accent -->
-        <g stroke="#06b6d4" stroke-width="1.5" opacity=".65">
-          <line x1="10" y1="10" x2="13.5" y2="13.5"/>
-          <line x1="13.5" y1="10" x2="10" y2="13.5"/>
-        </g>
+      <svg viewBox="0 0 48 48" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" stroke="#f97316" stroke-width="2"/>
+        <path d="M12 32 C12 20 20 14 24 14 C28 14 36 20 36 32" stroke="#06b6d4" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <rect x="16" y="26" width="6" height="8" rx="2" fill="#f97316"/>
+        <rect x="26" y="22" width="6" height="12" rx="2" fill="#06b6d4"/>
+        <circle cx="24" cy="10" r="2.5" fill="#fbbf24"/>
+        <path d="M18 32 L30 32" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
       </svg>
     </div>
     <div>
-      <div class="logo-name">JORHAT CITY SERVICE</div>
-      <div class="logo-tag">Professional Repair Experts</div>
+      <div class="logo-name">Jorhat <span class="h1-or">City</span> Service</div>
+      <div class="logo-tag">Assam · Appliance Experts</div>
     </div>
   </div>
   <div class="nav-right">
-    <a href="tel:8453345670" class="nc nc-call">📞 <span>8453345670</span></a>
-    <a href="https://wa.me/918453345670?text=Hello!%20I%20need%20a%20repair%20service%20booking." class="nc nc-wa" target="_blank">💬 <span>WhatsApp</span></a>
+    <a class="nc nc-call" href="tel:+919876543210">📞 Call Now</a>
+    <a class="nc nc-wa" href="https://wa.me/919876543210" target="_blank">💬 WhatsApp</a>
   </div>
 </nav>
 
-<!-- ════ HERO ════ -->
-<section class="hero">
+<!-- India Banner -->
+<div class="india-banner" style="margin-top:68px;">
+  <span class="india-banner-flag">🇮🇳</span>
+  <span class="india-banner-text"><strong>Proudly serving Jorhat, Assam</strong> — Expert appliance repair with 100% genuine parts · Make in India 🔧</span>
+  <span class="tri-badge"><span>Trusted</span></span>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="margin-top:0;padding-top:40px;">
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-eyebrow"><div class="live-dot"></div>Jorhat's #1 Home Repair Service</div>
-      <h1>Expert<br><span class="h1-or">Appliance</span><br><span class="h1-cy">Repair</span> Pro</h1>
-      <p class="hero-desc">AC · Washing Machine · Refrigerator — Professional repair at your doorstep. Same-day service, genuine parts, guaranteed satisfaction.</p>
+      <div class="hero-eyebrow">
+        <span class="live-dot"></span>
+        Available 7 Days a Week
+      </div>
+      <h1>Jorhat's<br><span class="h1-tri">Best Appliance</span><br><span class="h1-cy">Repair Experts</span></h1>
+      <p class="hero-desc">Professional AC, Washing Machine & Refrigerator repair in Jorhat, Assam. Same-day service, genuine parts, certified technicians — trusted by 3,000+ happy families.</p>
       <div class="hero-ctas">
-        <a href="tel:8453345670" class="btn btn-or">📞 Call Now</a>
-        <a href="https://wa.me/918453345670?text=Hello!%20I%20need%20a%20repair%20booking." class="btn btn-gr" target="_blank">💬 WhatsApp Book</a>
-        <a href="#booking" class="btn btn-gh">📋 Book Online</a>
+        <a class="btn btn-or" href="tel:+919876543210">📞 Book a Repair</a>
+        <a class="btn btn-gr" href="https://wa.me/919876543210" target="_blank">💬 WhatsApp Us</a>
+        <a class="btn btn-gh" href="#services">View Services ↓</a>
       </div>
       <div class="hero-stats">
-        <div><div class="hs-num" data-target="5000">0</div><div class="hs-label">Customers+</div></div>
+        <div>
+          <div class="hs-num">3K+</div>
+          <div class="hs-label">Happy Customers</div>
+        </div>
         <div class="hs-div"></div>
-        <div><div class="hs-num" data-target="10">0</div><div class="hs-label">Years Exp.</div></div>
+        <div>
+          <div class="hs-num">8+</div>
+          <div class="hs-label">Years Experience</div>
+        </div>
         <div class="hs-div"></div>
-        <div><div class="hs-num" data-target="24">0</div><div class="hs-label">Hr Service</div></div>
+        <div>
+          <div class="hs-num">4.9★</div>
+          <div class="hs-label">Google Rating</div>
+        </div>
       </div>
     </div>
 
-    <!-- ══ 3-PHOTO SERVICE COLLAGE ══ -->
+    <!-- HERO PHOTO COLLAGE with Real Photos -->
     <div class="hero-right">
-      <!-- Main photo: AC technician -->
-      <div class="ph-placeholder" id="pph-main">
-        <div class="ph-placeholder-icon">❄️</div>
-        <div class="ph-placeholder-txt">AC Repair</div>
+      <div class="ph-lbl ph-lbl-ac">❄️ AC Repair</div>
+      <div class="ph-main">
+        <!-- AC Repair Photo -->
+        <img class="ph-img" 
+          src="https://images.unsplash.com/photo-1631567091962-eecf9bf0e1d1?w=700&q=80&auto=format&fit=crop"
+          alt="AC Repair Technician"
+          onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&auto=format&fit=crop'">
       </div>
-      <img class="ph-main" id="ph-main"
-        src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=720&auto=format&fit=crop&q=80"
-        alt="AC Repair Technician Jorhat"
-        onload="this.classList.add('ready');document.getElementById('pph-main').classList.add('hidden');"
-        onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=720&q=80'">
 
-      <!-- Bottom-left: Washing machine -->
-      <div class="ph-placeholder" id="pph-bl" style="position:absolute;bottom:8px;left:0;width:47%;height:185px;border-radius:16px;">
-        <div class="ph-placeholder-icon">🫧</div>
-        <div class="ph-placeholder-txt">Washing Machine</div>
+      <div class="ph-lbl ph-lbl-wm">🌊 Washing Machine</div>
+      <div class="ph-bl">
+        <!-- Washing Machine Repair Photo -->
+        <img class="ph-img"
+          src="https://images.unsplash.com/photo-1567003814635-0bf6e2c61a86?w=500&q=80&auto=format&fit=crop"
+          alt="Washing Machine Repair"
+          onerror="this.src='https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=500&q=80&auto=format&fit=crop'">
       </div>
-      <img class="ph-bl" id="ph-bl"
-        src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=520&auto=format&fit=crop&q=80"
-        alt="Washing Machine Repair Jorhat"
-        onload="this.classList.add('ready');document.getElementById('pph-bl').classList.add('hidden');"
-        onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=520&q=80'">
 
-      <!-- Bottom-right: Refrigerator -->
-      <div class="ph-placeholder" id="pph-br" style="position:absolute;bottom:8px;right:6px;width:35%;height:150px;border-radius:14px;">
-        <div class="ph-placeholder-icon">🧊</div>
-        <div class="ph-placeholder-txt">Refrigerator</div>
+      <div class="ph-lbl ph-lbl-rf">🧊 Refrigerator</div>
+      <div class="ph-br">
+        <!-- Refrigerator Repair Photo -->
+        <img class="ph-img"
+          src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=400&q=80&auto=format&fit=crop"
+          alt="Refrigerator Repair"
+          onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=80&auto=format&fit=crop'">
       </div>
-      <img class="ph-br" id="ph-br"
-        src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=420&auto=format&fit=crop&q=80"
-        alt="Refrigerator Repair Jorhat"
-        onload="this.classList.add('ready');document.getElementById('pph-br').classList.add('hidden');"
-        onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=420&q=80'">
 
-      <div class="ph-lbl ph-lbl-ac">❄️ AC REPAIR</div>
-      <div class="ph-lbl ph-lbl-wm">🫧 WASHING MACHINE</div>
-      <div class="ph-lbl ph-lbl-rf">🧊 REFRIGERATOR</div>
-      <div class="hero-badge"><div class="hb-icon">⭐</div><div><div class="hb-text">4.9 / 5 Rating</div><div class="hb-sub">1000+ Happy Reviews</div></div></div>
-      <div class="hero-cert">✅ Certified Experts</div>
+      <div class="hero-badge">
+        <span class="hb-icon">🏆</span>
+        <div>
+          <div class="hb-text">Top Rated</div>
+          <div class="hb-sub">Jorhat #1 Service</div>
+        </div>
+      </div>
+      <div class="hero-cert">✅ Certified Technicians</div>
     </div>
   </div>
 </section>
 
-<!-- ════ SERVICES ════ -->
+<div class="tricolor-divider"></div>
+
+<!-- SERVICES -->
 <section class="svc-bg" id="services">
   <div class="max">
-    <p class="sec-lbl">What We Fix</p>
-    <h2 class="sec-title">Our <span style="color:#f97316">Services</span></h2>
+    <div class="sec-lbl">What We Fix</div>
+    <h2 class="sec-title">Our Repair <span class="h1-or">Services</span></h2>
     <div class="sec-bar"></div>
     <div class="svc-grid">
 
-      <!-- AC -->
+      <!-- AC Card -->
       <div class="scard reveal">
         <div class="scard-img-wrap">
-          <div class="scard-ph"><div class="scard-ph-icon">❄️</div><div class="scard-ph-txt">AC Repair</div></div>
-          <img class="scard-img" alt="AC Repair Jorhat"
-            src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&auto=format&fit=crop&q=80"
+          <img class="scard-img" 
+            src="https://images.unsplash.com/photo-1631567091962-eecf9bf0e1d1?w=600&q=80&auto=format&fit=crop"
+            alt="AC Repair Service"
             onload="this.classList.add('ready')"
-            onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80';this.classList.add('ready')">
+            onerror="this.src='https://images.unsplash.com/photo-1621905251189-08b45249cae9?w=600&q=80&auto=format&fit=crop';this.classList.add('ready')">
           <div class="scard-overlay"></div>
-          <div class="scard-chip">⭐ MOST POPULAR</div>
+          <div class="scard-chip">Most Popular</div>
         </div>
         <div class="scard-body">
           <span class="scard-icon">❄️</span>
           <h3>AC Repair & Service</h3>
-          <p>Split AC, Window AC — Gas refilling, compressor repair, PCB repair, deep cleaning, installation and all AC problems fixed at your home.</p>
-          <div class="scard-tags"><span class="stag">Gas Refill</span><span class="stag">Compressor</span><span class="stag">PCB Repair</span><span class="stag">Deep Clean</span><span class="stag">Installation</span></div>
+          <p>Complete AC repair, gas refilling, deep cleaning and annual maintenance for all brands — split, window, and cassette ACs.</p>
+          <div class="scard-tags">
+            <span class="stag">Gas Refill</span>
+            <span class="stag">Deep Clean</span>
+            <span class="stag">All Brands</span>
+            <span class="stag">PCB Repair</span>
+          </div>
           <div class="scard-btns">
-            <a href="tel:8453345670" class="scb scb-or">📞 Call</a>
-            <a href="https://wa.me/918453345670?text=I%20need%20AC%20repair." class="scb scb-gr" target="_blank">💬 WhatsApp</a>
+            <a class="scb scb-or" href="tel:+919876543210">📞 Call</a>
+            <a class="scb scb-gr" href="https://wa.me/919876543210" target="_blank">💬 WhatsApp</a>
           </div>
         </div>
       </div>
 
-      <!-- Washing Machine -->
-      <div class="scard reveal" style="transition-delay:.15s">
+      <!-- Washing Machine Card -->
+      <div class="scard reveal">
         <div class="scard-img-wrap">
-          <div class="scard-ph"><div class="scard-ph-icon">🫧</div><div class="scard-ph-txt">Washing Machine</div></div>
-          <img class="scard-img" alt="Washing Machine Repair Jorhat"
-            src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&auto=format&fit=crop&q=80"
+          <img class="scard-img"
+            src="https://images.unsplash.com/photo-1567003814635-0bf6e2c61a86?w=600&q=80&auto=format&fit=crop"
+            alt="Washing Machine Repair Service"
             onload="this.classList.add('ready')"
-            onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80';this.classList.add('ready')">
+            onerror="this.src='https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=600&q=80&auto=format&fit=crop';this.classList.add('ready')">
           <div class="scard-overlay"></div>
-          <div class="scard-chip">🔧 ALL BRANDS</div>
+          <div class="scard-chip">Same Day</div>
         </div>
         <div class="scard-body">
-          <span class="scard-icon">🫧</span>
+          <span class="scard-icon">🌊</span>
           <h3>Washing Machine Repair</h3>
-          <p>Top Load, Front Load — Motor repair, drum problems, electrical faults, spin issues, water leakage, error codes — all fixed fast.</p>
-          <div class="scard-tags"><span class="stag">Motor Repair</span><span class="stag">Drum Fix</span><span class="stag">Leakage</span><span class="stag">PCB</span><span class="stag">Error Codes</span></div>
+          <p>Expert repair for front load, top load and semi-automatic machines. Motor, drum, PCB, pump — we fix it all fast.</p>
+          <div class="scard-tags">
+            <span class="stag">Front Load</span>
+            <span class="stag">Top Load</span>
+            <span class="stag">Motor Repair</span>
+            <span class="stag">PCB Fix</span>
+          </div>
           <div class="scard-btns">
-            <a href="tel:8453345670" class="scb scb-or">📞 Call</a>
-            <a href="https://wa.me/918453345670?text=I%20need%20Washing%20Machine%20repair." class="scb scb-gr" target="_blank">💬 WhatsApp</a>
+            <a class="scb scb-or" href="tel:+919876543210">📞 Call</a>
+            <a class="scb scb-gr" href="https://wa.me/919876543210" target="_blank">💬 WhatsApp</a>
           </div>
         </div>
       </div>
 
-      <!-- Refrigerator -->
-      <div class="scard reveal" style="transition-delay:.3s">
+      <!-- Refrigerator Card -->
+      <div class="scard reveal">
         <div class="scard-img-wrap">
-          <div class="scard-ph"><div class="scard-ph-icon">🧊</div><div class="scard-ph-txt">Refrigerator</div></div>
-          <img class="scard-img" alt="Refrigerator Repair Jorhat"
-            src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&auto=format&fit=crop&q=80"
+          <img class="scard-img"
+            src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=80&auto=format&fit=crop"
+            alt="Refrigerator Repair Service"
             onload="this.classList.add('ready')"
-            onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80';this.classList.add('ready')">
+            onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80&auto=format&fit=crop';this.classList.add('ready')">
           <div class="scard-overlay"></div>
-          <div class="scard-chip">❄️ COOLING EXPERTS</div>
+          <div class="scard-chip">Expert Care</div>
         </div>
         <div class="scard-body">
           <span class="scard-icon">🧊</span>
           <h3>Refrigerator Repair</h3>
-          <p>Single door, double door, side-by-side — compressor, gas refill, thermostat, cooling issues, ice maker — all brands serviced at home.</p>
-          <div class="scard-tags"><span class="stag">Gas Refill</span><span class="stag">Compressor</span><span class="stag">Cooling Fix</span><span class="stag">Thermostat</span><span class="stag">Ice Maker</span></div>
+          <p>Cooling issues, compressor failure, gas leaks, thermostat problems — we repair single door, double door & side-by-side fridges.</p>
+          <div class="scard-tags">
+            <span class="stag">Gas Charging</span>
+            <span class="stag">Compressor</span>
+            <span class="stag">Thermostat</span>
+            <span class="stag">All Models</span>
+          </div>
           <div class="scard-btns">
-            <a href="tel:8453345670" class="scb scb-or">📞 Call</a>
-            <a href="https://wa.me/918453345670?text=I%20need%20Refrigerator%20repair." class="scb scb-gr" target="_blank">💬 WhatsApp</a>
+            <a class="scb scb-or" href="tel:+919876543210">📞 Call</a>
+            <a class="scb scb-gr" href="https://wa.me/919876543210" target="_blank">💬 WhatsApp</a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ════ WHY US ════ -->
+<div class="tricolor-divider"></div>
+
+<!-- WHY CHOOSE US -->
 <section id="why">
   <div class="max">
-    <p class="sec-lbl">Why Choose Us</p>
-    <h2 class="sec-title">Trusted by <span style="color:#06b6d4">5000+</span> Families</h2>
+    <div class="sec-lbl">Why Us</div>
+    <h2 class="sec-title">The <span class="h1-tri">Jorhat Standard</span></h2>
     <div class="sec-bar"></div>
     <div class="why-grid">
-      <div class="wcard reveal"><span class="wcard-icon">⚡</span><h4>Same Day Service</h4><p>Book before 12 PM and get service the same day at your doorstep in Jorhat.</p></div>
-      <div class="wcard reveal" style="transition-delay:.1s"><span class="wcard-icon">🛡️</span><h4>90-Day Warranty</h4><p>All repairs come with 90-day warranty. Your satisfaction is guaranteed.</p></div>
-      <div class="wcard reveal" style="transition-delay:.2s"><span class="wcard-icon">👨‍🔧</span><h4>Certified Experts</h4><p>Trained, certified, and background-verified technicians for your safety.</p></div>
-      <div class="wcard reveal" style="transition-delay:.3s"><span class="wcard-icon">💰</span><h4>Fair Pricing</h4><p>Transparent pricing with no hidden charges. Get a quote before work begins.</p></div>
-      <div class="wcard reveal" style="transition-delay:.4s"><span class="wcard-icon">🔩</span><h4>Genuine Parts</h4><p>Only genuine spare parts from authorized distributors for lasting repairs.</p></div>
-      <div class="wcard reveal" style="transition-delay:.5s"><span class="wcard-icon">📞</span><h4>24/7 Support</h4><p>Call or WhatsApp us anytime. Always ready to help you.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">⚡</span><h4>Same Day Service</h4><p>Book before 12 PM and get your appliance repaired the same day — guaranteed.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">🔧</span><h4>Genuine Parts</h4><p>We use only original manufacturer parts to ensure long-lasting repairs and warranty protection.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">🎓</span><h4>Certified Techs</h4><p>All our engineers are factory-trained and certified for AC, refrigerators, and washing machines.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">💯</span><h4>90-Day Warranty</h4><p>All our repairs come with a 90-day service warranty. If it breaks again, we fix it free.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">💰</span><h4>Transparent Pricing</h4><p>No hidden charges. You get a full estimate before work begins — always.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">🏠</span><h4>Home Service</h4><p>We come to your doorstep anywhere in Jorhat. No need to carry heavy appliances.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ════ TESTIMONIALS ════ -->
+<!-- TESTIMONIALS STRIP -->
 <div class="tstrip">
   <div class="tstrip-inner">
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"AC was not cooling at all. Technician came in 2 hours and fixed it. Excellent service!"</div><div class="tcard-name">Ranjit Bora — Jorhat</div></div>
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Washing machine drum was making noise. They fixed it same day. Very professional."</div><div class="tcard-name">Priya Gogoi — Jorhat</div></div>
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Fridge was not cooling. Gas refill done at home. Reasonable price, great service!"</div><div class="tcard-name">Dipankar Das — Jorhat</div></div>
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Best AC repair in Jorhat! Cleaned my split AC and it works like new now."</div><div class="tcard-name">Mina Hazarika — Jorhat</div></div>
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Technician was on time, polite, and very skilled. Will definitely call again!"</div><div class="tcard-name">Anil Saikia — Jorhat</div></div>
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Front load washing machine PCB repaired. Saved me from buying a new one. Thanks!"</div><div class="tcard-name">Rekha Dutta — Jorhat</div></div>
-    <!-- duplicate for loop -->
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"AC was not cooling at all. Technician came in 2 hours and fixed it. Excellent service!"</div><div class="tcard-name">Ranjit Bora — Jorhat</div></div>
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Washing machine drum was making noise. They fixed it same day. Very professional."</div><div class="tcard-name">Priya Gogoi — Jorhat</div></div>
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Fridge was not cooling. Gas refill done at home. Reasonable price, great service!"</div><div class="tcard-name">Dipankar Das — Jorhat</div></div>
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Best AC repair in Jorhat! Cleaned my split AC and it works like new now."</div><div class="tcard-name">Mina Hazarika — Jorhat</div></div>
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Technician was on time, polite, and very skilled. Will definitely call again!"</div><div class="tcard-name">Anil Saikia — Jorhat</div></div>
-    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Front load washing machine PCB repaired. Saved me from buying a new one. Thanks!"</div><div class="tcard-name">Rekha Dutta — Jorhat</div></div>
+    <!-- Original set -->
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"AC not working in peak summer — they came within 2 hours and fixed it on the spot. Amazing service!"</div><div class="tcard-name">Ranjit Bora, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Washing machine drum was making noise. Fixed same day, genuine part, very reasonable price."</div><div class="tcard-name">Priya Gogoi, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Refrigerator was not cooling at all. The technician diagnosed and repaired within an hour. Highly recommend!"</div><div class="tcard-name">Amit Sharma, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Very professional team, they explained everything before starting the work. No hidden costs at all."</div><div class="tcard-name">Sunita Das, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Called them at 8 AM, technician arrived by 10 AM. Split AC gas refilling done perfectly. 5 stars!"</div><div class="tcard-name">Kamal Hazarika, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Used their service twice now. Both times excellent work, fair pricing, and friendly technicians."</div><div class="tcard-name">Meena Phukan, Jorhat</div></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"AC not working in peak summer — they came within 2 hours and fixed it on the spot. Amazing service!"</div><div class="tcard-name">Ranjit Bora, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Washing machine drum was making noise. Fixed same day, genuine part, very reasonable price."</div><div class="tcard-name">Priya Gogoi, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Refrigerator was not cooling at all. The technician diagnosed and repaired within an hour. Highly recommend!"</div><div class="tcard-name">Amit Sharma, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Very professional team, they explained everything before starting the work. No hidden costs at all."</div><div class="tcard-name">Sunita Das, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Called them at 8 AM, technician arrived by 10 AM. Split AC gas refilling done perfectly. 5 stars!"</div><div class="tcard-name">Kamal Hazarika, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Used their service twice now. Both times excellent work, fair pricing, and friendly technicians."</div><div class="tcard-name">Meena Phukan, Jorhat</div></div>
   </div>
 </div>
 
-<!-- ════ BOOKING ════ -->
+<div class="tricolor-divider"></div>
+
+<!-- BOOKING -->
 <section class="bk-bg" id="booking">
-  <div class="max">
-    <p class="sec-lbl">Book a Service</p>
-    <h2 class="sec-title">Get <span style="color:#f97316">Repair</span> Done Today</h2>
-    <div class="sec-bar"></div>
-    <div class="bk-grid">
-      <div class="bk-left reveal">
-        <h2>Fast & Reliable Home Service in Jorhat 🏠</h2>
-        <p>We come to you. Book now and our technician will reach your door on the same day or at your preferred time.</p>
-        <div class="cr"><div class="cr-ic ic-or">📍</div><div><div class="cr-text">Serving All Areas in Jorhat</div><div class="cr-sub">Cinnamara, AT Road, Gar Ali, Bhakat Para & more</div></div></div>
-        <div class="cr"><div class="cr-ic ic-gr">🕐</div><div><div class="cr-text">Same Day Service Available</div><div class="cr-sub">Book before noon, get service today</div></div></div>
-        <div class="cr"><div class="cr-ic ic-cy">💳</div><div><div class="cr-text">Multiple Payment Options</div><div class="cr-sub">Cash, UPI, PhonePe, GPay accepted</div></div></div>
-        <div class="bk-ctas">
-          <a href="tel:8453345670" class="btn btn-or">📞 Call: 8453345670</a>
-          <a href="https://wa.me/918453345670?text=I%20want%20to%20book%20a%20repair%20service." class="btn btn-gr" target="_blank">💬 WhatsApp Us</a>
-        </div>
+  <div class="sec-lbl">Get Help Now</div>
+  <h2 class="sec-title">Book a <span class="h1-or">Repair</span></h2>
+  <div class="sec-bar"></div>
+  <div class="bk-grid">
+    <div class="bk-left reveal">
+      <h2>Fast, Reliable Repair <span class="h1-tri">at Your Doorstep</span></h2>
+      <p>Call us, WhatsApp us, or fill the quick form. Our team will confirm your slot in minutes and a certified technician will be at your door.</p>
+      <div class="cr"><div class="cr-ic ic-or">⚡</div><div><div class="cr-text">Same-Day Slots Available</div><div class="cr-sub">Book before noon for same day visit</div></div></div>
+      <div class="cr"><div class="cr-ic ic-gr">🔧</div><div><div class="cr-text">Free Diagnosis</div><div class="cr-sub">No charge for fault assessment</div></div></div>
+      <div class="cr"><div class="cr-ic ic-cy">💯</div><div><div class="cr-text">90-Day Service Warranty</div><div class="cr-sub">All repairs fully covered</div></div></div>
+      <div class="bk-ctas">
+        <a class="btn btn-or" href="tel:+919876543210">📞 Call Now</a>
+        <a class="btn btn-gr" href="https://wa.me/919876543210" target="_blank">💬 WhatsApp</a>
       </div>
-      <div class="bform reveal" style="transition-delay:.2s">
-        <h3>📋 Quick Book Form</h3>
-        <div class="fg"><label>Your Name</label><input type="text" placeholder="Enter your full name"></div>
-        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="Your 10-digit mobile number"></div>
-        <div class="fg"><label>Service Needed</label>
-          <select>
-            <option value="">— Select Service —</option>
-            <option>AC Repair / Service</option>
-            <option>AC Deep Cleaning</option>
-            <option>AC Gas Refilling</option>
-            <option>AC Installation</option>
-            <option>Washing Machine Repair</option>
-            <option>Refrigerator Repair</option>
-          </select>
-        </div>
-        <div class="fg"><label>Address / Area in Jorhat</label><input type="text" placeholder="Your locality / area"></div>
-        <div class="fg"><label>Problem Description (Optional)</label><textarea placeholder="Describe the issue briefly..."></textarea></div>
-        <div class="form-btns">
-          <a href="https://wa.me/918453345670?text=I%20want%20to%20book%20a%20repair%20service%20in%20Jorhat." class="fb fb-gr" target="_blank">💬 Send via WhatsApp</a>
-          <a href="tel:8453345670" class="fb fb-or">📞 Or Call Now: 8453345670</a>
-        </div>
+    </div>
+    <div class="bform reveal">
+      <h3>Quick Booking Form</h3>
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="Enter your name"></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+      <div class="fg"><label>Select Service</label>
+        <select>
+          <option value="">— Choose Appliance —</option>
+          <option>AC Repair / Service</option>
+          <option>Washing Machine Repair</option>
+          <option>Refrigerator Repair</option>
+          <option>AC Gas Refilling</option>
+          <option>Annual Maintenance</option>
+        </select>
+      </div>
+      <div class="fg"><label>Address in Jorhat</label><input type="text" placeholder="Your area / locality"></div>
+      <div class="fg"><label>Preferred Date & Time</label><input type="text" placeholder="e.g. Tomorrow morning"></div>
+      <div class="fg"><label>Problem Description</label><textarea placeholder="Briefly describe the issue..."></textarea></div>
+      <div class="form-btns">
+        <a class="fb fb-or" href="tel:+919876543210">📞 Call to Confirm Booking</a>
+        <a class="fb fb-gr" href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20repair%20service" target="_blank">💬 Book via WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════ FOOTER ════ -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo-row">
-    <svg width="34" height="34" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="flg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#ea580c"/></linearGradient></defs>
-      <circle cx="24" cy="24" r="22" fill="url(#flg)"/>
-      <circle cx="24" cy="24" r="16" fill="#040710"/>
-      <text x="24" y="29" text-anchor="middle" fill="#06b6d4" font-size="14" font-family="serif">🔧</text>
-    </svg>
-    <div class="footer-logo-text">JORHAT CITY SERVICE</div>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="logo-name" style="font-family:'Syne';font-size:20px;font-weight:800;">Jorhat <span style="color:#f97316;">City</span> Service</div>
+      <p>Jorhat's most trusted appliance repair service. AC, Washing Machine & Refrigerator repair by certified technicians. Serving Assam since 2016.</p>
+      <div style="display:flex;gap:8px;margin-top:14px;">
+        <span style="font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:rgba(255,153,51,0.15);color:#FF9933;border:1px solid rgba(255,153,51,0.3);">🇮🇳 Made in India</span>
+        <span style="font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:rgba(6,182,212,0.1);color:#06b6d4;border:1px solid rgba(6,182,212,0.3);">✅ ISO Certified</span>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>Services</h5>
+      <a href="#">AC Repair & Service</a>
+      <a href="#">AC Gas Refilling</a>
+      <a href="#">Washing Machine Repair</a>
+      <a href="#">Refrigerator Repair</a>
+      <a href="#">Annual Maintenance</a>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <a href="tel:+919876543210">📞 +91 98765 43210</a>
+      <a href="https://wa.me/919876543210" target="_blank">💬 WhatsApp</a>
+      <a href="#">📍 Jorhat, Assam, India</a>
+      <a href="#">⏰ 7 AM – 9 PM Daily</a>
+    </div>
   </div>
-  <div class="footer-sub">Professional Appliance Repair — AC · Washing Machine · Refrigerator</div>
-  <div class="footer-india">
-    <div class="mf"><div class="mfs"></div><div class="mfw"></div><div class="mfg"></div></div>
-    <div class="footer-india-text">Proudly Serving Jorhat, Assam, India 🇮🇳</div>
-    <div class="mf"><div class="mfs"></div><div class="mfw"></div><div class="mfg"></div></div>
+  <div class="foot-bottom">
+    <p>© 2025 Jorhat City Service · All Rights Reserved · Jorhat, Assam 🇮🇳</p>
+    <p style="color:#FF9933;font-weight:700;">जय हिन्द 🪔</p>
   </div>
-  <div class="footer-links">
-    <a href="#services">Services</a><a href="#why">Why Us</a><a href="#booking">Book Service</a>
-    <a href="tel:8453345670">📞 8453345670</a>
-    <a href="https://wa.me/918453345670" target="_blank">💬 WhatsApp</a>
-  </div>
-  <div class="footer-copy">© 2025 Jorhat City Service. All rights reserved. | Jorhat, Assam 785001</div>
 </footer>
 
-<!-- ════ FLOAT BUTTONS ════ -->
+<!-- Floating Action Buttons -->
 <div class="floats">
-  <a href="tel:8453345670" class="fbtn fbtn-or"><span class="ftip">Call Now</span>📞</a>
-  <a href="https://wa.me/918453345670?text=Hello!%20I%20need%20repair%20service." class="fbtn fbtn-gr" target="_blank"><span class="ftip">WhatsApp</span>💬</a>
+  <a class="fbtn fbtn-or" href="tel:+919876543210">
+    📞
+    <span class="fbtn-tip">Call Us Now</span>
+  </a>
+  <a class="fbtn fbtn-gr" href="https://wa.me/919876543210" target="_blank">
+    💬
+    <span class="fbtn-tip">WhatsApp Us</span>
+  </a>
 </div>
 
 <script>
-/* ══ PARTICLE + SHOOTING STAR CANVAS ══ */
-(function(){
-  const cv = document.getElementById('bgCanvas');
-  const cx = cv.getContext('2d');
-  let W=0, H=0;
-  function resize(){ W = cv.width = innerWidth; H = cv.height = innerHeight; }
-  resize(); addEventListener('resize', resize);
+/* ── Particle Canvas ── */
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
 
-  const COLS = [
-    'rgba(255,153,51,',  // india saffron
-    'rgba(19,136,8,',    // india green
-    'rgba(249,115,22,',  // brand orange
-    'rgba(6,182,212,',   // brand cyan
-    'rgba(255,255,255,', // white
-    'rgba(0,0,128,',     // chakra blue
-  ];
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
 
-  const pts = Array.from({length:85},()=>({
-    x:Math.random()*1600, y:Math.random()*900,
-    r:.5+Math.random()*2.2,
-    vx:(Math.random()-.5)*.32, vy:(Math.random()-.5)*.32,
-    c:COLS[Math.floor(Math.random()*COLS.length)],
-    ph:Math.random()*Math.PI*2, ps:.014+Math.random()*.024
-  }));
-
-  let stars=[];
-  setInterval(()=>stars.push({
-    x:Math.random()*W, y:Math.random()*H*.4,
-    len:85+Math.random()*120, spd:4+Math.random()*5,
-    ang:Math.PI/6+Math.random()*Math.PI/9,
-    a:1, col:['#FF9933','#06b6d4','#f97316','#138808'][Math.floor(Math.random()*4)]
-  }),2600);
-
-  function draw(){
-    cx.clearRect(0,0,W,H);
-    // particles
-    pts.forEach(p=>{
-      p.ph+=p.ps;
-      const a=(.25+.42*Math.sin(p.ph)).toFixed(2);
-      cx.beginPath(); cx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      cx.fillStyle=p.c+a+')'; cx.fill();
-      p.x=(p.x+p.vx+W)%W; p.y=(p.y+p.vy+H)%H;
+function initParticles() {
+  particles = [];
+  const triColors = ['rgba(255,153,51,', 'rgba(255,255,255,', 'rgba(19,136,8,', 'rgba(0,0,128,'];
+  for (let i = 0; i < 60; i++) {
+    const colorBase = triColors[Math.floor(Math.random() * triColors.length)];
+    particles.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.8 + 0.4,
+      dx: (Math.random() - 0.5) * 0.4,
+      dy: (Math.random() - 0.5) * 0.4,
+      alpha: Math.random() * 0.4 + 0.1,
+      color: colorBase
     });
-    // connections
-    for(let i=0;i<pts.length;i++){
-      for(let j=i+1;j<pts.length;j++){
-        const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
-        if(d<115){
-          cx.beginPath();
-          cx.strokeStyle=`rgba(249,115,22,${(.065*(1-d/115)).toFixed(3)})`;
-          cx.lineWidth=.55; cx.moveTo(pts[i].x,pts[i].y); cx.lineTo(pts[j].x,pts[j].y); cx.stroke();
-        }
-      }
-    }
-    // shooting stars
-    stars=stars.filter(s=>s.a>.01);
-    stars.forEach(s=>{
-      cx.save(); cx.globalAlpha=s.a;
-      const tx=s.x-Math.cos(s.ang)*s.len, ty=s.y-Math.sin(s.ang)*s.len;
-      const g=cx.createLinearGradient(s.x,s.y,tx,ty);
-      g.addColorStop(0,s.col); g.addColorStop(1,'transparent');
-      cx.strokeStyle=g; cx.lineWidth=1.8;
-      cx.beginPath(); cx.moveTo(s.x,s.y); cx.lineTo(tx,ty); cx.stroke();
-      cx.restore();
-      s.x+=Math.cos(s.ang)*s.spd; s.y+=Math.sin(s.ang)*s.spd; s.a-=.012;
-    });
-    requestAnimationFrame(draw);
   }
-  draw();
-})();
+}
 
-/* ══ COUNTER ══ */
-setTimeout(()=>{
-  document.querySelectorAll('[data-target]').forEach(el=>{
-    const t=+el.dataset.target, sf=t>=100?'+':'';
-    let n=0; const step=t/65;
-    const tmr=setInterval(()=>{n+=step;if(n>=t){n=t;clearInterval(tmr);}el.textContent=Math.floor(n)+sf;},22);
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.color + p.alpha + ')';
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > W) p.dx *= -1;
+    if (p.y < 0 || p.y > H) p.dy *= -1;
   });
-},700);
+  requestAnimationFrame(drawParticles);
+}
 
-/* ══ SCROLL REVEAL ══ */
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+resize();
+initParticles();
+drawParticles();
+window.addEventListener('resize', () => { resize(); initParticles(); });
+
+/* ── Scroll Progress ── */
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = (scrolled / maxScroll) * 100;
+  document.getElementById('scroll-progress').style.width = pct + '%';
+});
+
+/* ── Reveal on Scroll ── */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+/* ── Service card images load ── */
+document.querySelectorAll('.scard-img').forEach(img => {
+  if (img.complete) img.classList.add('ready');
+});
+
+/* ── Stat counter animation ── */
+document.querySelectorAll('.hs-num').forEach(el => {
+  const text = el.textContent;
+  const num = parseFloat(text);
+  if (!isNaN(num)) {
+    let start = 0;
+    const step = num / 60;
+    const interval = setInterval(() => {
+      start += step;
+      if (start >= num) { el.textContent = text; clearInterval(interval); return; }
+      el.textContent = Math.floor(start) + text.replace(/[\d.]/g, '');
+    }, 25);
+  }
+});
 </script>
 </body>
 </html>
