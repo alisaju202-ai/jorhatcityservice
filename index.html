@@ -260,4 +260,653 @@ section{position:relative;z-index:1;padding:90px 36px;}
 .fg select option{background:var(--surface);}
 .fg textarea{min-height:76px;resize:vertical;}
 .form-btns{display:flex;flex-direction:column;gap:10px;margin-top:18px;}
-.fb{width:100%;padding:12px;border:none;border-radius:10px;font-family:'Outfit';font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;
+.fb{width:100%;padding:12px;border:none;border-radius:10px;font-family:'Outfit';font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .3s;text-decoration:none;}
+.fb-or{background:linear-gradient(135deg,#f97316,#ea580c);color:#fff;}
+.fb-or:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,.4);}
+.fb-gr{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;}
+.fb-gr:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,197,94,.35);}
+
+/* ══ FLOAT BUTTONS ══ */
+.floats{position:fixed;right:20px;bottom:28px;z-index:999;display:flex;flex-direction:column;gap:12px;}
+.fbtn{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none;transition:all .3s;position:relative;}
+.fbtn-or{background:linear-gradient(135deg,#f97316,#ea580c);box-shadow:0 4px 20px rgba(249,115,22,.5);animation:popIn .5s .2s both;}
+.fbtn-gr{background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 4px 20px rgba(34,197,94,.4);animation:popIn .5s .4s both;}
+.fbtn:hover{transform:scale(1.15);}
+@keyframes popIn{from{transform:scale(0);opacity:0}to{transform:none;opacity:1}}
+.fbtn-tip{position:absolute;right:64px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:5px 11px;font-size:12px;font-weight:700;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;}
+.fbtn:hover .fbtn-tip{opacity:1;}
+
+/* ══ FOOTER ══ */
+footer{position:relative;z-index:1;background:var(--surface);border-top:1px solid var(--border);padding:48px 36px 24px;padding-left:118px;}
+.foot-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:36px;}
+.foot-brand .logo-name{font-size:20px;}
+.foot-brand p{font-size:14px;color:var(--soft);line-height:1.7;margin-top:12px;max-width:280px;}
+.foot-col h5{font-family:'Syne';font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+.foot-col a{display:block;font-size:14px;color:var(--soft);text-decoration:none;margin-bottom:8px;transition:color .2s;}
+.foot-col a:hover{color:var(--text);}
+.foot-bottom{max-width:1100px;margin:0 auto;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-bottom p{font-size:12px;color:var(--muted);}
+
+/* ══ TRICOLOR BADGE ══ */
+.tri-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+}
+.tri-badge span { position: relative; z-index: 1; color: #fff; }
+.tri-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,#FF9933 33%,#444 33% 66%,#138808 66%);
+  animation: triSlide 2s infinite alternate;
+}
+
+/* India Independence Day banner */
+.india-banner {
+  position: relative; z-index: 1;
+  background: linear-gradient(135deg, rgba(255,153,51,0.12), rgba(19,136,8,0.12));
+  border-top: 1px solid rgba(255,153,51,0.2);
+  border-bottom: 1px solid rgba(19,136,8,0.2);
+  padding: 12px 36px 12px 118px;
+  display: flex; align-items: center; gap: 16px;
+  font-size: 13px; font-weight: 600;
+}
+.india-banner-flag { font-size: 20px; animation: flagWave 2s ease-in-out infinite; }
+.india-banner-text { color: var(--soft); }
+.india-banner-text strong { color: var(--saffron); }
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:900px){
+  .hero{padding:100px 20px 60px 20px;}
+  .hero-inner{grid-template-columns:1fr;gap:36px;}
+  .hero-right{height:320px;}
+  nav{padding:0 16px;}
+  .flag-stand{display:none;}
+  .bk-grid{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .india-banner{padding-left:20px;}
+}
+
+/* ══ SCROLL ANIMATIONS ══ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s;}
+.reveal.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress"></div>
+
+<!-- Background layers -->
+<div class="bg-flag">
+  <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+    <rect width="900" height="200" fill="#FF9933"/>
+    <rect y="200" width="900" height="200" fill="#FFFFFF"/>
+    <rect y="400" width="900" height="200" fill="#138808"/>
+    <circle cx="450" cy="300" r="70" fill="none" stroke="#000080" stroke-width="6"/>
+    <g stroke="#000080" stroke-width="2" fill="none">
+      <line x1="450" y1="230" x2="450" y2="370"/>
+      <line x1="380" y1="300" x2="520" y2="300"/>
+      <line x1="400.5" y1="250.5" x2="499.5" y2="349.5"/>
+      <line x1="499.5" y1="250.5" x2="400.5" y2="349.5"/>
+      <line x1="380" y1="270" x2="520" y2="330"/>
+      <line x1="380" y1="330" x2="520" y2="270"/>
+      <line x1="420" y1="232" x2="480" y2="368"/>
+      <line x1="480" y1="232" x2="420" y2="368"/>
+      <line x1="398" y1="263" x2="502" y2="337"/>
+      <line x1="398" y1="337" x2="502" y2="263"/>
+      <line x1="408" y1="240" x2="492" y2="360"/>
+      <line x1="492" y1="240" x2="408" y2="360"/>
+      <circle cx="450" cy="300" r="12" fill="#000080"/>
+    </g>
+  </svg>
+</div>
+<div class="bg-triband"></div>
+<div class="aurora">
+  <div class="ab ab1"></div>
+  <div class="ab ab2"></div>
+  <div class="ab ab3"></div>
+  <div class="ab ab4"></div>
+  <div class="ab ab5"></div>
+</div>
+<canvas id="bgCanvas"></canvas>
+<div class="noise"></div>
+
+<!-- India Flag Pole -->
+<div class="flag-stand">
+  <div class="pole-tip"></div>
+  <div class="flag-wrap">
+    <div class="pole-shaft"></div>
+    <div class="india-flag">
+      <div class="fs"></div>
+      <div class="fw">
+        <div class="chakra-wrap">
+          <svg viewBox="0 0 40 40" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="#000080" stroke-width="2" fill="none"/>
+            <circle cx="20" cy="20" r="4" fill="#000080"/>
+            <g stroke="#000080" stroke-width="1.2" fill="none">
+              <line x1="20" y1="2" x2="20" y2="8"/>
+              <line x1="20" y1="32" x2="20" y2="38"/>
+              <line x1="2" y1="20" x2="8" y2="20"/>
+              <line x1="32" y1="20" x2="38" y2="20"/>
+              <line x1="6.8" y1="6.8" x2="11" y2="11"/>
+              <line x1="29" y1="29" x2="33.2" y2="33.2"/>
+              <line x1="33.2" y1="6.8" x2="29" y2="11"/>
+              <line x1="11" y1="29" x2="6.8" y2="33.2"/>
+              <line x1="13" y1="2.7" x2="14.5" y2="8.5"/>
+              <line x1="25.5" y1="31.5" x2="27" y2="37.3"/>
+              <line x1="2.7" y1="27" x2="8.5" y2="25.5"/>
+              <line x1="31.5" y1="14.5" x2="37.3" y2="13"/>
+              <line x1="27" y1="2.7" x2="25.5" y2="8.5"/>
+              <line x1="14.5" y1="31.5" x2="13" y2="37.3"/>
+              <line x1="37.3" y1="27" x2="31.5" y2="25.5"/>
+              <line x1="8.5" y1="14.5" x2="2.7" y2="13"/>
+              <line x1="3.6" y1="13.5" x2="9.3" y2="15"/>
+              <line x1="30.7" y1="25" x2="36.4" y2="26.5"/>
+              <line x1="13.5" y1="36.4" x2="15" y2="30.7"/>
+              <line x1="25" y1="9.3" x2="26.5" y2="3.6"/>
+              <line x1="36.4" y1="13.5" x2="30.7" y2="15"/>
+              <line x1="9.3" y1="25" x2="3.6" y2="26.5"/>
+              <line x1="26.5" y1="36.4" x2="25" y2="30.7"/>
+              <line x1="15" y1="9.3" x2="13.5" y2="3.6"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="fg2"></div>
+    </div>
+  </div>
+  <div class="pole-base"></div>
+  <div class="pole-foot"></div>
+  <div class="flag-label">🇮🇳 Bharat</div>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">
+    <div class="logo-svg-wrap">
+      <svg viewBox="0 0 48 48" width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="22" stroke="#f97316" stroke-width="2"/>
+        <path d="M12 32 C12 20 20 14 24 14 C28 14 36 20 36 32" stroke="#06b6d4" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <rect x="16" y="26" width="6" height="8" rx="2" fill="#f97316"/>
+        <rect x="26" y="22" width="6" height="12" rx="2" fill="#06b6d4"/>
+        <circle cx="24" cy="10" r="2.5" fill="#fbbf24"/>
+        <path d="M18 32 L30 32" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-name">Jorhat <span class="h1-or">City</span> Service</div>
+      <div class="logo-tag">Assam · Appliance Experts</div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a class="nc nc-call" href="tel:+918453345670">📞 Call Now</a>
+    <a class="nc nc-wa" href="https://wa.me/918453345670" target="_blank">💬 WhatsApp</a>
+  </div>
+</nav>
+
+<!-- India Banner -->
+<div class="india-banner" style="margin-top:68px;">
+  <span class="india-banner-flag">🇮🇳</span>
+  <span class="india-banner-text"><strong>Proudly serving Jorhat, Assam</strong> — Expert appliance repair with 100% genuine parts · Make in India 🔧</span>
+  <span class="tri-badge"><span>Trusted</span></span>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="margin-top:0;padding-top:40px;">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="live-dot"></span>
+        Available 7 Days a Week
+      </div>
+      <h1>Jorhat's<br><span class="h1-tri">Best Appliance</span><br><span class="h1-cy">Repair Experts</span></h1>
+      <p class="hero-desc">Professional AC, Washing Machine & Refrigerator repair in Jorhat, Assam. Same-day service, genuine parts, certified technicians — trusted by 3,000+ happy families.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-or" href="tel:+918453345670">📞 Book a Repair</a>
+        <a class="btn btn-gr" href="https://wa.me/918453345670" target="_blank">💬 WhatsApp Us</a>
+        <a class="btn btn-gh" href="#services">View Services ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hs-num">3K+</div>
+          <div class="hs-label">Happy Customers</div>
+        </div>
+        <div class="hs-div"></div>
+        <div>
+          <div class="hs-num">8+</div>
+          <div class="hs-label">Years Experience</div>
+        </div>
+        <div class="hs-div"></div>
+        <div>
+          <div class="hs-num">4.9★</div>
+          <div class="hs-label">Google Rating</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO PHOTO COLLAGE with Real Photos -->
+    <div class="hero-right">
+      <div class="ph-lbl ph-lbl-ac">❄️ AC Repair</div>
+      <div class="ph-main">
+        <!-- AC Repair Photo -->
+        <img class="ph-img" 
+          src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=700&q=80&auto=format&fit=crop"
+          alt="AC Repair Technician"
+          onerror="this.src='https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=700&q=80&auto=format&fit=crop'">
+      </div>
+
+      <div class="ph-lbl ph-lbl-wm">🌊 Washing Machine</div>
+      <div class="ph-bl">
+        <!-- Washing Machine Repair Photo -->
+        <img class="ph-img"
+          src="https://images.unsplash.com/photo-1567003814635-0bf6e2c61a86?w=500&q=80&auto=format&fit=crop"
+          alt="Washing Machine Repair"
+          onerror="this.src='https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=500&q=80&auto=format&fit=crop'">
+      </div>
+
+      <div class="ph-lbl ph-lbl-rf">🧊 Refrigerator</div>
+      <div class="ph-br">
+        <!-- Refrigerator Repair Photo -->
+        <img class="ph-img"
+          src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=400&q=80&auto=format&fit=crop"
+          alt="Refrigerator Repair"
+          onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=80&auto=format&fit=crop'">
+      </div>
+
+      <div class="hero-badge">
+        <span class="hb-icon">🏆</span>
+        <div>
+          <div class="hb-text">Top Rated</div>
+          <div class="hb-sub">Jorhat #1 Service</div>
+        </div>
+      </div>
+      <div class="hero-cert">✅ Certified Technicians</div>
+    </div>
+  </div>
+</section>
+
+<div class="tricolor-divider"></div>
+
+<!-- SERVICES -->
+<section class="svc-bg" id="services">
+  <div class="max">
+    <div class="sec-lbl">What We Fix</div>
+    <h2 class="sec-title">Our Repair <span class="h1-or">Services</span></h2>
+    <div class="sec-bar"></div>
+    <div class="svc-grid">
+
+      <!-- AC Card -->
+      <div class="scard reveal">
+        <div class="scard-img-wrap">
+          <img class="scard-img" 
+            src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80&auto=format&fit=crop"
+            alt="AC Repair Service"
+            onload="this.classList.add('ready')"
+            onerror="this.src='https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80&auto=format&fit=crop';this.classList.add('ready')">
+          <div class="scard-overlay"></div>
+          <div class="scard-chip">Most Popular</div>
+        </div>
+        <div class="scard-body">
+          <span class="scard-icon">❄️</span>
+          <h3>AC Repair & Service</h3>
+          <p>Complete AC repair, gas refilling, deep cleaning and annual maintenance for all brands — split, window, and cassette ACs.</p>
+          <div class="scard-tags">
+            <span class="stag">Gas Refill</span>
+            <span class="stag">Deep Clean</span>
+            <span class="stag">All Brands</span>
+            <span class="stag">PCB Repair</span>
+          </div>
+          <div class="scard-btns">
+            <a class="scb scb-or" href="tel:+918453345670">📞 Call</a>
+            <a class="scb scb-gr" href="https://wa.me/918453345670" target="_blank">💬 WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Washing Machine Card -->
+      <div class="scard reveal">
+        <div class="scard-img-wrap">
+          <img class="scard-img"
+            src="https://images.unsplash.com/photo-1567003814635-0bf6e2c61a86?w=600&q=80&auto=format&fit=crop"
+            alt="Washing Machine Repair Service"
+            onload="this.classList.add('ready')"
+            onerror="this.src='https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?w=600&q=80&auto=format&fit=crop';this.classList.add('ready')">
+          <div class="scard-overlay"></div>
+          <div class="scard-chip">Same Day</div>
+        </div>
+        <div class="scard-body">
+          <span class="scard-icon">🌊</span>
+          <h3>Washing Machine Repair</h3>
+          <p>Expert repair for front load, top load and semi-automatic machines. Motor, drum, PCB, pump — we fix it all fast.</p>
+          <div class="scard-tags">
+            <span class="stag">Front Load</span>
+            <span class="stag">Top Load</span>
+            <span class="stag">Motor Repair</span>
+            <span class="stag">PCB Fix</span>
+          </div>
+          <div class="scard-btns">
+            <a class="scb scb-or" href="tel:+918453345670">📞 Call</a>
+            <a class="scb scb-gr" href="https://wa.me/918453345670" target="_blank">💬 WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Refrigerator Card -->
+      <div class="scard reveal">
+        <div class="scard-img-wrap">
+          <img class="scard-img"
+            src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=600&q=80&auto=format&fit=crop"
+            alt="Refrigerator Repair Service"
+            onload="this.classList.add('ready')"
+            onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80&auto=format&fit=crop';this.classList.add('ready')">
+          <div class="scard-overlay"></div>
+          <div class="scard-chip">Expert Care</div>
+        </div>
+        <div class="scard-body">
+          <span class="scard-icon">🧊</span>
+          <h3>Refrigerator Repair</h3>
+          <p>Cooling issues, compressor failure, gas leaks, thermostat problems — we repair single door, double door & side-by-side fridges.</p>
+          <div class="scard-tags">
+            <span class="stag">Gas Charging</span>
+            <span class="stag">Compressor</span>
+            <span class="stag">Thermostat</span>
+            <span class="stag">All Models</span>
+          </div>
+          <div class="scard-btns">
+            <a class="scb scb-or" href="tel:+918453345670">📞 Call</a>
+            <a class="scb scb-gr" href="https://wa.me/918453345670" target="_blank">💬 WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="tricolor-divider"></div>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="max">
+    <div class="sec-lbl">Why Us</div>
+    <h2 class="sec-title">The <span class="h1-tri">Jorhat Standard</span></h2>
+    <div class="sec-bar"></div>
+    <div class="why-grid">
+      <div class="wcard reveal"><span class="wcard-icon">⚡</span><h4>Same Day Service</h4><p>Book before 12 PM and get your appliance repaired the same day — guaranteed.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">🔧</span><h4>Genuine Parts</h4><p>We use only original manufacturer parts to ensure long-lasting repairs and warranty protection.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">🎓</span><h4>Certified Techs</h4><p>All our engineers are factory-trained and certified for AC, refrigerators, and washing machines.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">💯</span><h4>90-Day Warranty</h4><p>All our repairs come with a 90-day service warranty. If it breaks again, we fix it free.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">💰</span><h4>Transparent Pricing</h4><p>No hidden charges. You get a full estimate before work begins — always.</p></div>
+      <div class="wcard reveal"><span class="wcard-icon">🏠</span><h4>Home Service</h4><p>We come to your doorstep anywhere in Jorhat. No need to carry heavy appliances.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS STRIP -->
+<div class="tstrip">
+  <div class="tstrip-inner">
+    <!-- Original set -->
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"AC not working in peak summer — they came within 2 hours and fixed it on the spot. Amazing service!"</div><div class="tcard-name">Ranjit Bora, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Washing machine drum was making noise. Fixed same day, genuine part, very reasonable price."</div><div class="tcard-name">Priya Gogoi, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Refrigerator was not cooling at all. The technician diagnosed and repaired within an hour. Highly recommend!"</div><div class="tcard-name">Amit Sharma, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Very professional team, they explained everything before starting the work. No hidden costs at all."</div><div class="tcard-name">Sunita Das, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Called them at 8 AM, technician arrived by 10 AM. Split AC gas refilling done perfectly. 5 stars!"</div><div class="tcard-name">Kamal Hazarika, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Used their service twice now. Both times excellent work, fair pricing, and friendly technicians."</div><div class="tcard-name">Meena Phukan, Jorhat</div></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"AC not working in peak summer — they came within 2 hours and fixed it on the spot. Amazing service!"</div><div class="tcard-name">Ranjit Bora, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Washing machine drum was making noise. Fixed same day, genuine part, very reasonable price."</div><div class="tcard-name">Priya Gogoi, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Refrigerator was not cooling at all. The technician diagnosed and repaired within an hour. Highly recommend!"</div><div class="tcard-name">Amit Sharma, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Very professional team, they explained everything before starting the work. No hidden costs at all."</div><div class="tcard-name">Sunita Das, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Called them at 8 AM, technician arrived by 10 AM. Split AC gas refilling done perfectly. 5 stars!"</div><div class="tcard-name">Kamal Hazarika, Jorhat</div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Used their service twice now. Both times excellent work, fair pricing, and friendly technicians."</div><div class="tcard-name">Meena Phukan, Jorhat</div></div>
+  </div>
+</div>
+
+<div class="tricolor-divider"></div>
+
+<!-- BOOKING -->
+<section class="bk-bg" id="booking">
+  <div class="sec-lbl">Get Help Now</div>
+  <h2 class="sec-title">Book a <span class="h1-or">Repair</span></h2>
+  <div class="sec-bar"></div>
+  <div class="bk-grid">
+    <div class="bk-left reveal">
+      <h2>Fast, Reliable Repair <span class="h1-tri">at Your Doorstep</span></h2>
+      <p>Call us, WhatsApp us, or fill the quick form. Our team will confirm your slot in minutes and a certified technician will be at your door.</p>
+      <div class="cr"><div class="cr-ic ic-or">⚡</div><div><div class="cr-text">Same-Day Slots Available</div><div class="cr-sub">Book before noon for same day visit</div></div></div>
+      <div class="cr"><div class="cr-ic ic-gr">🔧</div><div><div class="cr-text">Free Diagnosis</div><div class="cr-sub">No charge for fault assessment</div></div></div>
+      <div class="cr"><div class="cr-ic ic-cy">💯</div><div><div class="cr-text">90-Day Service Warranty</div><div class="cr-sub">All repairs fully covered</div></div></div>
+      <div class="bk-ctas">
+        <a class="btn btn-or" href="tel:+918453345670">📞 Call Now</a>
+        <a class="btn btn-gr" href="https://wa.me/918453345670" target="_blank">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="bform reveal">
+      <h3>📱 WhatsApp Booking Form</h3>
+      <p style="font-size:13px;color:var(--soft);margin-bottom:18px;line-height:1.6;">Fill in the details below — click <strong style="color:#22c55e;">Send on WhatsApp</strong> and your booking message will be sent instantly! ✅</p>
+
+      <div class="fg"><label>Your Name *</label><input type="text" id="bk-name" placeholder="Enter your full name"></div>
+      <div class="fg"><label>Phone Number *</label><input type="tel" id="bk-phone" placeholder="+91 XXXXX XXXXX"></div>
+      <div class="fg"><label>Select Service *</label>
+        <select id="bk-service">
+          <option value="">— Choose Appliance —</option>
+          <option>AC Repair / Service</option>
+          <option>AC Gas Refilling</option>
+          <option>AC Deep Cleaning</option>
+          <option>Washing Machine Repair</option>
+          <option>Refrigerator Repair</option>
+          <option>Annual Maintenance Contract</option>
+        </select>
+      </div>
+      <div class="fg"><label>Address / Area in Jorhat *</label><input type="text" id="bk-address" placeholder="Your locality / area"></div>
+      <div class="fg"><label>Preferred Date & Time</label><input type="text" id="bk-time" placeholder="e.g. Tomorrow 10 AM"></div>
+      <div class="fg"><label>Problem Description</label><textarea id="bk-problem" placeholder="Briefly describe the issue (e.g. AC not cooling, loud noise...)"></textarea></div>
+
+      <!-- WhatsApp Preview Box -->
+      <div id="wa-preview" style="display:none;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);border-radius:12px;padding:14px;margin-top:14px;font-size:12px;line-height:1.8;color:var(--soft);">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1.5px;color:#22c55e;text-transform:uppercase;margin-bottom:8px;">💬 WhatsApp Message Preview</div>
+        <pre id="wa-preview-text" style="white-space:pre-wrap;font-family:'Outfit';font-size:13px;color:var(--text);"></pre>
+      </div>
+
+      <div class="form-btns" style="margin-top:14px;">
+        <a class="fb fb-gr" id="wa-send-btn" href="#" target="_blank" onclick="return buildWAMessage()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.089.534 4.058 1.474 5.768L.057 23.405a.75.75 0 0 0 .916.931l5.487-1.438A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.713 9.713 0 0 1-4.962-1.36l-.355-.213-3.684.966.984-3.594-.232-.371A9.712 9.712 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+          Send Booking on WhatsApp
+        </a>
+        <a class="fb fb-or" href="tel:+918453345670">📞 Or Call: 8453345670</a>
+      </div>
+      <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:10px;">⚡ We reply within 5 minutes on WhatsApp!</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="logo-name" style="font-family:'Syne';font-size:20px;font-weight:800;">Jorhat <span style="color:#f97316;">City</span> Service</div>
+      <p>Jorhat's most trusted appliance repair service. AC, Washing Machine & Refrigerator repair by certified technicians. Serving Assam since 2016.</p>
+      <div style="display:flex;gap:8px;margin-top:14px;">
+        <span style="font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:rgba(255,153,51,0.15);color:#FF9933;border:1px solid rgba(255,153,51,0.3);">🇮🇳 Made in India</span>
+        <span style="font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:rgba(6,182,212,0.1);color:#06b6d4;border:1px solid rgba(6,182,212,0.3);">✅ ISO Certified</span>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>Services</h5>
+      <a href="#">AC Repair & Service</a>
+      <a href="#">AC Gas Refilling</a>
+      <a href="#">Washing Machine Repair</a>
+      <a href="#">Refrigerator Repair</a>
+      <a href="#">Annual Maintenance</a>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <a href="tel:+918453345670">📞 +91 84533 45670</a>
+      <a href="https://wa.me/918453345670" target="_blank">💬 WhatsApp</a>
+      <a href="#">📍 Jorhat, Assam, India</a>
+      <a href="#">⏰ 7 AM – 9 PM Daily</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2025 Jorhat City Service · All Rights Reserved · Jorhat, Assam 🇮🇳</p>
+    <p style="color:#FF9933;font-weight:700;">जय हिन्द 🪔</p>
+  </div>
+</footer>
+
+<!-- Floating Action Buttons -->
+<div class="floats">
+  <a class="fbtn fbtn-or" href="tel:+918453345670">
+    📞
+    <span class="fbtn-tip">Call Us Now</span>
+  </a>
+  <a class="fbtn fbtn-gr" href="https://wa.me/918453345670" target="_blank">
+    💬
+    <span class="fbtn-tip">WhatsApp Us</span>
+  </a>
+</div>
+
+<script>
+/* ── Particle Canvas ── */
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+function initParticles() {
+  particles = [];
+  const triColors = ['rgba(255,153,51,', 'rgba(255,255,255,', 'rgba(19,136,8,', 'rgba(0,0,128,'];
+  for (let i = 0; i < 60; i++) {
+    const colorBase = triColors[Math.floor(Math.random() * triColors.length)];
+    particles.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.8 + 0.4,
+      dx: (Math.random() - 0.5) * 0.4,
+      dy: (Math.random() - 0.5) * 0.4,
+      alpha: Math.random() * 0.4 + 0.1,
+      color: colorBase
+    });
+  }
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.color + p.alpha + ')';
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > W) p.dx *= -1;
+    if (p.y < 0 || p.y > H) p.dy *= -1;
+  });
+  requestAnimationFrame(drawParticles);
+}
+
+resize();
+initParticles();
+drawParticles();
+window.addEventListener('resize', () => { resize(); initParticles(); });
+
+/* ── Scroll Progress ── */
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = (scrolled / maxScroll) * 100;
+  document.getElementById('scroll-progress').style.width = pct + '%';
+});
+
+/* ── Reveal on Scroll ── */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+/* ── Service card images load ── */
+document.querySelectorAll('.scard-img').forEach(img => {
+  if (img.complete) img.classList.add('ready');
+});
+
+/* ── WhatsApp Booking Message Builder ── */
+function buildWAMessage() {
+  const name    = document.getElementById('bk-name').value.trim();
+  const phone   = document.getElementById('bk-phone').value.trim();
+  const service = document.getElementById('bk-service').value.trim();
+  const address = document.getElementById('bk-address').value.trim();
+  const time    = document.getElementById('bk-time').value.trim();
+  const problem = document.getElementById('bk-problem').value.trim();
+
+  if (!name || !service || !address) {
+    alert('Please fill in Name, Service and Address before sending.');
+    return false;
+  }
+
+  const msg =
+`🔧 *New Service Booking Request*
+━━━━━━━━━━━━━━━━━━━━
+👤 *Name:* ${name}
+📞 *Phone:* ${phone || 'Not provided'}
+🛠️ *Service:* ${service}
+📍 *Address:* ${address}
+🕐 *Preferred Time:* ${time || 'Flexible'}
+📝 *Problem:* ${problem || 'Not specified'}
+━━━━━━━━━━━━━━━━━━━━
+_Sent from Jorhat City Service Website_ 🇮🇳`;
+
+  // Show preview
+  const preview = document.getElementById('wa-preview');
+  document.getElementById('wa-preview-text').textContent = msg;
+  preview.style.display = 'block';
+
+  // Build WhatsApp URL
+  const encoded = encodeURIComponent(msg);
+  const btn = document.getElementById('wa-send-btn');
+  btn.href = `https://wa.me/918453345670?text=${encoded}`;
+  return true;
+}
+
+// Live preview on input change
+['bk-name','bk-phone','bk-service','bk-address','bk-time','bk-problem'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', function() {
+    const name = document.getElementById('bk-name').value.trim();
+    if (name.length > 1) buildWAMessage();
+  });
+});
+
+document.querySelectorAll('.hs-num').forEach(el => {
+  const text = el.textContent;
+  const num = parseFloat(text);
+  if (!isNaN(num)) {
+    let start = 0;
+    const step = num / 60;
+    const interval = setInterval(() => {
+      start += step;
+      if (start >= num) { el.textContent = text; clearInterval(interval); return; }
+      el.textContent = Math.floor(start) + text.replace(/[\d.]/g, '');
+    }, 25);
+  }
+});
+</script>
+</body>
+</html>
