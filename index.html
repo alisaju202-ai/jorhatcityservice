@@ -8,219 +8,134 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
-  --g:#1D9E75;--gd:#0a6644;--gl:#c8f0e0;--gxl:#f0fdf6;
+  --g:#1D9E75;--gd:#0a6644;--gl:#c8f0e0;
   --wa:#25D366;--wad:#128C7E;
   --txt:#111;--muted:#666;--border:#ebebeb;--bg:#fff;--bg2:#f6fbf8;
   --r:16px;--rs:10px;
 }
 html,body{width:100%;min-height:100vh;overflow-x:hidden;background:#f2f4f3}
 body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
-
-/* ══ PHONE SHELL ══ */
-.shell{
-  max-width:420px;
-  margin:0 auto;
-  background:#fff;
-  min-height:100vh;
-  position:relative;
-  overflow:hidden;
-  box-shadow:0 0 60px rgba(0,0,0,.18);
-}
-
-/* ══ STATUS BAR ══ */
-.status{
-  background:var(--gd);
-  padding:.35rem 1.1rem;
-  display:flex;justify-content:space-between;align-items:center;
-}
+.shell{max-width:420px;margin:0 auto;background:#fff;min-height:100vh;position:relative;overflow:hidden;box-shadow:0 0 60px rgba(0,0,0,.18)}
+.status{background:var(--gd);padding:.35rem 1.1rem;display:flex;justify-content:space-between;align-items:center}
 .status span{color:rgba(255,255,255,.75);font-size:.72rem;font-weight:700;letter-spacing:.5px}
-
-/* ══ TOP NAV ══ */
-.topnav{
-  background:var(--gd);
-  padding:1.1rem 1.1rem 1rem;
-  position:relative;
-}
+.topnav{background:var(--gd);padding:1.1rem 1.1rem 1rem}
 .topnav-row{display:flex;align-items:center;justify-content:space-between}
 .logo-text{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:800;color:#fff;letter-spacing:1px;line-height:1;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.2)}
 .logo-text span{color:#7DEBB5}
-.nav-call{
-  background:rgba(255,255,255,.15);
-  border:1px solid rgba(255,255,255,.3);
-  color:#fff;border-radius:8px;
-  padding:.38rem .8rem;font-size:.8rem;font-weight:800;
-  text-decoration:none;display:flex;align-items:center;gap:.3rem;
-  font-family:'Nunito',sans-serif;
-}
-.loc-pill{
-  display:inline-flex;align-items:center;gap:.3rem;
-  background:rgba(255,255,255,.12);
-  color:rgba(255,255,255,.85);font-size:.75rem;font-weight:700;
-  padding:.28rem .75rem;border-radius:20px;margin-top:.55rem;
-  border:1px solid rgba(255,255,255,.15);
-}
-
-/* ══ HERO CARD ══ */
-.hero{
-  background:linear-gradient(160deg,var(--gd) 0%,var(--g) 55%,#2ec98a 100%);
-  padding:1.4rem 1.1rem 1.8rem;
-  position:relative;overflow:hidden;
-}
-.hero::before{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;pointer-events:none}
-.hero::after{content:'';position:absolute;left:-30px;bottom:-50px;width:140px;height:140px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:.3rem;
-  background:rgba(255,255,255,.18);color:#fff;
-  font-size:.7rem;font-weight:800;padding:.3rem .75rem;
-  border-radius:20px;margin-bottom:.75rem;letter-spacing:.6px;text-transform:uppercase;
-  border:1px solid rgba(255,255,255,.2);
-}
-.hero h1{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:2.3rem;font-weight:800;color:#fff;
-  line-height:1.1;margin-bottom:.6rem;position:relative;z-index:1;
-}
+.loc-pill{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);font-size:.75rem;font-weight:700;padding:.28rem .75rem;border-radius:20px;margin-top:.55rem;border:1px solid rgba(255,255,255,.15)}
+.hero{background:linear-gradient(160deg,var(--gd) 0%,var(--g) 55%,#2ec98a 100%);padding:1.4rem 1.1rem 1.8rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%}
+.hero::after{content:'';position:absolute;left:-30px;bottom:-50px;width:140px;height:140px;background:rgba(255,255,255,.04);border-radius:50%}
+.hero-badge{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.18);color:#fff;font-size:.7rem;font-weight:800;padding:.3rem .75rem;border-radius:20px;margin-bottom:.75rem;letter-spacing:.6px;text-transform:uppercase;border:1px solid rgba(255,255,255,.2)}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:2.3rem;font-weight:800;color:#fff;line-height:1.1;margin-bottom:.6rem;position:relative;z-index:1}
 .hero h1 em{color:#7DEBB5;font-style:normal}
 .hero p{font-size:.88rem;color:rgba(255,255,255,.88);line-height:1.65;margin-bottom:1.2rem;position:relative;z-index:1;max-width:280px}
-
-/* ══ ACTION BUTTONS ══ */
 .action-pair{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.1rem;position:relative;z-index:1}
-.btn-call-big{
-  background:#fff;color:var(--gd);border:none;
-  padding:.85rem .6rem;border-radius:var(--rs);
-  font-weight:900;font-size:.88rem;font-family:'Nunito',sans-serif;
-  display:flex;align-items:center;justify-content:center;gap:.4rem;
-  text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.15);
-  transition:transform .15s;
-}
-.btn-call-big:active{transform:scale(.97)}
-.btn-wa-big{
-  background:var(--wa);color:#fff;border:none;
-  padding:.85rem .6rem;border-radius:var(--rs);
-  font-weight:900;font-size:.88rem;font-family:'Nunito',sans-serif;
-  display:flex;align-items:center;justify-content:center;gap:.4rem;
-  text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.35);
-  transition:transform .15s;
-}
-.btn-wa-big:active{transform:scale(.97)}
-
-/* ══ STATS ROW ══ */
-.stats-row{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;
-  position:relative;z-index:1;
-}
-.stat-box{
-  background:rgba(255,255,255,.12);border-radius:var(--rs);
-  padding:.6rem .3rem;text-align:center;
-  border:1px solid rgba(255,255,255,.15);
-}
+.btn-call-big{background:#fff;color:var(--gd);border:none;padding:.85rem .6rem;border-radius:var(--rs);font-weight:900;font-size:.88rem;font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:.4rem;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.btn-wa-big{background:var(--wa);color:#fff;border:none;padding:.85rem .6rem;border-radius:var(--rs);font-weight:900;font-size:.88rem;font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:.4rem;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.35)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;position:relative;z-index:1}
+.stat-box{background:rgba(255,255,255,.12);border-radius:var(--rs);padding:.6rem .3rem;text-align:center;border:1px solid rgba(255,255,255,.15)}
 .stat-box .sn{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;line-height:1;display:block}
 .stat-box .sl{font-size:.62rem;color:rgba(255,255,255,.75);font-weight:700;margin-top:.15rem;display:block;line-height:1.2}
-
-/* ══ QUICK CHIPS ══ */
-.chips-wrap{
-  padding:.8rem 1.1rem;background:#fff;
-  border-bottom:1px solid var(--border);
-  display:flex;gap:.5rem;overflow-x:auto;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;
-}
+.chips-wrap{padding:.8rem 1.1rem;background:#fff;border-bottom:1px solid var(--border);display:flex;gap:.5rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .chips-wrap::-webkit-scrollbar{display:none}
-.chip{
-  flex-shrink:0;display:inline-flex;align-items:center;gap:.28rem;
-  background:var(--bg2);border:1.5px solid var(--border);
-  padding:.38rem .85rem;border-radius:20px;
-  font-size:.78rem;font-weight:800;color:var(--gd);
-  text-decoration:none;white-space:nowrap;transition:all .15s;
-}
+.chip{flex-shrink:0;display:inline-flex;align-items:center;gap:.28rem;background:var(--bg2);border:1.5px solid var(--border);padding:.38rem .85rem;border-radius:20px;font-size:.78rem;font-weight:800;color:var(--gd);text-decoration:none;white-space:nowrap}
 .chip.c{background:var(--g);color:#fff;border-color:var(--g)}
 .chip.w{background:var(--wa);color:#fff;border-color:var(--wa)}
-.chip:active{transform:scale(.96)}
-
-/* ══ SECTION HEADER ══ */
 .sec-head{padding:1.2rem 1.1rem .6rem}
 .sec-tag{font-size:.7rem;font-weight:800;color:var(--g);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:.25rem}
 .sec-title{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:800;color:var(--txt);line-height:1.1}
 .sec-sub{font-size:.82rem;color:var(--muted);margin-top:.3rem;line-height:1.55}
-
-/* ══ SERVICES ══ */
 .services-pad{padding:0 1.1rem 1.4rem}
 .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
-.svc-card{
-  background:var(--bg2);border:1.5px solid var(--border);
-  border-radius:var(--r);padding:1rem .85rem;
-  transition:all .2s;cursor:default;position:relative;overflow:hidden;
-}
-.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g),#2ec98a);opacity:0;transition:opacity .2s}
-.svc-card:active::before{opacity:1}
-.svc-card:active{border-color:var(--g);background:#fff}
-.svc-ico{
-  width:40px;height:40px;background:var(--gl);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;margin-bottom:.65rem;
-}
+.svc-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem .85rem;position:relative;overflow:hidden}
+.svc-ico{width:40px;height:40px;background:var(--gl);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.65rem}
 .svc-ico span{font-size:1.3rem}
 .svc-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:.25rem;line-height:1.2}
 .svc-card p{font-size:.75rem;color:var(--muted);line-height:1.5}
-.ptag{
-  display:inline-block;background:var(--gl);color:var(--gd);
-  font-size:.7rem;font-weight:800;padding:.18rem .55rem;
-  border-radius:5px;margin-top:.5rem;
-}
-
-/* ══ BRANDS ══ */
+.ptag{display:inline-block;background:var(--gl);color:var(--gd);font-size:.7rem;font-weight:800;padding:.18rem .55rem;border-radius:5px;margin-top:.5rem}
 .brands-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 1.1rem}
 .brands-label{font-size:.7rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.65rem;text-align:center}
 .brands-scroll{display:flex;gap:.45rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.2rem}
 .brands-scroll::-webkit-scrollbar{display:none}
 .btag{flex-shrink:0;background:#fff;border:1px solid var(--border);padding:.3rem .8rem;border-radius:20px;font-size:.78rem;font-weight:700;color:var(--muted)}
-
-/* ══ WHY US ══ */
+/* PHOTOS */
+.photos-pad{padding:0 1.1rem 1.4rem}
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.photo-card{border-radius:var(--r);overflow:hidden;position:relative;background:#000;border:1.5px solid var(--border)}
+.photo-card img{width:100%;height:140px;object-fit:cover;display:block}
+.photo-card-wide{grid-column:1/-1}
+.photo-card-wide img{height:170px}
+.photo-label{background:linear-gradient(0deg,rgba(0,0,0,.78),transparent);color:#fff;font-size:.75rem;font-weight:800;padding:.5rem .75rem;position:absolute;bottom:0;left:0;right:0}
+/* WHY */
 .why-pad{padding:0 1.1rem 1.4rem}
 .why-list{display:flex;flex-direction:column;gap:.6rem}
-.why-item{
-  display:flex;align-items:flex-start;gap:.75rem;
-  background:var(--bg2);border-radius:var(--rs);padding:.9rem;
-  border-left:3px solid var(--g);
-}
+.why-item{display:flex;align-items:flex-start;gap:.75rem;background:var(--bg2);border-radius:var(--rs);padding:.9rem;border-left:3px solid var(--g)}
 .why-ico{font-size:1.3rem;flex-shrink:0;margin-top:.05rem}
 .why-item h4{font-size:.88rem;font-weight:800;color:var(--txt);margin-bottom:.15rem}
 .why-item p{font-size:.78rem;color:var(--muted);line-height:1.55}
-
-/* ══ WA BANNER ══ */
-.wa-banner{
-  background:linear-gradient(135deg,#1a9e55,var(--wa));
-  padding:1.3rem 1.1rem;text-align:center;
-  margin:0;
-}
+/* WA BANNER */
+.wa-banner{background:linear-gradient(135deg,#1a9e55,var(--wa));padding:1.3rem 1.1rem;text-align:center}
 .wa-banner h3{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:.35rem}
 .wa-banner p{font-size:.82rem;color:rgba(255,255,255,.9);line-height:1.55;margin-bottom:1rem}
-.wa-full-btn{
-  display:flex;align-items:center;justify-content:center;gap:.5rem;
-  background:#fff;color:var(--wad);
-  padding:.95rem 1.2rem;border-radius:12px;
-  font-weight:900;font-size:1rem;font-family:'Nunito',sans-serif;
-  text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.15);
-  transition:transform .15s;
-}
-.wa-full-btn:active{transform:scale(.97)}
+.wa-full-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;background:#fff;color:var(--wad);padding:.95rem 1.2rem;border-radius:12px;font-weight:900;font-size:1rem;font-family:'Nunito',sans-serif;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.15)}
 .wa-full-btn span{font-size:1.2rem}
 
-/* ══ REVIEWS ══ */
+/* ═══ OFFER BANNER ═══ */
+.offer-banner{
+  background:linear-gradient(135deg,#1D4ED8 0%,#2563EB 50%,#1e40af 100%);
+  padding:1.2rem 1.1rem;position:relative;overflow:hidden;
+}
+.offer-banner::before{content:'🔧';position:absolute;right:-10px;top:-10px;font-size:5rem;opacity:.1;line-height:1;pointer-events:none}
+.offer-top-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem}
+.offer-badge{background:rgba(255,255,255,.22);color:#fff;font-size:.65rem;font-weight:900;padding:.25rem .7rem;border-radius:20px;letter-spacing:.8px;text-transform:uppercase;border:1px solid rgba(255,255,255,.3)}
+.offer-tag{background:rgba(255,255,0,.25);color:#fff;font-size:.68rem;font-weight:900;padding:.25rem .65rem;border-radius:20px;border:1px solid rgba(255,255,0,.4)}
+.offer-title{font-family:'Barlow Condensed',sans-serif;font-size:1.85rem;font-weight:800;color:#fff;line-height:1.05;margin-bottom:.55rem;text-shadow:0 2px 8px rgba(0,0,0,.2)}
+.offer-title em{color:#fef08a;font-style:normal}
+.offer-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.45rem;margin-bottom:.8rem}
+.o-card{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);border-radius:10px;padding:.65rem .5rem;text-align:center}
+.o-card .o-ico{font-size:1.3rem;margin-bottom:.2rem;display:block}
+.o-card .o-name{font-size:.72rem;font-weight:800;color:#fff;line-height:1.25;margin-bottom:.3rem}
+.o-card .o-price{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:900;color:#fef08a;line-height:1}
+.o-card .o-sub{font-size:.6rem;color:rgba(255,255,255,.7);font-weight:700;margin-top:.1rem}
+.offer-cta-row{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
+.offer-cta-call{background:#fff;color:#1D4ED8;border:none;padding:.82rem .5rem;border-radius:10px;font-weight:900;font-size:.88rem;font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:.35rem;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.offer-cta-wa{background:var(--wa);color:#fff;border:none;padding:.82rem .5rem;border-radius:10px;font-weight:900;font-size:.88rem;font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:.35rem;text-decoration:none;box-shadow:0 4px 14px rgba(37,211,102,.35)}
+.offer-note{font-size:.68rem;color:rgba(255,255,255,.7);text-align:center;margin-top:.55rem;font-weight:700}
+
+/* ═══ FEEDBACK SECTION ═══ */
+.fb-section{background:#fff;border-top:1px solid var(--border);padding-bottom:1.4rem}
+.fb-form-wrap{padding:0 1.1rem}
+.star-row{display:flex;gap:.4rem;justify-content:center;margin-bottom:1rem}
+.star-btn{font-size:2rem;background:none;border:none;cursor:pointer;transition:transform .15s;line-height:1;padding:.1rem}
+.star-btn:active{transform:scale(1.3)}
+.star-btn.lit{filter:none}
+.star-btn.dim{filter:grayscale(1) opacity(.35)}
+.fb-input{width:100%;background:var(--bg2);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;font-size:.9rem;font-family:'Nunito',sans-serif;color:var(--txt);outline:none;resize:none;min-height:80px;line-height:1.55;transition:border .2s}
+.fb-input:focus{border-color:var(--g)}
+.fb-name-input{width:100%;background:var(--bg2);border:1.5px solid var(--border);border-radius:10px;padding:.65rem 1rem;font-size:.9rem;font-family:'Nunito',sans-serif;color:var(--txt);outline:none;margin-bottom:.65rem;transition:border .2s}
+.fb-name-input:focus{border-color:var(--g)}
+.fb-submit-btn{width:100%;background:var(--g);color:#fff;border:none;padding:.9rem;border-radius:10px;font-weight:900;font-size:.95rem;font-family:'Nunito',sans-serif;cursor:pointer;margin-top:.75rem;display:flex;align-items:center;justify-content:center;gap:.4rem;transition:transform .15s}
+.fb-submit-btn:active{transform:scale(.97)}
+.fb-submit-btn:disabled{opacity:.6;cursor:not-allowed}
+.rating-label{text-align:center;font-size:.8rem;font-weight:800;color:var(--muted);margin-bottom:.8rem;letter-spacing:.3px;min-height:1.1rem}
+/* REVIEWS DISPLAY */
 .reviews-pad{padding:0 1.1rem 1.4rem}
 .reviews-scroll{display:flex;gap:.65rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.3rem}
 .reviews-scroll::-webkit-scrollbar{display:none}
-.rev-card{
-  flex-shrink:0;width:260px;
-  background:var(--bg2);border:1.5px solid var(--border);
-  border-radius:var(--r);padding:1rem;
-}
+.rev-card{flex-shrink:0;width:260px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem}
 .rev-stars{color:#F5A623;font-size:.95rem;letter-spacing:2px;margin-bottom:.6rem}
 .rev-card blockquote{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.8rem;font-style:italic}
 .rev-person{display:flex;align-items:center;gap:.55rem}
 .rev-av{width:32px;height:32px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:var(--gd);flex-shrink:0}
 .rev-person strong{font-size:.82rem;font-weight:800;display:block}
 .rev-person span{font-size:.73rem;color:var(--muted)}
-
-/* ══ BOOKING FORM ══ */
+/* avg rating badge */
+.avg-badge{display:flex;align-items:center;gap:.5rem;background:var(--gl);border-radius:10px;padding:.6rem 1rem;margin:0 1.1rem .9rem;justify-content:center}
+.avg-num{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;color:var(--gd);line-height:1}
+.avg-info{font-size:.78rem;color:var(--gd);font-weight:700;line-height:1.4}
+.no-reviews{text-align:center;padding:1.5rem 1.1rem;color:var(--muted);font-size:.85rem}
+/* FORM SECTION */
 .form-sec{background:linear-gradient(160deg,var(--gd),var(--g) 60%,#2ec98a);padding:1.4rem 1.1rem 2rem}
 .form-sec .sec-tag{color:#7DEBB5}
 .form-sec .sec-title{color:#fff;font-size:1.5rem}
@@ -228,51 +143,21 @@ body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
 .fcard{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:1.2rem}
 .fg{margin-bottom:.85rem}
 .fg label{font-size:.78rem;font-weight:800;color:rgba(255,255,255,.85);display:block;margin-bottom:.3rem;letter-spacing:.3px}
-.fg input,.fg select,.fg textarea{
-  width:100%;background:rgba(255,255,255,.14);
-  border:1.5px solid rgba(255,255,255,.25);
-  border-radius:8px;padding:.65rem .85rem;
-  color:#fff;font-size:.92rem;font-family:'Nunito',sans-serif;
-  outline:none;transition:border .2s;-webkit-appearance:none;
-}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.25);border-radius:8px;padding:.65rem .85rem;color:#fff;font-size:.92rem;font-family:'Nunito',sans-serif;outline:none;-webkit-appearance:none}
 .fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.4)}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(255,255,255,.75)}
 .fg select option{color:#111;background:#fff}
 .fg select{color:#fff;cursor:pointer}
 .fg textarea{resize:none;min-height:70px;line-height:1.5}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
 .form-btns{display:flex;flex-direction:column;gap:.6rem;margin-top:.9rem}
-.fbtn-email{
-  width:100%;background:#fff;color:var(--gd);border:none;
-  padding:.9rem;border-radius:10px;
-  font-weight:900;font-size:.92rem;font-family:'Nunito',sans-serif;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.45rem;
-  transition:transform .15s;
-}
-.fbtn-email:active{transform:scale(.97)}
-.fbtn-wa{
-  width:100%;background:var(--wa);color:#fff;border:none;
-  padding:.9rem;border-radius:10px;
-  font-weight:900;font-size:.92rem;font-family:'Nunito',sans-serif;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.45rem;
-  box-shadow:0 4px 16px rgba(37,211,102,.3);
-  transition:transform .15s;
-}
-.fbtn-wa:active{transform:scale(.97)}
-
-/* ══ CONTACT INFO CARDS ══ */
+.fbtn-email{width:100%;background:#fff;color:var(--gd);border:none;padding:.9rem;border-radius:10px;font-weight:900;font-size:.92rem;font-family:'Nunito',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.45rem}
+.fbtn-wa{width:100%;background:var(--wa);color:#fff;border:none;padding:.9rem;border-radius:10px;font-weight:900;font-size:.92rem;font-family:'Nunito',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.45rem;box-shadow:0 4px 16px rgba(37,211,102,.3)}
 .contact-cards{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.2rem}
-.ccard{
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
-  border-radius:var(--rs);padding:.85rem 1rem;
-  display:flex;align-items:center;gap:.75rem;
-}
+.ccard{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:var(--rs);padding:.85rem 1rem;display:flex;align-items:center;gap:.75rem}
 .ccard-ico{font-size:1.4rem;flex-shrink:0}
 .ccard-txt h4{font-size:.82rem;font-weight:800;color:rgba(255,255,255,.7);letter-spacing:.3px}
 .ccard-txt a,.ccard-txt p{font-size:.95rem;font-weight:800;color:#fff;text-decoration:none;line-height:1.4;display:block}
 .ccard-txt p{font-size:.85rem;font-weight:700;opacity:.9}
-
-/* ══ FOOTER ══ */
 .footer{background:#063d28;padding:1.5rem 1.1rem 1rem;text-align:center}
 .f-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:.2rem}
 .f-logo span{color:#7DEBB5}
@@ -281,62 +166,29 @@ body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
 .f-badges{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin-top:.8rem}
 .fbadge{background:rgba(255,255,255,.1);font-size:.7rem;font-weight:700;padding:.22rem .65rem;border-radius:20px;color:rgba(255,255,255,.75)}
 .f-copy{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:1rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.08)}
-
-/* ══ STICKY BOTTOM ══ */
-.bottom-bar{
-  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
-  width:100%;max-width:420px;
-  background:#fff;border-top:1px solid var(--border);
-  padding:.7rem .9rem .8rem;
-  display:grid;grid-template-columns:1fr 1fr;gap:.55rem;
-  box-shadow:0 -6px 30px rgba(0,0,0,.12);z-index:999;
-}
-.bb-call{
-  display:flex;align-items:center;justify-content:center;gap:.38rem;
-  background:var(--g);color:#fff;border-radius:10px;
-  padding:.78rem;font-weight:900;font-size:.88rem;
-  text-decoration:none;font-family:'Nunito',sans-serif;
-  transition:transform .15s;
-}
-.bb-call:active{transform:scale(.97)}
-.bb-wa{
-  display:flex;align-items:center;justify-content:center;gap:.38rem;
-  background:var(--wa);color:#fff;border-radius:10px;
-  padding:.78rem;font-weight:900;font-size:.88rem;
-  text-decoration:none;font-family:'Nunito',sans-serif;
-  transition:transform .15s;
-}
-.bb-wa:active{transform:scale(.97)}
-
-/* safe area for bottom bar */
+.bottom-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:#fff;border-top:1px solid var(--border);padding:.7rem .9rem .8rem;display:grid;grid-template-columns:1fr 1fr;gap:.55rem;box-shadow:0 -6px 30px rgba(0,0,0,.12);z-index:999}
+.bb-call{display:flex;align-items:center;justify-content:center;gap:.38rem;background:var(--g);color:#fff;border-radius:10px;padding:.78rem;font-weight:900;font-size:.88rem;text-decoration:none;font-family:'Nunito',sans-serif}
+.bb-wa{display:flex;align-items:center;justify-content:center;gap:.38rem;background:var(--wa);color:#fff;border-radius:10px;padding:.78rem;font-weight:900;font-size:.88rem;text-decoration:none;font-family:'Nunito',sans-serif}
 .pb-safe{height:80px}
-
-/* ══ TOAST ══ */
-.toast{
-  position:fixed;top:1.2rem;left:50%;transform:translateX(-50%) translateY(-80px);
-  background:#111;color:#fff;padding:.8rem 1.3rem;border-radius:10px;
-  font-size:.85rem;font-weight:700;opacity:0;transition:all .35s;
-  z-index:2000;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.25);
-  max-width:320px;text-align:center;
-}
+.toast{position:fixed;top:1.2rem;left:50%;transform:translateX(-50%) translateY(-80px);background:#111;color:#fff;padding:.8rem 1.3rem;border-radius:10px;font-size:.85rem;font-weight:700;opacity:0;transition:all .35s;z-index:2000;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.25);max-width:320px;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast.ok{background:var(--gd)}
 .toast.wa{background:var(--wad)}
-
-/* divider */
-.divider{height:1px;background:var(--border)}
+.loading-dots{display:inline-flex;gap:4px;align-items:center}
+.loading-dots span{width:6px;height:6px;background:currentColor;border-radius:50%;animation:dot .8s infinite;opacity:.5}
+.loading-dots span:nth-child(2){animation-delay:.15s}
+.loading-dots span:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
 </style>
 </head>
 <body>
 <div class="shell">
 
-  <!-- STATUS BAR -->
   <div class="status">
     <span>JORHAT CITY SERVICE</span>
     <span>7AM–9PM Daily</span>
   </div>
 
-  <!-- TOP NAV -->
   <div class="topnav">
     <div class="topnav-row">
       <div class="logo-text">Jorhat<span>City</span>Service</div>
@@ -344,18 +196,13 @@ body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
     <div class="loc-pill">📍 Jorhat, Assam — Same Day Service</div>
   </div>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-badge">✅ Certified Technicians</div>
-    <h1>AC, Fridge &<br><em>Appliance Repair</em><br>at Your Door</h1>
+    <h1>AC, Fridge &amp;<br><em>Appliance Repair</em><br>at Your Door</h1>
     <p>Same-day service for all major brands. Transparent pricing — zero hidden charges, ever.</p>
     <div class="action-pair">
-      <a href="tel:8453345670" class="btn-call-big">
-        📞 84533 45670
-      </a>
-      <a href="https://wa.me/918453345670?text=Hello%2C%20I%20need%20appliance%20repair%20service%20in%20Jorhat" target="_blank" class="btn-wa-big">
-        💬 WhatsApp
-      </a>
+      <a href="tel:8453345670" class="btn-call-big">📞 84533 45670</a>
+      <a href="https://wa.me/918453345670?text=Hello%2C%20I%20need%20appliance%20repair%20service%20in%20Jorhat" target="_blank" class="btn-wa-big">💬 WhatsApp</a>
     </div>
     <div class="stats-row">
       <div class="stat-box"><span class="sn">500+</span><span class="sl">Happy Customers</span></div>
@@ -365,7 +212,6 @@ body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
     </div>
   </div>
 
-  <!-- QUICK CHIPS -->
   <div class="chips-wrap">
     <a href="tel:8453345670" class="chip c">📞 Call</a>
     <a href="https://wa.me/918453345670" target="_blank" class="chip w">💬 WhatsApp</a>
@@ -373,21 +219,57 @@ body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
     <a href="#services" class="chip">❄️ AC Repair</a>
     <a href="#services" class="chip">🧊 Fridge</a>
     <a href="#services" class="chip">🌀 Washing Machine</a>
-    <a href="#services" class="chip">🔧 Gas Refill</a>
+    <a href="#feedback" class="chip">⭐ Reviews</a>
   </div>
+
+
+  <!-- 🔵 SPECIAL OFFER BANNER -->
+  <div class="offer-banner">
+    <div class="offer-top-row">
+      <div class="offer-badge">🔵 Special Offer</div>
+      <div class="offer-tag">✅ Best Price Guaranteed</div>
+    </div>
+    <div class="offer-title">AC Service at<br><em>Unbeatable Prices!</em></div>
+    <div class="offer-cards">
+      <div class="o-card">
+        <span class="o-ico">❄️</span>
+        <div class="o-name">AC Service &amp; Clean</div>
+        <div class="o-price">₹699</div>
+        <div class="o-sub">All splits &amp; windows</div>
+      </div>
+      <div class="o-card">
+        <span class="o-ico">🧹</span>
+        <div class="o-name">AC Foam Wash</div>
+        <div class="o-price">₹899</div>
+        <div class="o-sub">Deep foam cleaning</div>
+      </div>
+      <div class="o-card">
+        <span class="o-ico">🔧</span>
+        <div class="o-name">Gas Refill</div>
+        <div class="o-price">₹2,500+</div>
+        <div class="o-sub">On inspection</div>
+      </div>
+    </div>
+    <div class="offer-cta-row">
+      <a href="tel:8453345670" class="offer-cta-call">📞 Call Now</a>
+      <a href="https://wa.me/918453345670?text=Hello%2C%20I%20want%20to%20book%20an%20AC%20service%20offer%20in%20Jorhat!" target="_blank" class="offer-cta-wa">💬 WhatsApp</a>
+    </div>
+    <div class="offer-note">* Valid for Jorhat, Golaghat &amp; Titabar areas. Gas refill price ₹2,500–₹3,500 based on inspection.</div>
+  </div>
+
 
   <!-- SERVICES -->
   <div id="services">
     <div class="sec-head">
       <div class="sec-tag">What We Fix</div>
       <div class="sec-title">Our Services</div>
-      <div class="sec-sub">Jorhat, Golaghat & Titabar mein expert repair</div>
+      <div class="sec-sub">Jorhat, Golaghat &amp; Titabar — expert doorstep repair</div>
     </div>
     <div class="services-pad">
       <div class="svc-grid">
         <div class="svc-card">
           <div class="svc-ico"><span>❄️</span></div>
-          <h3>AC Repair & Service</h3>
+          <h3>AC Repair &amp; Service</h3>
           <p>Split, window AC, PCB repair, all brands</p>
           <span class="ptag">From ₹299</span>
         </div>
@@ -400,20 +282,20 @@ body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
         <div class="svc-card">
           <div class="svc-ico"><span>🌀</span></div>
           <h3>Washing Machine</h3>
-          <p>Not spinning, not draining — front & top load</p>
+          <p>Not spinning, not draining — front &amp; top load</p>
           <span class="ptag">From ₹299</span>
         </div>
         <div class="svc-card">
           <div class="svc-ico"><span>🔧</span></div>
           <h3>AC Gas Refill</h3>
           <p>All refrigerant types with pressure testing</p>
-          <span class="ptag">From ₹499</span>
+          <span class="ptag">₹2,500–₹3,500</span>
         </div>
         <div class="svc-card">
           <div class="svc-ico"><span>🧹</span></div>
           <h3>AC Deep Cleaning</h3>
           <p>Filters, coils, drain pipes — full clean</p>
-          <span class="ptag">From ₹299</span>
+          <span class="ptag">₹699 / Foam ₹899</span>
         </div>
         <div class="svc-card">
           <div class="svc-ico"><span>📅</span></div>
@@ -437,20 +319,45 @@ body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
     </div>
   </div>
 
+  <!-- SERVICE PHOTOS -->
+  <div>
+    <div class="sec-head">
+      <div class="sec-tag">Our Work</div>
+      <div class="sec-title">See Our Technicians in Action</div>
+      <div class="sec-sub">Real photos from real service calls</div>
+    </div>
+    <div class="photos-pad">
+      <div class="photo-grid">
+        <div class="photo-card">
+          <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=400&q=80" alt="AC Repair Service">
+          <div class="photo-label">❄️ AC Repair &amp; Diagnostics</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80" alt="Fridge Repair">
+          <div class="photo-label">🧊 Fridge Repair</div>
+        </div>
+        <div class="photo-card photo-card-wide">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Washing Machine Repair">
+          <div class="photo-label">🌀 Fast &amp; Reliable Washing Machine Repair</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- WHY US -->
   <div>
     <div class="sec-head">
       <div class="sec-tag">Why Choose Us</div>
       <div class="sec-title">Jorhat's Most Trusted</div>
-      <div class="sec-sub">500+ families baar baar call karte hain — yahi wajah hai</div>
+      <div class="sec-sub">500+ families come back again and again — here's why</div>
     </div>
     <div class="why-pad">
       <div class="why-list">
-        <div class="why-item"><span class="why-ico">⚡</span><div><h4>Same Day Service</h4><p>Call before noon — technician aaj hi ayega, guaranteed.</p></div></div>
+        <div class="why-item"><span class="why-ico">⚡</span><div><h4>Same Day Service</h4><p>Call before noon — our technician arrives today, guaranteed.</p></div></div>
         <div class="why-item"><span class="why-ico">🏅</span><div><h4>Certified Technicians</h4><p>Trained professionals for all brands and models.</p></div></div>
-        <div class="why-item"><span class="why-ico">💰</span><div><h4>Transparent Pricing</h4><p>Pehle price batate hain, phir kaam shuru karte hain. Zero hidden charges.</p></div></div>
-        <div class="why-item"><span class="why-ico">🛡️</span><div><h4>Service Warranty</h4><p>Har repair pe warranty milti hai — complete peace of mind.</p></div></div>
-        <div class="why-item"><span class="why-ico">📍</span><div><h4>Wide Coverage</h4><p>Jorhat, Golaghat, Titabar aur aas paas ke sabhi areas.</p></div></div>
+        <div class="why-item"><span class="why-ico">💰</span><div><h4>Transparent Pricing</h4><p>We quote before we start. Zero hidden charges, always.</p></div></div>
+        <div class="why-item"><span class="why-ico">🛡️</span><div><h4>Service Warranty</h4><p>Every repair comes with a warranty — complete peace of mind.</p></div></div>
+        <div class="why-item"><span class="why-ico">📍</span><div><h4>Wide Coverage</h4><p>Jorhat, Golaghat, Titabar and all nearby areas covered.</p></div></div>
       </div>
     </div>
   </div>
@@ -458,44 +365,53 @@ body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
   <!-- WA BANNER -->
   <div class="wa-banner">
     <h3>💬 Book on WhatsApp</h3>
-    <p>Sabse aasaan booking — ek message mein confirm hoga aapka appointment!</p>
+    <p>Easiest booking — confirm your appointment in one message!</p>
     <a href="https://wa.me/918453345670?text=Hello%2C%20I%20need%20appliance%20repair%20service%20in%20Jorhat.%20Please%20confirm%20my%20booking." target="_blank" class="wa-full-btn">
-      <span>💬</span> WhatsApp Par Book Karo
+      <span>💬</span> Book via WhatsApp
     </a>
   </div>
 
-  <!-- REVIEWS -->
-  <div>
+  <!-- ════ FEEDBACK & RATINGS ════ -->
+  <div id="feedback" class="fb-section">
     <div class="sec-head">
       <div class="sec-tag">Customer Reviews</div>
-      <div class="sec-title">Customers Ka Kehna</div>
+      <div class="sec-title">What Our Customers Say</div>
+      <div class="sec-sub">Real feedback from real customers — updated live</div>
     </div>
+
+    <div class="avg-badge" id="avgBadge" style="display:none">
+      <div class="avg-num" id="avgNum">0</div>
+      <div>
+        <div style="color:#F5A623;font-size:1rem" id="avgStars">★★★★★</div>
+        <div class="avg-info" id="avgCount">0 reviews</div>
+      </div>
+    </div>
+
     <div class="reviews-pad">
-      <div class="reviews-scroll">
-        <div class="rev-card">
-          <div class="rev-stars">★★★★★</div>
-          <blockquote>"AC stopped working on the hottest day. They came in 2 hours and fixed it completely. Excellent same-day service!"</blockquote>
-          <div class="rev-person">
-            <div class="rev-av">RB</div>
-            <div><strong>Rajiv Bora</strong><span>Jorhat City</span></div>
-          </div>
+      <div id="reviewsList" class="reviews-scroll">
+        <div class="no-reviews" id="noReviews">
+          <div style="font-size:2rem;margin-bottom:.4rem">💬</div>
+          Loading reviews...
         </div>
-        <div class="rev-card">
-          <div class="rev-stars">★★★★★</div>
-          <blockquote>"Very professional. Fridge repair done quickly, price was very reasonable. No hidden charges at all. Highly recommend!"</blockquote>
-          <div class="rev-person">
-            <div class="rev-av">PD</div>
-            <div><strong>Priya Das</strong><span>Jorhat</span></div>
-          </div>
+      </div>
+    </div>
+
+    <div class="fb-form-wrap">
+      <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:1.1rem">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:800;color:var(--txt);margin-bottom:.75rem">⭐ Leave Your Review</div>
+        <input class="fb-name-input" id="fbName" type="text" placeholder="Your name (e.g. Rajiv Bora)" maxlength="40">
+        <div class="rating-label" id="ratingLabel">Tap to rate your experience</div>
+        <div class="star-row" id="starRow">
+          <button class="star-btn dim" data-star="1" onclick="setRating(1)">★</button>
+          <button class="star-btn dim" data-star="2" onclick="setRating(2)">★</button>
+          <button class="star-btn dim" data-star="3" onclick="setRating(3)">★</button>
+          <button class="star-btn dim" data-star="4" onclick="setRating(4)">★</button>
+          <button class="star-btn dim" data-star="5" onclick="setRating(5)">★</button>
         </div>
-        <div class="rev-card">
-          <div class="rev-stars">★★★★★</div>
-          <blockquote>"Washing machine was not spinning. Fixed in one same-day visit. Really a big plus for busy families!"</blockquote>
-          <div class="rev-person">
-            <div class="rev-av">AH</div>
-            <div><strong>Amit Hazarika</strong><span>Titabar</span></div>
-          </div>
-        </div>
+        <textarea class="fb-input" id="fbText" placeholder="Share your experience with Jorhat City Service..." maxlength="300"></textarea>
+        <button class="fb-submit-btn" id="fbSubmitBtn" onclick="submitFeedback()">
+          Submit Review
+        </button>
       </div>
     </div>
   </div>
@@ -503,10 +419,8 @@ body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
   <!-- BOOKING FORM -->
   <div id="booking" class="form-sec">
     <div class="sec-tag">Book a Service</div>
-    <div class="sec-title">Abhi Book Karo</div>
-    <div class="sec-sub">Form bharo ya directly WhatsApp karo — minutes mein confirm!</div>
-
-    <!-- Contact Info Cards -->
+    <div class="sec-title">Book Now</div>
+    <div class="sec-sub">Fill the form or WhatsApp us — confirmed in minutes!</div>
     <div class="contact-cards">
       <a href="tel:8453345670" class="ccard" style="text-decoration:none">
         <span class="ccard-ico">📞</span>
@@ -520,136 +434,191 @@ body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
         <span class="ccard-ico">📍</span>
         <div class="ccard-txt">
           <h4>SERVICE AREA</h4>
-          <p>Jorhat, Golaghat, Titabar & Upper Assam</p>
+          <p>Jorhat, Golaghat, Titabar &amp; Upper Assam</p>
         </div>
       </div>
     </div>
-
     <div class="fcard">
       <form id="bookingForm">
         <div class="frow">
-          <div class="fg">
-            <label>Aapka Naam *</label>
-            <input type="text" id="fname" placeholder="Full name" required autocomplete="name">
-          </div>
-          <div class="fg">
-            <label>Phone Number *</label>
-            <input type="tel" id="fphone" placeholder="9XXXXXXXX" required autocomplete="tel">
-          </div>
+          <div class="fg"><label>Your Name *</label><input type="text" id="fname" placeholder="Full name" required autocomplete="name"></div>
+          <div class="fg"><label>Phone Number *</label><input type="tel" id="fphone" placeholder="9XXXXXXXX" required autocomplete="tel"></div>
         </div>
+        <div class="fg"><label>Area / Address</label><input type="text" id="faddress" placeholder="Your area in Jorhat" autocomplete="street-address"></div>
         <div class="fg">
-          <label>Area / Address</label>
-          <input type="text" id="faddress" placeholder="Aapka area Jorhat mein" autocomplete="street-address">
-        </div>
-        <div class="fg">
-          <label>Service Chahiye</label>
+          <label>Service Required</label>
           <select id="fservice">
-            <option>AC Repair / Service</option>
-            <option>AC Gas Refill</option>
-            <option>AC Deep Cleaning</option>
+            <option>AC Service &amp; Clean (₹699)</option>
+            <option>AC Foam Wash (₹899)</option>
+            <option>AC Gas Refill (₹2,500–₹3,500)</option>
+            <option>AC Repair</option>
             <option>Fridge Repair</option>
             <option>Washing Machine Repair</option>
             <option>Annual Maintenance Contract</option>
             <option>Other</option>
           </select>
         </div>
-        <div class="fg">
-          <label>Problem Batao (Optional)</label>
-          <textarea id="fmsg" placeholder="Kya problem ho rahi hai..."></textarea>
-        </div>
+        <div class="fg"><label>Describe the Problem (Optional)</label><textarea id="fmsg" placeholder="What issue are you facing?"></textarea></div>
         <div class="form-btns">
-          <button type="submit" class="fbtn-email">
-            📧 Email Se Book Karo
-          </button>
-          <button type="button" id="waBookBtn" class="fbtn-wa">
-            💬 WhatsApp Se Book Karo
-          </button>
+          <button type="submit" class="fbtn-email">📧 Book via Email</button>
+          <button type="button" id="waBookBtn" class="fbtn-wa">💬 Book via WhatsApp</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="f-logo">Jorhat<span>City</span>Service</div>
     <div class="f-num">📞 +91 84533 45670</div>
-    <div class="f-info">AC, Fridge & Washing Machine Repair<br>Jorhat, Assam — Mon–Sun 7AM to 9PM</div>
+    <div class="f-info">AC, Fridge &amp; Washing Machine Repair<br>Jorhat, Assam — Mon–Sun 7AM to 9PM</div>
     <div class="f-badges">
-      <span class="fbadge">Same Day</span>
-      <span class="fbadge">All Brands</span>
-      <span class="fbadge">Certified</span>
-      <span class="fbadge">No Hidden Charges</span>
+      <span class="fbadge">Same Day</span><span class="fbadge">All Brands</span>
+      <span class="fbadge">Certified</span><span class="fbadge">No Hidden Charges</span>
       <span class="fbadge">500+ Customers</span>
     </div>
     <div class="f-copy">© 2026 Jorhat City Service. All rights reserved.</div>
   </footer>
-
   <div class="pb-safe"></div>
-</div><!-- /shell -->
+</div>
 
-<!-- STICKY BOTTOM BAR -->
 <div class="bottom-bar">
   <a href="tel:8453345670" class="bb-call">📞 Call Now</a>
   <a href="https://wa.me/918453345670?text=Hello%2C%20I%20need%20appliance%20repair%20in%20Jorhat" target="_blank" class="bb-wa">💬 WhatsApp</a>
 </div>
-
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-function showToast(msg, type){
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast ' + (type||'ok');
-  t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 4000);
+var STORAGE_KEY = 'jorhat_reviews_v1';
+var currentRating = 0;
+var ratingLabels = ['','Poor','Fair','Good','Very Good','Excellent!'];
+
+async function getReviews() {
+  try {
+    var r = await window.storage.get(STORAGE_KEY, true);
+    return r ? JSON.parse(r.value) : [];
+  } catch(e) { return []; }
+}
+async function saveReviews(reviews) {
+  try {
+    await window.storage.set(STORAGE_KEY, JSON.stringify(reviews), true);
+  } catch(e) { console.error(e); }
 }
 
-// EMAIL BOOKING
-document.getElementById('bookingForm').addEventListener('submit', function(e){
+function setRating(n) {
+  currentRating = n;
+  document.getElementById('ratingLabel').textContent = '★'.repeat(n) + ' — ' + ratingLabels[n];
+  document.querySelectorAll('.star-btn').forEach(function(b,i){
+    b.classList.toggle('lit', i < n);
+    b.classList.toggle('dim', i >= n);
+    b.style.color = i < n ? '#F5A623' : '';
+  });
+}
+
+function renderReviews(reviews) {
+  var list = document.getElementById('reviewsList');
+  var avgBadge = document.getElementById('avgBadge');
+  if (!reviews || reviews.length === 0) {
+    list.innerHTML = '<div class="no-reviews"><div style="font-size:2rem;margin-bottom:.4rem">💬</div>No reviews yet. Be the first to share your experience!</div>';
+    avgBadge.style.display = 'none';
+    return;
+  }
+  var total = reviews.reduce(function(s,r){return s+r.rating;},0);
+  var avg = (total/reviews.length).toFixed(1);
+  var fullStars = Math.round(total/reviews.length);
+  document.getElementById('avgNum').textContent = avg;
+  document.getElementById('avgStars').textContent = '★'.repeat(fullStars) + '☆'.repeat(5-fullStars);
+  document.getElementById('avgCount').textContent = reviews.length + ' review' + (reviews.length!==1?'s':'');
+  avgBadge.style.display = 'flex';
+  var sorted = reviews.slice().reverse();
+  list.innerHTML = sorted.map(function(r){
+    var initials = r.name.split(' ').map(function(w){return w[0]||'';}).join('').toUpperCase().slice(0,2)||'??';
+    var stars = '★'.repeat(r.rating)+'☆'.repeat(5-r.rating);
+    var date = r.date ? '<span style="font-size:.7rem;color:var(--muted);margin-left:.3rem">'+r.date+'</span>' : '';
+    return '<div class="rev-card">'
+      +'<div class="rev-stars" style="color:#F5A623">'+stars+'</div>'
+      +'<blockquote>"'+escHtml(r.text)+'"</blockquote>'
+      +'<div class="rev-person">'
+        +'<div class="rev-av">'+escHtml(initials)+'</div>'
+        +'<div><strong>'+escHtml(r.name)+'</strong>'+date+'</div>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
+
+function escHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function loadReviews() {
+  var reviews = await getReviews();
+  renderReviews(reviews);
+}
+
+async function submitFeedback() {
+  var name = document.getElementById('fbName').value.trim();
+  var text = document.getElementById('fbText').value.trim();
+  var btn = document.getElementById('fbSubmitBtn');
+  if (!name) { showToast('Please enter your name', 'ok'); document.getElementById('fbName').focus(); return; }
+  if (!currentRating) { showToast('Please select a star rating', 'ok'); return; }
+  if (!text) { showToast('Please write a short review', 'ok'); document.getElementById('fbText').focus(); return; }
+  btn.disabled = true;
+  btn.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div> Saving...';
+  try {
+    var reviews = await getReviews();
+    var now = new Date();
+    var dateStr = now.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+    reviews.push({ name: name, rating: currentRating, text: text, date: dateStr, ts: now.getTime() });
+    await saveReviews(reviews);
+    renderReviews(reviews);
+    document.getElementById('fbName').value = '';
+    document.getElementById('fbText').value = '';
+    currentRating = 0;
+    document.querySelectorAll('.star-btn').forEach(function(b){ b.classList.remove('lit'); b.classList.add('dim'); b.style.color=''; });
+    document.getElementById('ratingLabel').textContent = 'Tap to rate your experience';
+    showToast('✅ Thank you for your review!', 'ok');
+    document.getElementById('reviewsList').scrollIntoView({behavior:'smooth',block:'nearest'});
+  } catch(e) {
+    showToast('Could not save review. Please try again.', 'ok');
+  }
+  btn.disabled = false;
+  btn.innerHTML = 'Submit Review';
+}
+
+function showToast(msg,type){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast '+(type||'ok');
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},4000);
+}
+
+document.getElementById('bookingForm').addEventListener('submit',function(e){
   e.preventDefault();
-  var name    = document.getElementById('fname').value.trim();
-  var phone   = document.getElementById('fphone').value.trim();
-  var address = document.getElementById('faddress').value.trim();
-  var service = document.getElementById('fservice').value;
-  var msg     = document.getElementById('fmsg').value.trim();
-  if(!name || !phone){ alert('Naam aur phone number zaroor bharo!'); return; }
-  var sub  = encodeURIComponent('New Booking - Jorhat City Service');
-  var body = encodeURIComponent(
-    'NEW SERVICE BOOKING\n===================\n' +
-    'Name    : ' + name + '\n' +
-    'Phone   : ' + phone + '\n' +
-    'Address : ' + (address||'Not provided') + '\n' +
-    'Service : ' + service + '\n' +
-    'Issue   : ' + (msg||'Not provided') + '\n' +
-    '===================\nFrom: JorhatCityService.com'
-  );
-  window.location.href = 'mailto:msac.ref@gmail.com?subject=' + sub + '&body=' + body;
-  showToast('✅ Email app khul rahi hai — bhej do!', 'ok');
+  var name=document.getElementById('fname').value.trim();
+  var phone=document.getElementById('fphone').value.trim();
+  var address=document.getElementById('faddress').value.trim();
+  var service=document.getElementById('fservice').value;
+  var msg=document.getElementById('fmsg').value.trim();
+  if(!name||!phone){alert('Please enter your name and phone number!');return;}
+  var sub=encodeURIComponent('New Booking - Jorhat City Service');
+  var body=encodeURIComponent('NEW SERVICE BOOKING\n===================\nName    : '+name+'\nPhone   : '+phone+'\nAddress : '+(address||'Not provided')+'\nService : '+service+'\nIssue   : '+(msg||'Not provided')+'\n===================\nFrom: JorhatCityService.com');
+  window.location.href='mailto:msac.ref@gmail.com?subject='+sub+'&body='+body;
+  showToast('✅ Email app opened — please send it!','ok');
   document.getElementById('bookingForm').reset();
 });
 
-// WHATSAPP BOOKING
-document.getElementById('waBookBtn').addEventListener('click', function(){
-  var name    = document.getElementById('fname').value.trim();
-  var phone   = document.getElementById('fphone').value.trim();
-  var address = document.getElementById('faddress').value.trim();
-  var service = document.getElementById('fservice').value;
-  var msg     = document.getElementById('fmsg').value.trim();
-  if(!name || !phone){ alert('Naam aur phone number zaroor bharo!'); return; }
-  var text =
-    '🔧 *New Booking — Jorhat City Service*\n' +
-    '━━━━━━━━━━━━━━━━\n' +
-    '👤 Name: ' + name + '\n' +
-    '📞 Phone: ' + phone + '\n' +
-    (address ? '📍 Area: ' + address + '\n' : '') +
-    '🛠️ Service: ' + service + '\n' +
-    (msg ? '📝 Issue: ' + msg + '\n' : '') +
-    '━━━━━━━━━━━━━━━━\n' +
-    'Please confirm my appointment. Thank you!';
-  window.open('https://wa.me/918453345670?text=' + encodeURIComponent(text), '_blank');
-  showToast('✅ WhatsApp khul raha hai — message bhejo!', 'wa');
+document.getElementById('waBookBtn').addEventListener('click',function(){
+  var name=document.getElementById('fname').value.trim();
+  var phone=document.getElementById('fphone').value.trim();
+  var address=document.getElementById('faddress').value.trim();
+  var service=document.getElementById('fservice').value;
+  var msg=document.getElementById('fmsg').value.trim();
+  if(!name||!phone){alert('Please enter your name and phone number!');return;}
+  var text='🔧 *New Booking — Jorhat City Service*\n━━━━━━━━━━━━━━━━\n👤 Name: '+name+'\n📞 Phone: '+phone+'\n'+(address?'📍 Area: '+address+'\n':'')+'🛠️ Service: '+service+'\n'+(msg?'📝 Issue: '+msg+'\n':'')+'━━━━━━━━━━━━━━━━\nPlease confirm my appointment. Thank you!';
+  window.open('https://wa.me/918453345670?text='+encodeURIComponent(text),'_blank');
+  showToast('✅ WhatsApp opened — please send the message!','wa');
 });
+
+loadReviews();
 </script>
 </body>
 </html>
