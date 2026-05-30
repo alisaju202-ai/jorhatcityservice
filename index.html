@@ -2,443 +2,655 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Jorhat City Service — Fast AC repair, fridge repair & washing machine repair at your doorstep in Jorhat, Assam. Same day service, certified technicians, all brands.">
-<meta name="keywords" content="AC repair Jorhat, fridge repair Jorhat, washing machine repair Jorhat, AC service Jorhat, AC gas refill Jorhat">
-<title>Jorhat City Service | AC, Fridge & Washing Machine Repair in Jorhat</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Jorhat City Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --brand:#1D9E75;--brand-dark:#0F6E56;--brand-light:#E1F5EE;
-    --text:#1a1a1a;--muted:#555;--border:#e0e0e0;--bg:#fff;--bg2:#f7faf9;
-  }
-  html{scroll-behavior:smooth}
-  body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --g:#1D9E75;--gd:#0a6644;--gl:#c8f0e0;--gxl:#f0fdf6;
+  --wa:#25D366;--wad:#128C7E;
+  --txt:#111;--muted:#666;--border:#ebebeb;--bg:#fff;--bg2:#f6fbf8;
+  --r:16px;--rs:10px;
+}
+html,body{width:100%;min-height:100vh;overflow-x:hidden;background:#f2f4f3}
+body{font-family:'Nunito',sans-serif;color:var(--txt);font-size:15px}
 
-  /* NAV */
-  .nav{background:var(--bg);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:99;max-width:100%}
-  .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--brand-dark);text-decoration:none}
-  .logo span{color:var(--brand)}
-  .nav-links{display:flex;gap:1.5rem;list-style:none}
-  .nav-links a{font-size:.9rem;color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s}
-  .nav-links a:hover{color:var(--brand)}
-  .cta-btn{background:var(--brand);color:#fff;border:none;padding:.55rem 1.2rem;border-radius:6px;font-size:.9rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:background .2s}
-  .cta-btn:hover{background:var(--brand-dark)}
-  .nav-toggle{display:none;background:none;border:none;cursor:pointer;font-size:1.5rem;color:var(--text)}
-  @media(max-width:680px){
-    .nav-links{display:none;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:1rem 2rem;gap:1rem}
-    .nav-links.open{display:flex}
-    .nav-toggle{display:block}
-  }
+/* ══ PHONE SHELL ══ */
+.shell{
+  max-width:420px;
+  margin:0 auto;
+  background:#fff;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 0 60px rgba(0,0,0,.18);
+}
 
-  /* HERO */
-  .hero{background:linear-gradient(135deg,#0F6E56 0%,#1D9E75 60%,#5DCAA5 100%);padding:5rem 2rem 4rem;color:#fff;position:relative;overflow:hidden}
-  .hero::before{content:'';position:absolute;right:-80px;top:-80px;width:380px;height:380px;background:rgba(255,255,255,.06);border-radius:50%}
-  .hero::after{content:'';position:absolute;right:100px;bottom:-100px;width:240px;height:240px;background:rgba(255,255,255,.04);border-radius:50%}
-  .hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
-  .hero-tag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.18);color:#fff;font-size:.82rem;padding:.35rem .9rem;border-radius:20px;margin-bottom:1.2rem;font-weight:500;letter-spacing:.4px}
-  .hero h1{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;line-height:1.12;margin-bottom:1.2rem;max-width:560px}
-  .hero h1 span{color:#9FE1CB}
-  .hero p{font-size:1.1rem;opacity:.9;max-width:480px;margin-bottom:2.2rem;line-height:1.75}
-  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-  .btn-white{background:#fff;color:var(--brand-dark);border:none;padding:.75rem 1.6rem;border-radius:6px;font-weight:700;font-size:1rem;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
-  .btn-white:hover{background:#E1F5EE}
-  .btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);padding:.75rem 1.6rem;border-radius:6px;font-weight:600;font-size:1rem;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
-  .btn-outline:hover{background:rgba(255,255,255,.12)}
-  .hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.2);padding-top:2rem}
-  .stat .num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;display:block}
-  .stat .label{font-size:.82rem;opacity:.8;margin-top:.2rem}
+/* ══ STATUS BAR ══ */
+.status{
+  background:var(--gd);
+  padding:.35rem 1.1rem;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.status span{color:rgba(255,255,255,.75);font-size:.72rem;font-weight:700;letter-spacing:.5px}
 
-  /* CONTAINER */
-  .container{max-width:860px;margin:0 auto}
+/* ══ TOP NAV ══ */
+.topnav{
+  background:var(--gd);
+  padding:.9rem 1.1rem 1rem;
+  position:relative;
+}
+.topnav-row{display:flex;align-items:center;justify-content:space-between}
+.logo-text{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:.5px;line-height:1}
+.logo-text span{color:#7DEBB5}
+.nav-call{
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.3);
+  color:#fff;border-radius:8px;
+  padding:.38rem .8rem;font-size:.8rem;font-weight:800;
+  text-decoration:none;display:flex;align-items:center;gap:.3rem;
+  font-family:'Nunito',sans-serif;
+}
+.loc-pill{
+  display:inline-flex;align-items:center;gap:.3rem;
+  background:rgba(255,255,255,.12);
+  color:rgba(255,255,255,.85);font-size:.75rem;font-weight:700;
+  padding:.28rem .75rem;border-radius:20px;margin-top:.55rem;
+  border:1px solid rgba(255,255,255,.15);
+}
 
-  /* SECTIONS */
-  .section{padding:4rem 2rem}
-  .section-inner{max-width:860px;margin:0 auto}
-  .section-tag{font-size:.8rem;font-weight:600;color:var(--brand);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
-  .section h2{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;margin-bottom:.8rem}
-  .section .sub{color:var(--muted);font-size:1rem;max-width:560px;line-height:1.75;margin-bottom:2.5rem}
+/* ══ HERO CARD ══ */
+.hero{
+  background:linear-gradient(160deg,var(--gd) 0%,var(--g) 55%,#2ec98a 100%);
+  padding:1.4rem 1.1rem 1.8rem;
+  position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%;pointer-events:none}
+.hero::after{content:'';position:absolute;left:-30px;bottom:-50px;width:140px;height:140px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.3rem;
+  background:rgba(255,255,255,.18);color:#fff;
+  font-size:.7rem;font-weight:800;padding:.3rem .75rem;
+  border-radius:20px;margin-bottom:.75rem;letter-spacing:.6px;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.2);
+}
+.hero h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:2.3rem;font-weight:800;color:#fff;
+  line-height:1.1;margin-bottom:.6rem;position:relative;z-index:1;
+}
+.hero h1 em{color:#7DEBB5;font-style:normal}
+.hero p{font-size:.88rem;color:rgba(255,255,255,.88);line-height:1.65;margin-bottom:1.2rem;position:relative;z-index:1;max-width:280px}
 
-  /* SERVICES */
-  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
-  .service-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.6rem;transition:all .25s;cursor:default}
-  .service-card:hover{border-color:var(--brand);transform:translateY(-3px);background:#fff;box-shadow:0 8px 24px rgba(29,158,117,.1)}
-  .service-icon{width:48px;height:48px;background:var(--brand-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-  .service-icon i{font-size:24px;color:var(--brand-dark)}
-  .service-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
-  .service-card p{font-size:.9rem;color:var(--muted);line-height:1.65}
-  .price-tag{display:inline-block;background:var(--brand-light);color:var(--brand-dark);font-size:.8rem;font-weight:600;padding:.25rem .7rem;border-radius:4px;margin-top:.8rem}
+/* ══ ACTION BUTTONS ══ */
+.action-pair{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.1rem;position:relative;z-index:1}
+.btn-call-big{
+  background:#fff;color:var(--gd);border:none;
+  padding:.85rem .6rem;border-radius:var(--rs);
+  font-weight:900;font-size:.88rem;font-family:'Nunito',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:.4rem;
+  text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.15);
+  transition:transform .15s;
+}
+.btn-call-big:active{transform:scale(.97)}
+.btn-wa-big{
+  background:var(--wa);color:#fff;border:none;
+  padding:.85rem .6rem;border-radius:var(--rs);
+  font-weight:900;font-size:.88rem;font-family:'Nunito',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:.4rem;
+  text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.35);
+  transition:transform .15s;
+}
+.btn-wa-big:active{transform:scale(.97)}
 
-  /* BRANDS */
-  .brands-section{background:var(--bg2);padding:3rem 2rem;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-  .brands-section h3{font-family:'Syne',sans-serif;font-size:.9rem;color:var(--muted);font-weight:500;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:1px}
-  .brands-list{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;max-width:700px;margin:0 auto}
-  .brand-tag{background:#fff;border:1px solid var(--border);padding:.4rem 1.1rem;border-radius:20px;font-size:.88rem;font-weight:600;color:var(--muted)}
+/* ══ STATS ROW ══ */
+.stats-row{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;
+  position:relative;z-index:1;
+}
+.stat-box{
+  background:rgba(255,255,255,.12);border-radius:var(--rs);
+  padding:.6rem .3rem;text-align:center;
+  border:1px solid rgba(255,255,255,.15);
+}
+.stat-box .sn{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;line-height:1;display:block}
+.stat-box .sl{font-size:.62rem;color:rgba(255,255,255,.75);font-weight:700;margin-top:.15rem;display:block;line-height:1.2}
 
-  /* WHY US */
-  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
-  .why-card{padding:1.3rem;border-left:3px solid var(--brand);background:var(--bg2);border-radius:0 10px 10px 0}
-  .why-card h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.98rem;margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
-  .why-card h4 i{color:var(--brand);font-size:18px}
-  .why-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
+/* ══ QUICK CHIPS ══ */
+.chips-wrap{
+  padding:.8rem 1.1rem;background:#fff;
+  border-bottom:1px solid var(--border);
+  display:flex;gap:.5rem;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.chips-wrap::-webkit-scrollbar{display:none}
+.chip{
+  flex-shrink:0;display:inline-flex;align-items:center;gap:.28rem;
+  background:var(--bg2);border:1.5px solid var(--border);
+  padding:.38rem .85rem;border-radius:20px;
+  font-size:.78rem;font-weight:800;color:var(--gd);
+  text-decoration:none;white-space:nowrap;transition:all .15s;
+}
+.chip.c{background:var(--g);color:#fff;border-color:var(--g)}
+.chip.w{background:var(--wa);color:#fff;border-color:var(--wa)}
+.chip:active{transform:scale(.96)}
 
-  /* REVIEWS */
-  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;margin-top:2rem}
-  .review-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem}
-  .stars{color:#EF9F27;font-size:1.1rem;margin-bottom:.8rem;letter-spacing:2px}
-  .review-card blockquote{font-size:.9rem;color:var(--muted);line-height:1.65;margin-bottom:1rem;font-style:italic}
-  .reviewer{display:flex;align-items:center;gap:.7rem}
-  .avatar{width:36px;height:36px;border-radius:50%;background:var(--brand-light);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:var(--brand-dark);flex-shrink:0}
-  .reviewer-info strong{font-size:.9rem;font-weight:600;display:block}
-  .reviewer-info span{font-size:.8rem;color:var(--muted)}
+/* ══ SECTION HEADER ══ */
+.sec-head{padding:1.2rem 1.1rem .6rem}
+.sec-tag{font-size:.7rem;font-weight:800;color:var(--g);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:.25rem}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:800;color:var(--txt);line-height:1.1}
+.sec-sub{font-size:.82rem;color:var(--muted);margin-top:.3rem;line-height:1.55}
 
-  /* CONTACT */
-  .contact-section{background:linear-gradient(135deg,#0F6E56,#1D9E75);padding:4rem 2rem;color:#fff}
-  .contact-section .section-tag{color:#9FE1CB}
-  .contact-section h2{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;margin-bottom:.5rem}
-  .contact-section .sub{opacity:.88;margin-bottom:2.5rem;line-height:1.75;color:#fff}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:860px;margin:0 auto}
-  @media(max-width:620px){.contact-grid{grid-template-columns:1fr}}
-  .contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.8rem}
-  .contact-icon{width:44px;height:44px;background:rgba(255,255,255,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .contact-icon i{font-size:22px;color:#fff}
-  .contact-item h4{font-weight:600;font-size:.98rem;margin-bottom:.3rem}
-  .contact-item p{font-size:.9rem;opacity:.85;line-height:1.6;color:#fff}
-  .contact-item a{font-size:1.1rem;font-weight:700;color:#fff;text-decoration:none;font-family:'Syne',sans-serif}
-  .contact-item a:hover{text-decoration:underline}
-  .wa-btn{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);padding:.5rem 1.1rem;border-radius:6px;text-decoration:none;font-size:.9rem;font-weight:600;margin-top:.6rem;transition:background .2s}
-  .wa-btn:hover{background:rgba(255,255,255,.25)}
-  .form-wrap{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:1.8rem}
-  .form-wrap h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:1.3rem}
-  .form-group{margin-bottom:1rem}
-  .form-group label{font-size:.85rem;opacity:.88;display:block;margin-bottom:.35rem;font-weight:500}
-  .form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:7px;padding:.65rem 1rem;color:#fff;font-size:.92rem;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s}
-  .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.5)}
-  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(255,255,255,.75)}
-  .form-group select{cursor:pointer}
-  .form-group select option{color:#000;background:#fff}
-  .form-group textarea{resize:vertical;min-height:85px}
-  .submit-btn{width:100%;background:#fff;color:var(--brand-dark);border:none;padding:.8rem;border-radius:7px;font-weight:700;font-size:1rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-top:.3rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
-  .submit-btn:hover{background:#E1F5EE}
+/* ══ SERVICES ══ */
+.services-pad{padding:0 1.1rem 1.4rem}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.svc-card{
+  background:var(--bg2);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:1rem .85rem;
+  transition:all .2s;cursor:default;position:relative;overflow:hidden;
+}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g),#2ec98a);opacity:0;transition:opacity .2s}
+.svc-card:active::before{opacity:1}
+.svc-card:active{border-color:var(--g);background:#fff}
+.svc-ico{
+  width:40px;height:40px;background:var(--gl);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:.65rem;
+}
+.svc-ico span{font-size:1.3rem}
+.svc-card h3{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:.25rem;line-height:1.2}
+.svc-card p{font-size:.75rem;color:var(--muted);line-height:1.5}
+.ptag{
+  display:inline-block;background:var(--gl);color:var(--gd);
+  font-size:.7rem;font-weight:800;padding:.18rem .55rem;
+  border-radius:5px;margin-top:.5rem;
+}
 
-  /* FOOTER */
-  .footer{background:#085041;color:#fff;padding:2.5rem 2rem;text-align:center}
-  .footer .f-logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:.4rem}
-  .footer .f-logo span{color:#9FE1CB}
-  .footer .f-phone{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;margin:1rem 0 .3rem}
-  .footer p{opacity:.7;font-size:.9rem;margin-bottom:.3rem}
-  .badge-bar{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.2rem}
-  .badge{background:rgba(255,255,255,.12);font-size:.8rem;padding:.3rem .8rem;border-radius:20px}
-  .footer-copy{margin-top:1.5rem;font-size:.8rem;opacity:.5;border-top:1px solid rgba(255,255,255,.1);padding-top:1rem}
+/* ══ BRANDS ══ */
+.brands-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 1.1rem}
+.brands-label{font-size:.7rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.65rem;text-align:center}
+.brands-scroll{display:flex;gap:.45rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.2rem}
+.brands-scroll::-webkit-scrollbar{display:none}
+.btag{flex-shrink:0;background:#fff;border:1px solid var(--border);padding:.3rem .8rem;border-radius:20px;font-size:.78rem;font-weight:700;color:var(--muted)}
 
-  /* RESPONSIVE */
-  @media(max-width:700px){
-    .hero h1{font-size:2rem}
-    .hero-stats{gap:1.5rem}
-    .section{padding:3rem 1.2rem}
-  }
+/* ══ WHY US ══ */
+.why-pad{padding:0 1.1rem 1.4rem}
+.why-list{display:flex;flex-direction:column;gap:.6rem}
+.why-item{
+  display:flex;align-items:flex-start;gap:.75rem;
+  background:var(--bg2);border-radius:var(--rs);padding:.9rem;
+  border-left:3px solid var(--g);
+}
+.why-ico{font-size:1.3rem;flex-shrink:0;margin-top:.05rem}
+.why-item h4{font-size:.88rem;font-weight:800;color:var(--txt);margin-bottom:.15rem}
+.why-item p{font-size:.78rem;color:var(--muted);line-height:1.55}
 
-  /* TOAST */
-  .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--brand-dark);color:#fff;padding:.8rem 1.5rem;border-radius:8px;font-size:.9rem;font-weight:500;opacity:0;transition:all .4s;z-index:999;pointer-events:none}
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* ══ WA BANNER ══ */
+.wa-banner{
+  background:linear-gradient(135deg,#1a9e55,var(--wa));
+  padding:1.3rem 1.1rem;text-align:center;
+  margin:0;
+}
+.wa-banner h3{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:.35rem}
+.wa-banner p{font-size:.82rem;color:rgba(255,255,255,.9);line-height:1.55;margin-bottom:1rem}
+.wa-full-btn{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  background:#fff;color:var(--wad);
+  padding:.95rem 1.2rem;border-radius:12px;
+  font-weight:900;font-size:1rem;font-family:'Nunito',sans-serif;
+  text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.15);
+  transition:transform .15s;
+}
+.wa-full-btn:active{transform:scale(.97)}
+.wa-full-btn span{font-size:1.2rem}
+
+/* ══ REVIEWS ══ */
+.reviews-pad{padding:0 1.1rem 1.4rem}
+.reviews-scroll{display:flex;gap:.65rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.3rem}
+.reviews-scroll::-webkit-scrollbar{display:none}
+.rev-card{
+  flex-shrink:0;width:260px;
+  background:var(--bg2);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:1rem;
+}
+.rev-stars{color:#F5A623;font-size:.95rem;letter-spacing:2px;margin-bottom:.6rem}
+.rev-card blockquote{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.8rem;font-style:italic}
+.rev-person{display:flex;align-items:center;gap:.55rem}
+.rev-av{width:32px;height:32px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:var(--gd);flex-shrink:0}
+.rev-person strong{font-size:.82rem;font-weight:800;display:block}
+.rev-person span{font-size:.73rem;color:var(--muted)}
+
+/* ══ BOOKING FORM ══ */
+.form-sec{background:linear-gradient(160deg,var(--gd),var(--g) 60%,#2ec98a);padding:1.4rem 1.1rem 2rem}
+.form-sec .sec-tag{color:#7DEBB5}
+.form-sec .sec-title{color:#fff;font-size:1.5rem}
+.form-sec .sec-sub{color:rgba(255,255,255,.82);margin-bottom:1.1rem}
+.fcard{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:1.2rem}
+.fg{margin-bottom:.85rem}
+.fg label{font-size:.78rem;font-weight:800;color:rgba(255,255,255,.85);display:block;margin-bottom:.3rem;letter-spacing:.3px}
+.fg input,.fg select,.fg textarea{
+  width:100%;background:rgba(255,255,255,.14);
+  border:1.5px solid rgba(255,255,255,.25);
+  border-radius:8px;padding:.65rem .85rem;
+  color:#fff;font-size:.92rem;font-family:'Nunito',sans-serif;
+  outline:none;transition:border .2s;-webkit-appearance:none;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.4)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(255,255,255,.75)}
+.fg select option{color:#111;background:#fff}
+.fg select{color:#fff;cursor:pointer}
+.fg textarea{resize:none;min-height:70px;line-height:1.5}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.form-btns{display:flex;flex-direction:column;gap:.6rem;margin-top:.9rem}
+.fbtn-email{
+  width:100%;background:#fff;color:var(--gd);border:none;
+  padding:.9rem;border-radius:10px;
+  font-weight:900;font-size:.92rem;font-family:'Nunito',sans-serif;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.45rem;
+  transition:transform .15s;
+}
+.fbtn-email:active{transform:scale(.97)}
+.fbtn-wa{
+  width:100%;background:var(--wa);color:#fff;border:none;
+  padding:.9rem;border-radius:10px;
+  font-weight:900;font-size:.92rem;font-family:'Nunito',sans-serif;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.45rem;
+  box-shadow:0 4px 16px rgba(37,211,102,.3);
+  transition:transform .15s;
+}
+.fbtn-wa:active{transform:scale(.97)}
+
+/* ══ CONTACT INFO CARDS ══ */
+.contact-cards{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.2rem}
+.ccard{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+  border-radius:var(--rs);padding:.85rem 1rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.ccard-ico{font-size:1.4rem;flex-shrink:0}
+.ccard-txt h4{font-size:.82rem;font-weight:800;color:rgba(255,255,255,.7);letter-spacing:.3px}
+.ccard-txt a,.ccard-txt p{font-size:.95rem;font-weight:800;color:#fff;text-decoration:none;line-height:1.4;display:block}
+.ccard-txt p{font-size:.85rem;font-weight:700;opacity:.9}
+
+/* ══ FOOTER ══ */
+.footer{background:#063d28;padding:1.5rem 1.1rem 1rem;text-align:center}
+.f-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:.2rem}
+.f-logo span{color:#7DEBB5}
+.f-num{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin:.6rem 0 .15rem}
+.f-info{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.6}
+.f-badges{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin-top:.8rem}
+.fbadge{background:rgba(255,255,255,.1);font-size:.7rem;font-weight:700;padding:.22rem .65rem;border-radius:20px;color:rgba(255,255,255,.75)}
+.f-copy{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:1rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.08)}
+
+/* ══ STICKY BOTTOM ══ */
+.bottom-bar{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:420px;
+  background:#fff;border-top:1px solid var(--border);
+  padding:.7rem .9rem .8rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:.55rem;
+  box-shadow:0 -6px 30px rgba(0,0,0,.12);z-index:999;
+}
+.bb-call{
+  display:flex;align-items:center;justify-content:center;gap:.38rem;
+  background:var(--g);color:#fff;border-radius:10px;
+  padding:.78rem;font-weight:900;font-size:.88rem;
+  text-decoration:none;font-family:'Nunito',sans-serif;
+  transition:transform .15s;
+}
+.bb-call:active{transform:scale(.97)}
+.bb-wa{
+  display:flex;align-items:center;justify-content:center;gap:.38rem;
+  background:var(--wa);color:#fff;border-radius:10px;
+  padding:.78rem;font-weight:900;font-size:.88rem;
+  text-decoration:none;font-family:'Nunito',sans-serif;
+  transition:transform .15s;
+}
+.bb-wa:active{transform:scale(.97)}
+
+/* safe area for bottom bar */
+.pb-safe{height:80px}
+
+/* ══ TOAST ══ */
+.toast{
+  position:fixed;top:1.2rem;left:50%;transform:translateX(-50%) translateY(-80px);
+  background:#111;color:#fff;padding:.8rem 1.3rem;border-radius:10px;
+  font-size:.85rem;font-weight:700;opacity:0;transition:all .35s;
+  z-index:2000;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.25);
+  max-width:320px;text-align:center;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{background:var(--gd)}
+.toast.wa{background:var(--wad)}
+
+/* divider */
+.divider{height:1px;background:var(--border)}
 </style>
 </head>
 <body>
+<div class="shell">
 
-<!-- NAVBAR -->
-<nav class="nav">
-  <a class="logo" href="#">Jorhat<span>City</span>Service</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-    <i class="ti ti-menu-2"></i>
-  </button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#why-us">Why Us</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="tel:8453345670" class="cta-btn">
-    <i class="ti ti-phone"></i> Call Now
-  </a>
-</nav>
+  <!-- STATUS BAR -->
+  <div class="status">
+    <span>JORHAT CITY SERVICE</span>
+    <span>7AM–9PM Daily</span>
+  </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-tag"><i class="ti ti-map-pin"></i> Jorhat, Assam</div>
-    <h1>Fast AC, Fridge &<br><span>Appliance Repair</span><br>at Your Doorstep</h1>
-    <p>Same-day certified technicians for all major brands. Transparent pricing, no hidden charges — ever.</p>
-    <div class="hero-btns">
-      <a href="tel:8453345670" class="btn-white">
-        <i class="ti ti-phone-call"></i> Call: 84533 45670
+  <!-- TOP NAV -->
+  <div class="topnav">
+    <div class="topnav-row">
+      <div class="logo-text">Jorhat<span>City</span>Service</div>
+      <a href="tel:8453345670" class="nav-call">📞 Call Now</a>
+    </div>
+    <div class="loc-pill">📍 Jorhat, Assam — Same Day Service</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">✅ Certified Technicians</div>
+    <h1>AC, Fridge &<br><em>Appliance Repair</em><br>at Your Door</h1>
+    <p>Same-day service for all major brands. Transparent pricing — zero hidden charges, ever.</p>
+    <div class="action-pair">
+      <a href="tel:8453345670" class="btn-call-big">
+        📞 84533 45670
       </a>
-      <a href="#services" class="btn-outline">
-        <i class="ti ti-list"></i> View Services
+      <a href="https://wa.me/918453345670?text=Hello%2C%20I%20need%20appliance%20repair%20service%20in%20Jorhat" target="_blank" class="btn-wa-big">
+        💬 WhatsApp
       </a>
     </div>
-    <div class="hero-stats">
-      <div class="stat"><span class="num">500+</span><div class="label">Happy Customers</div></div>
-      <div class="stat"><span class="num">Same Day</span><div class="label">Service Available</div></div>
-      <div class="stat"><span class="num">All Brands</span><div class="label">Repaired</div></div>
-      <div class="stat"><span class="num">Zero</span><div class="label">Hidden Charges</div></div>
+    <div class="stats-row">
+      <div class="stat-box"><span class="sn">500+</span><span class="sl">Happy Customers</span></div>
+      <div class="stat-box"><span class="sn">Same<br>Day</span><span class="sl">Service</span></div>
+      <div class="stat-box"><span class="sn">All</span><span class="sl">Brands Fixed</span></div>
+      <div class="stat-box"><span class="sn">₹0</span><span class="sl">Hidden Charges</span></div>
     </div>
   </div>
-</section>
 
-<!-- SERVICES -->
-<section class="section" id="services">
-  <div class="section-inner">
-    <div class="section-tag">What We Fix</div>
-    <h2>Our Services</h2>
-    <p class="sub">Expert repair and servicing for all home appliances across Jorhat, Golaghat and Titabar area.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-wind"></i></div>
-        <h3>AC Repair & Service</h3>
-        <p>Split AC, window AC, gas refill, PCB repair, deep cleaning and annual maintenance for all brands.</p>
-        <span class="price-tag">Starting ₹299</span>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-snowflake"></i></div>
-        <h3>Fridge Repair</h3>
-        <p>Fridge not cooling, compressor issues, ice maker problems, door seal repair. All brands fixed same day.</p>
-        <span class="price-tag">Starting ₹299</span>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-washing-machine"></i></div>
-        <h3>Washing Machine Repair</h3>
-        <p>Not spinning, water not draining, noise issues — front load and top load. Quick same-day fix.</p>
-        <span class="price-tag">Starting ₹299</span>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-tool"></i></div>
-        <h3>AC Gas Refill</h3>
-        <p>All refrigerant types refilled with pressure testing. AC cooling restored same day at your home.</p>
-        <span class="price-tag">Starting ₹499</span>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-spray"></i></div>
-        <h3>AC Deep Cleaning</h3>
-        <p>Thorough cleaning of filters, coils and drain pipes. Improves cooling efficiency and air quality.</p>
-        <span class="price-tag">Starting ₹299</span>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-calendar-check"></i></div>
-        <h3>Annual Maintenance</h3>
-        <p>Complete AC maintenance contract — servicing, checkups and priority support throughout the year.</p>
-        <span class="price-tag">Best Value</span>
+  <!-- QUICK CHIPS -->
+  <div class="chips-wrap">
+    <a href="tel:8453345670" class="chip c">📞 Call</a>
+    <a href="https://wa.me/918453345670" target="_blank" class="chip w">💬 WhatsApp</a>
+    <a href="#booking" class="chip">📋 Book</a>
+    <a href="#services" class="chip">❄️ AC Repair</a>
+    <a href="#services" class="chip">🧊 Fridge</a>
+    <a href="#services" class="chip">🌀 Washing Machine</a>
+    <a href="#services" class="chip">🔧 Gas Refill</a>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services">
+    <div class="sec-head">
+      <div class="sec-tag">What We Fix</div>
+      <div class="sec-title">Our Services</div>
+      <div class="sec-sub">Jorhat, Golaghat & Titabar mein expert repair</div>
+    </div>
+    <div class="services-pad">
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-ico"><span>❄️</span></div>
+          <h3>AC Repair & Service</h3>
+          <p>Split, window AC, PCB repair, all brands</p>
+          <span class="ptag">From ₹299</span>
+        </div>
+        <div class="svc-card">
+          <div class="svc-ico"><span>🧊</span></div>
+          <h3>Fridge Repair</h3>
+          <p>Not cooling, compressor, door seal issues</p>
+          <span class="ptag">From ₹299</span>
+        </div>
+        <div class="svc-card">
+          <div class="svc-ico"><span>🌀</span></div>
+          <h3>Washing Machine</h3>
+          <p>Not spinning, not draining — front & top load</p>
+          <span class="ptag">From ₹299</span>
+        </div>
+        <div class="svc-card">
+          <div class="svc-ico"><span>🔧</span></div>
+          <h3>AC Gas Refill</h3>
+          <p>All refrigerant types with pressure testing</p>
+          <span class="ptag">From ₹499</span>
+        </div>
+        <div class="svc-card">
+          <div class="svc-ico"><span>🧹</span></div>
+          <h3>AC Deep Cleaning</h3>
+          <p>Filters, coils, drain pipes — full clean</p>
+          <span class="ptag">From ₹299</span>
+        </div>
+        <div class="svc-card">
+          <div class="svc-ico"><span>📅</span></div>
+          <h3>Annual AMC</h3>
+          <p>Full year maintenance contract, priority support</p>
+          <span class="ptag">Best Value</span>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- BRANDS -->
-<div class="brands-section">
-  <h3>All Brands Serviced</h3>
-  <div class="brands-list">
-    <span class="brand-tag">Voltas</span>
-    <span class="brand-tag">LG</span>
-    <span class="brand-tag">Samsung</span>
-    <span class="brand-tag">Daikin</span>
-    <span class="brand-tag">Hitachi</span>
-    <span class="brand-tag">Blue Star</span>
-    <span class="brand-tag">Whirlpool</span>
-    <span class="brand-tag">Godrej</span>
-    <span class="brand-tag">Panasonic</span>
-    <span class="brand-tag">O General</span>
-    <span class="brand-tag">Carrier</span>
-    <span class="brand-tag">Lloyd</span>
-    <span class="brand-tag">Videocon</span>
-    <span class="brand-tag">IFB</span>
+  <!-- BRANDS -->
+  <div class="brands-sec">
+    <div class="brands-label">All Brands Serviced</div>
+    <div class="brands-scroll">
+      <span class="btag">Voltas</span><span class="btag">LG</span><span class="btag">Samsung</span>
+      <span class="btag">Daikin</span><span class="btag">Hitachi</span><span class="btag">Blue Star</span>
+      <span class="btag">Whirlpool</span><span class="btag">Godrej</span><span class="btag">Panasonic</span>
+      <span class="btag">O General</span><span class="btag">Carrier</span><span class="btag">Lloyd</span>
+      <span class="btag">Videocon</span><span class="btag">IFB</span>
+    </div>
   </div>
+
+  <!-- WHY US -->
+  <div>
+    <div class="sec-head">
+      <div class="sec-tag">Why Choose Us</div>
+      <div class="sec-title">Jorhat's Most Trusted</div>
+      <div class="sec-sub">500+ families baar baar call karte hain — yahi wajah hai</div>
+    </div>
+    <div class="why-pad">
+      <div class="why-list">
+        <div class="why-item"><span class="why-ico">⚡</span><div><h4>Same Day Service</h4><p>Call before noon — technician aaj hi ayega, guaranteed.</p></div></div>
+        <div class="why-item"><span class="why-ico">🏅</span><div><h4>Certified Technicians</h4><p>Trained professionals for all brands and models.</p></div></div>
+        <div class="why-item"><span class="why-ico">💰</span><div><h4>Transparent Pricing</h4><p>Pehle price batate hain, phir kaam shuru karte hain. Zero hidden charges.</p></div></div>
+        <div class="why-item"><span class="why-ico">🛡️</span><div><h4>Service Warranty</h4><p>Har repair pe warranty milti hai — complete peace of mind.</p></div></div>
+        <div class="why-item"><span class="why-ico">📍</span><div><h4>Wide Coverage</h4><p>Jorhat, Golaghat, Titabar aur aas paas ke sabhi areas.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WA BANNER -->
+  <div class="wa-banner">
+    <h3>💬 Book on WhatsApp</h3>
+    <p>Sabse aasaan booking — ek message mein confirm hoga aapka appointment!</p>
+    <a href="https://wa.me/918453345670?text=Hello%2C%20I%20need%20appliance%20repair%20service%20in%20Jorhat.%20Please%20confirm%20my%20booking." target="_blank" class="wa-full-btn">
+      <span>💬</span> WhatsApp Par Book Karo
+    </a>
+  </div>
+
+  <!-- REVIEWS -->
+  <div>
+    <div class="sec-head">
+      <div class="sec-tag">Customer Reviews</div>
+      <div class="sec-title">Customers Ka Kehna</div>
+    </div>
+    <div class="reviews-pad">
+      <div class="reviews-scroll">
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <blockquote>"AC stopped working on the hottest day. They came in 2 hours and fixed it completely. Excellent same-day service!"</blockquote>
+          <div class="rev-person">
+            <div class="rev-av">RB</div>
+            <div><strong>Rajiv Bora</strong><span>Jorhat City</span></div>
+          </div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <blockquote>"Very professional. Fridge repair done quickly, price was very reasonable. No hidden charges at all. Highly recommend!"</blockquote>
+          <div class="rev-person">
+            <div class="rev-av">PD</div>
+            <div><strong>Priya Das</strong><span>Jorhat</span></div>
+          </div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <blockquote>"Washing machine was not spinning. Fixed in one same-day visit. Really a big plus for busy families!"</blockquote>
+          <div class="rev-person">
+            <div class="rev-av">AH</div>
+            <div><strong>Amit Hazarika</strong><span>Titabar</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING FORM -->
+  <div id="booking" class="form-sec">
+    <div class="sec-tag">Book a Service</div>
+    <div class="sec-title">Abhi Book Karo</div>
+    <div class="sec-sub">Form bharo ya directly WhatsApp karo — minutes mein confirm!</div>
+
+    <!-- Contact Info Cards -->
+    <div class="contact-cards">
+      <a href="tel:8453345670" class="ccard" style="text-decoration:none">
+        <span class="ccard-ico">📞</span>
+        <div class="ccard-txt">
+          <h4>CALL US NOW</h4>
+          <a href="tel:8453345670">+91 84533 45670</a>
+          <p>Mon–Sun, 7AM – 9PM</p>
+        </div>
+      </a>
+      <div class="ccard">
+        <span class="ccard-ico">📍</span>
+        <div class="ccard-txt">
+          <h4>SERVICE AREA</h4>
+          <p>Jorhat, Golaghat, Titabar & Upper Assam</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fcard">
+      <form id="bookingForm">
+        <div class="frow">
+          <div class="fg">
+            <label>Aapka Naam *</label>
+            <input type="text" id="fname" placeholder="Full name" required autocomplete="name">
+          </div>
+          <div class="fg">
+            <label>Phone Number *</label>
+            <input type="tel" id="fphone" placeholder="9XXXXXXXX" required autocomplete="tel">
+          </div>
+        </div>
+        <div class="fg">
+          <label>Area / Address</label>
+          <input type="text" id="faddress" placeholder="Aapka area Jorhat mein" autocomplete="street-address">
+        </div>
+        <div class="fg">
+          <label>Service Chahiye</label>
+          <select id="fservice">
+            <option>AC Repair / Service</option>
+            <option>AC Gas Refill</option>
+            <option>AC Deep Cleaning</option>
+            <option>Fridge Repair</option>
+            <option>Washing Machine Repair</option>
+            <option>Annual Maintenance Contract</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Problem Batao (Optional)</label>
+          <textarea id="fmsg" placeholder="Kya problem ho rahi hai..."></textarea>
+        </div>
+        <div class="form-btns">
+          <button type="submit" class="fbtn-email">
+            📧 Email Se Book Karo
+          </button>
+          <button type="button" id="waBookBtn" class="fbtn-wa">
+            💬 WhatsApp Se Book Karo
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="f-logo">Jorhat<span>City</span>Service</div>
+    <div class="f-num">📞 +91 84533 45670</div>
+    <div class="f-info">AC, Fridge & Washing Machine Repair<br>Jorhat, Assam — Mon–Sun 7AM to 9PM</div>
+    <div class="f-badges">
+      <span class="fbadge">Same Day</span>
+      <span class="fbadge">All Brands</span>
+      <span class="fbadge">Certified</span>
+      <span class="fbadge">No Hidden Charges</span>
+      <span class="fbadge">500+ Customers</span>
+    </div>
+    <div class="f-copy">© 2026 Jorhat City Service. All rights reserved.</div>
+  </footer>
+
+  <div class="pb-safe"></div>
+</div><!-- /shell -->
+
+<!-- STICKY BOTTOM BAR -->
+<div class="bottom-bar">
+  <a href="tel:8453345670" class="bb-call">📞 Call Now</a>
+  <a href="https://wa.me/918453345670?text=Hello%2C%20I%20need%20appliance%20repair%20in%20Jorhat" target="_blank" class="bb-wa">💬 WhatsApp</a>
 </div>
 
-<!-- WHY US -->
-<section class="section" id="why-us" style="background:var(--bg2)">
-  <div class="section-inner">
-    <div class="section-tag">Why Choose Us</div>
-    <h2>Jorhat's Trusted Service</h2>
-    <p class="sub">We've been serving Jorhat families with honest, reliable appliance repair. Here's why 500+ customers trust us.</p>
-    <div class="why-grid">
-      <div class="why-card">
-        <h4><i class="ti ti-clock"></i>Same Day Service</h4>
-        <p>Call before noon and our technician reaches your home the same day, guaranteed.</p>
-      </div>
-      <div class="why-card">
-        <h4><i class="ti ti-certificate"></i>Certified Technicians</h4>
-        <p>Trained and experienced professionals for all brands and appliance models.</p>
-      </div>
-      <div class="why-card">
-        <h4><i class="ti ti-receipt-2"></i>Transparent Pricing</h4>
-        <p>We quote the price upfront before any work starts. Absolutely zero hidden charges.</p>
-      </div>
-      <div class="why-card">
-        <h4><i class="ti ti-shield-check"></i>Service Warranty</h4>
-        <p>All repairs come with a service warranty so you have complete peace of mind.</p>
-      </div>
-      <div class="why-card">
-        <h4><i class="ti ti-map-2"></i>Wide Coverage Area</h4>
-        <p>Serving Jorhat City, Golaghat, Titabar and all nearby areas across Upper Assam.</p>
-      </div>
-      <div class="why-card">
-        <h4><i class="ti ti-brand-whatsapp"></i>Easy WhatsApp Booking</h4>
-        <p>Book via call or WhatsApp in under 2 minutes. No complicated apps or forms needed.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section class="section" id="reviews">
-  <div class="section-inner">
-    <div class="section-tag">Customer Reviews</div>
-    <h2>What Our Customers Say</h2>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"My AC stopped working on the hottest day of summer. They came within 2 hours and fixed it completely. Excellent same-day service!"</blockquote>
-        <div class="reviewer">
-          <div class="avatar">RB</div>
-          <div class="reviewer-info"><strong>Rajiv Bora</strong><span>Jorhat City</span></div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Very professional technician. Fridge repair was done quickly and the price was very reasonable. No hidden charges at all. Highly recommend!"</blockquote>
-        <div class="reviewer">
-          <div class="avatar">PD</div>
-          <div class="reviewer-info"><strong>Priya Das</strong><span>Jorhat</span></div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>"Washing machine was not spinning. They diagnosed and fixed it in one visit. Same day service is a really big plus for busy families!"</blockquote>
-        <div class="reviewer">
-          <div class="avatar">AH</div>
-          <div class="reviewer-info"><strong>Amit Hazarika</strong><span>Titabar</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="container">
-    <div class="section-tag">Get In Touch</div>
-    <h2>Book a Service Today</h2>
-    <p class="sub">Call us, WhatsApp us, or fill the form below — we will confirm your booking within minutes.</p>
-    <div class="contact-grid">
-      <div>
-        <div class="contact-item">
-          <div class="contact-icon"><i class="ti ti-phone-call"></i></div>
-          <div>
-            <h4>Call Us Now</h4>
-            <a href="tel:8453345670">+91 84533 45670</a>
-            <p style="margin-top:.3rem">Available Mon–Sun, 7 AM – 9 PM</p>
-            <a href="https://wa.me/918453345670?text=Hello%2C%20I%20need%20appliance%20repair%20service%20in%20Jorhat" target="_blank" class="wa-btn">
-              <i class="ti ti-brand-whatsapp"></i> WhatsApp Us
-            </a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon"><i class="ti ti-map-pin"></i></div>
-          <div>
-            <h4>Service Area</h4>
-            <p>Jorhat City, Golaghat, Titabar and surrounding areas in Upper Assam</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon"><i class="ti ti-clock"></i></div>
-          <div>
-            <h4>Working Hours</h4>
-            <p>Monday – Sunday<br>7:00 AM – 9:00 PM</p>
-          </div>
-        </div>
-      </div>
-      <div class="form-wrap">
-        <h3>Quick Booking Form</h3>
-        <form id="bookingForm">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="Enter your name" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
-          </div>
-          <div class="form-group">
-            <label for="service">Service Required</label>
-            <select id="service">
-              <option>AC Repair / Service</option>
-              <option>AC Gas Refill</option>
-              <option>AC Deep Cleaning</option>
-              <option>Fridge Repair</option>
-              <option>Washing Machine Repair</option>
-              <option>Annual Maintenance Contract</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message (Optional)</label>
-            <textarea id="message" placeholder="Describe the issue briefly..."></textarea>
-          </div>
-          <button type="submit" class="submit-btn">
-            <i class="ti ti-send"></i> Book Service Now
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="f-logo">Jorhat<span>City</span>Service</div>
-  <p>Expert AC, Fridge & Washing Machine Repair in Jorhat, Assam</p>
-  <div class="f-phone">📞 +91 84533 45670</div>
-  <p>Available Monday – Sunday | 7:00 AM – 9:00 PM</p>
-  <div class="badge-bar">
-    <span class="badge">Same Day Service</span>
-    <span class="badge">All Brands</span>
-    <span class="badge">Certified Technicians</span>
-    <span class="badge">No Hidden Charges</span>
-    <span class="badge">500+ Happy Customers</span>
-  </div>
-  <p class="footer-copy">© 2026 Jorhat City Service. All rights reserved.</p>
-</footer>
-
 <!-- TOAST -->
-<div class="toast" id="toast">✅ Booking request sent! We'll call you back shortly.</div>
+<div class="toast" id="toast"></div>
 
 <script>
-  // Mobile nav toggle
-  document.getElementById('navToggle').addEventListener('click', function(){
-    document.getElementById('navLinks').classList.toggle('open');
-  });
+function showToast(msg, type){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + (type||'ok');
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 4000);
+}
 
-  // Close nav on link click (mobile)
-  document.querySelectorAll('.nav-links a').forEach(function(link){
-    link.addEventListener('click', function(){
-      document.getElementById('navLinks').classList.remove('open');
-    });
-  });
+// EMAIL BOOKING
+document.getElementById('bookingForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name    = document.getElementById('fname').value.trim();
+  var phone   = document.getElementById('fphone').value.trim();
+  var address = document.getElementById('faddress').value.trim();
+  var service = document.getElementById('fservice').value;
+  var msg     = document.getElementById('fmsg').value.trim();
+  if(!name || !phone){ alert('Naam aur phone number zaroor bharo!'); return; }
+  var sub  = encodeURIComponent('New Booking - Jorhat City Service');
+  var body = encodeURIComponent(
+    'NEW SERVICE BOOKING\n===================\n' +
+    'Name    : ' + name + '\n' +
+    'Phone   : ' + phone + '\n' +
+    'Address : ' + (address||'Not provided') + '\n' +
+    'Service : ' + service + '\n' +
+    'Issue   : ' + (msg||'Not provided') + '\n' +
+    '===================\nFrom: JorhatCityService.com'
+  );
+  window.location.href = 'mailto:msac.ref@gmail.com?subject=' + sub + '&body=' + body;
+  showToast('✅ Email app khul rahi hai — bhej do!', 'ok');
+  document.getElementById('bookingForm').reset();
+});
 
-  // Booking form submit
-  document.getElementById('bookingForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    var name = document.getElementById('name').value.trim();
-    var phone = document.getElementById('phone').value.trim();
-    if(!name || !phone){ alert('Please enter your name and phone number.'); return; }
-    var toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(function(){ toast.classList.remove('show'); }, 3500);
-    document.getElementById('bookingForm').reset();
-  });
+// WHATSAPP BOOKING
+document.getElementById('waBookBtn').addEventListener('click', function(){
+  var name    = document.getElementById('fname').value.trim();
+  var phone   = document.getElementById('fphone').value.trim();
+  var address = document.getElementById('faddress').value.trim();
+  var service = document.getElementById('fservice').value;
+  var msg     = document.getElementById('fmsg').value.trim();
+  if(!name || !phone){ alert('Naam aur phone number zaroor bharo!'); return; }
+  var text =
+    '🔧 *New Booking — Jorhat City Service*\n' +
+    '━━━━━━━━━━━━━━━━\n' +
+    '👤 Name: ' + name + '\n' +
+    '📞 Phone: ' + phone + '\n' +
+    (address ? '📍 Area: ' + address + '\n' : '') +
+    '🛠️ Service: ' + service + '\n' +
+    (msg ? '📝 Issue: ' + msg + '\n' : '') +
+    '━━━━━━━━━━━━━━━━\n' +
+    'Please confirm my appointment. Thank you!';
+  window.open('https://wa.me/918453345670?text=' + encodeURIComponent(text), '_blank');
+  showToast('✅ WhatsApp khul raha hai — message bhejo!', 'wa');
+});
 </script>
 </body>
 </html>
