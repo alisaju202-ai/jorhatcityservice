@@ -2,817 +2,1160 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jorhat City Service | Fast AC Repair, Fridge &amp; Washing Machine Service in Jorhat</title>
-<meta name="description" content="Jorhat City Service — trusted AC repair, AC gas filling, AC installation, fridge and washing machine repair in Jorhat. Same-day technician, transparent pricing, 4.9★ rated by 46+ customers. Call 08453-345670.">
-<meta name="keywords" content="AC repair Jorhat, AC service Jorhat, AC gas filling, fridge repair Jorhat, washing machine repair Jorhat, appliance repair Assam">
-<link rel="canonical" href="https://jorhatcityservice.com/">
-<meta property="og:title" content="Jorhat City Service — Fast & Reliable AC Repair in Jorhat">
-<meta property="og:description" content="Expert technicians. Same-day service. Affordable pricing. 4.9★ from 46 reviews.">
-<meta property="og:type" content="website">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Jorhat City Service | AC Repair, Fridge & Washing Machine Service in Jorhat</title>
+<meta name="description" content="Jorhat City Service — trusted AC repair, AC gas filling, AC installation, fridge and washing machine repair in Jorhat. Same-day technician, transparent pricing, 4.9★ rated. Call 84533-45670.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --ocean:#0A3556;
   --ocean-deep:#062539;
   --teal:#00B6D8;
   --teal-soft:#3FD3E8;
-  --ice:#F4FBFD;
-  --frost:#E4F4F8;
+  --ice:#F0FAFE;
+  --frost:#E0F2F8;
   --amber:#FF8A3D;
   --amber-deep:#E96F1F;
   --ink:#0E2A3A;
   --slate:#5C7A8C;
-  --line:#D9EBF0;
+  --line:#D0E8F2;
   --white:#ffffff;
-  --r-lg:22px;
-  --r-md:14px;
-  --r-sm:9px;
-  --shadow-soft:0 10px 30px -10px rgba(10,53,86,.18);
-  --shadow-card:0 4px 18px rgba(10,53,86,.08);
   --ease:cubic-bezier(.22,.85,.32,1);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;font-size:16px}
 body{
   font-family:'Inter',sans-serif;
   color:var(--ink);
   background:var(--ice);
+  max-width:430px;
+  margin:0 auto;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
-}
-h1,h2,h3,h4,.disp{font-family:'Sora',sans-serif;letter-spacing:-.01em}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-button{font-family:inherit;cursor:pointer;border:none}
-.wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
-@media (max-width:720px){.wrap{padding:0 1.1rem}}
-
-::selection{background:var(--teal-soft);color:var(--ocean-deep)}
-
-/* ---------- focus ---------- */
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
-  outline:3px solid var(--amber);outline-offset:2px;
-}
-
-/* ---------- reduced motion ---------- */
-@media (prefers-reduced-motion:reduce){
-  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-}
-
-/* ---------- loader ---------- */
-#loader{
-  position:fixed;inset:0;background:var(--ocean-deep);z-index:9999;
-  display:flex;align-items:center;justify-content:center;
-  transition:opacity .6s var(--ease), visibility .6s var(--ease);
-}
-#loader.done{opacity:0;visibility:hidden;pointer-events:none}
-.loader-ring{
-  width:62px;height:62px;border-radius:50%;
-  border:4px solid rgba(63,211,232,.18);
-  border-top-color:var(--teal-soft);
-  animation:spin 0.9s linear infinite;
   position:relative;
 }
-.loader-ring::after{
-  content:'';position:absolute;inset:10px;border-radius:50%;
-  border:3px solid transparent;border-top-color:var(--amber);
+h1,h2,h3,h4,.disp{font-family:'Sora',sans-serif;letter-spacing:-.015em}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none}
+.pad{padding:0 1.1rem}
+
+/* ============ LOADER ============ */
+#loader{
+  position:fixed;inset:0;background:var(--ocean-deep);z-index:9999;max-width:430px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  transition:opacity .5s var(--ease),visibility .5s var(--ease);
+}
+#loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.l-ring{
+  width:54px;height:54px;border-radius:50%;
+  border:3px solid rgba(63,211,232,.2);border-top-color:var(--teal-soft);
+  animation:spin .85s linear infinite;
+}
+.l-ring::after{
+  content:'';position:absolute;width:54px;height:54px;border-radius:50%;
+  border:2px solid transparent;border-bottom-color:var(--amber);
   animation:spin 1.4s linear infinite reverse;
+  margin:-3px;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
-.loader-label{
-  position:absolute;margin-top:110px;color:var(--frost);font-size:.78rem;
-  font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-}
+.l-txt{color:var(--teal-soft);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 
-/* ---------- scroll reveal ---------- */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease), transform .7s var(--ease)}
-.reveal.in{opacity:1;transform:translateY(0)}
-.reveal-stagger > *{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease), transform .6s var(--ease)}
-.reveal-stagger.in > *{opacity:1;transform:translateY(0)}
-.reveal-stagger.in > *:nth-child(1){transition-delay:.02s}
-.reveal-stagger.in > *:nth-child(2){transition-delay:.09s}
-.reveal-stagger.in > *:nth-child(3){transition-delay:.16s}
-.reveal-stagger.in > *:nth-child(4){transition-delay:.23s}
-.reveal-stagger.in > *:nth-child(5){transition-delay:.30s}
-.reveal-stagger.in > *:nth-child(6){transition-delay:.37s}
+/* ============ REVEAL ============ */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rv.in{opacity:1;transform:translateY(0)}
 
-/* ===================== HEADER ===================== */
-header{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  background:rgba(10,53,86,.0);
-  transition:background .35s var(--ease), box-shadow .35s var(--ease), padding .35s var(--ease);
-  padding:1.15rem 0;
+/* ============ STICKY HEADER ============ */
+.site-header{
+  position:sticky;top:0;z-index:400;
+  background:rgba(6,37,57,.96);backdrop-filter:blur(14px);
+  padding:.7rem 1.1rem;display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
-header.scrolled{
-  background:rgba(8,40,62,.92);
-  backdrop-filter:blur(14px);
-  box-shadow:0 8px 28px rgba(5,20,32,.22);
-  padding:.7rem 0;
-}
-.nav-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{display:flex;align-items:center;gap:.6rem;color:#fff}
-.brand-mark{
-  width:38px;height:38px;border-radius:11px;
+.brand{display:flex;align-items:center;gap:.5rem}
+.brand-ico{
+  width:34px;height:34px;border-radius:9px;
   background:linear-gradient(145deg,var(--teal),var(--ocean));
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  font-size:1.05rem;box-shadow:0 4px 14px rgba(0,182,216,.4);
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;
+  box-shadow:0 4px 12px rgba(0,182,216,.35);
 }
-.brand-text{display:flex;flex-direction:column;line-height:1.05}
-.brand-text strong{font-family:'Sora',sans-serif;font-size:1.02rem;font-weight:700;letter-spacing:-.01em}
-.brand-text span{font-size:.62rem;color:var(--teal-soft);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
-nav.main-links{display:flex;gap:1.9rem;align-items:center}
-nav.main-links a{
-  color:rgba(255,255,255,.82);font-size:.86rem;font-weight:600;
-  position:relative;padding:.3rem 0;transition:color .2s;
-}
-nav.main-links a::after{
-  content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--teal-soft);
-  transition:width .3s var(--ease);
-}
-nav.main-links a:hover{color:#fff}
-nav.main-links a:hover::after{width:100%}
-.head-actions{display:flex;align-items:center;gap:.7rem}
-.head-call{
-  display:flex;align-items:center;gap:.5rem;color:#fff;font-weight:700;font-size:.86rem;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
-  padding:.55rem 1rem;border-radius:30px;transition:background .2s,transform .2s;
-}
-.head-call:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
-.head-cta{
-  background:linear-gradient(135deg,var(--amber),var(--amber-deep));
-  color:#fff;font-weight:700;font-size:.86rem;padding:.6rem 1.2rem;border-radius:30px;
-  box-shadow:0 6px 18px rgba(255,138,61,.4);transition:transform .2s,box-shadow .2s;
-}
-.head-cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,138,61,.5)}
-.burger{display:none;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.1);align-items:center;justify-content:center;color:#fff;font-size:1.2rem}
-@media (max-width:880px){
-  nav.main-links{display:none}
-  .head-call span.txt{display:none}
+.brand-txt strong{display:block;color:#fff;font-family:'Sora',sans-serif;font-size:.88rem;font-weight:700;line-height:1}
+.brand-txt small{color:var(--teal-soft);font-size:.58rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
+.hdr-call{
+  display:flex;align-items:center;gap:.4rem;background:linear-gradient(135deg,var(--amber),var(--amber-deep));
+  color:#fff;font-size:.75rem;font-weight:700;padding:.48rem .9rem;border-radius:20px;
+  box-shadow:0 4px 14px rgba(255,138,61,.4);
 }
 
-/* ===================== HERO ===================== */
+/* ============ HERO ============ */
 .hero{
-  position:relative;min-height:100vh;display:flex;align-items:center;
-  background:linear-gradient(165deg,var(--ocean-deep) 0%,var(--ocean) 55%,#0B4060 100%);
-  overflow:hidden;padding:7.5rem 0 5rem;
+  background:linear-gradient(170deg,var(--ocean-deep) 0%,var(--ocean) 60%,#0C4268 100%);
+  padding:2rem 1.1rem 3.2rem;position:relative;overflow:hidden;
 }
 .hero::before{
-  content:'';position:absolute;top:-10%;right:-15%;width:60%;height:80%;
-  background:radial-gradient(circle,rgba(0,182,216,.22),transparent 70%);
-  pointer-events:none;
+  content:'';position:absolute;top:-20%;right:-25%;width:65%;height:65%;
+  background:radial-gradient(circle,rgba(63,211,232,.22),transparent 70%);pointer-events:none;
 }
 .hero::after{
-  content:'';position:absolute;bottom:-20%;left:-10%;width:50%;height:60%;
-  background:radial-gradient(circle,rgba(255,138,61,.10),transparent 70%);
-  pointer-events:none;
+  content:'';position:absolute;bottom:-20%;left:-15%;width:55%;height:55%;
+  background:radial-gradient(circle,rgba(255,138,61,.12),transparent 70%);pointer-events:none;
 }
-.snow-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.snow{
-  position:absolute;top:-5%;border-radius:50%;background:rgba(255,255,255,.55);
-  animation:fall linear infinite;
+.snow-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.snow-p{
+  position:absolute;border-radius:50%;background:rgba(255,255,255,.5);
+  animation:snowfall linear infinite;
 }
-@keyframes fall{
-  0%{transform:translateY(0) translateX(0);opacity:0}
-  8%{opacity:.8}
-  100%{transform:translateY(115vh) translateX(20px);opacity:0}
+@keyframes snowfall{
+  0%{transform:translateY(-10px);opacity:0}
+  10%{opacity:.7}
+  100%{transform:translateY(105vh);opacity:0}
 }
-.hero-grid{
-  position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;
+.eyebrow-pill{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:rgba(255,255,255,.08);border:1px solid rgba(63,211,232,.3);
+  color:var(--teal-soft);font-size:.65rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  padding:.38rem .8rem;border-radius:20px;margin-bottom:1rem;
 }
-@media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:2.5rem;text-align:center}}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);
-  border:1px solid rgba(63,211,232,.35);color:var(--teal-soft);font-size:.74rem;font-weight:700;
-  letter-spacing:.08em;text-transform:uppercase;padding:.45rem .95rem;border-radius:30px;margin-bottom:1.3rem;
-  animation:fadeUp .8s var(--ease) both;
-}
-.pulse-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:pulseDot 1.8s infinite}
-@keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+.pulse{width:6px;height:6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:pls 1.8s infinite}
+@keyframes pls{0%{box-shadow:0 0 0 0 rgba(74,222,128,.55)}70%{box-shadow:0 0 0 7px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
 .hero h1{
-  font-size:3.1rem;font-weight:800;color:#fff;line-height:1.08;margin-bottom:1.1rem;
-  animation:fadeUp .9s .08s var(--ease) both;
+  font-size:1.78rem;font-weight:800;color:#fff;line-height:1.1;margin-bottom:.8rem;
+  position:relative;z-index:1;
 }
-.hero h1 em{font-style:normal;color:var(--teal-soft);position:relative}
-.hero p.lead{
-  font-size:1.12rem;color:rgba(228,244,248,.86);max-width:520px;line-height:1.65;margin-bottom:1.8rem;
-  animation:fadeUp .9s .16s var(--ease) both;
+.hero h1 em{font-style:normal;color:var(--teal-soft)}
+.hero .lead{
+  color:rgba(228,244,248,.84);font-size:.88rem;line-height:1.65;margin-bottom:1.4rem;
+  position:relative;z-index:1;
 }
-@media (max-width:980px){.hero p.lead{max-width:560px;margin-left:auto;margin-right:auto}}
-.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap;animation:fadeUp .9s .24s var(--ease) both;margin-bottom:2.4rem}
-@media (max-width:980px){.hero-ctas{justify-content:center}}
-.btn{
-  display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:.94rem;
-  padding:1rem 1.7rem;border-radius:12px;transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;
-  position:relative;overflow:hidden;
+.hero-btns{display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.6rem;position:relative;z-index:1}
+.btn-main{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  background:linear-gradient(135deg,var(--amber),var(--amber-deep));
+  color:#fff;font-weight:700;font-size:.9rem;padding:.9rem;border-radius:12px;
+  box-shadow:0 8px 22px rgba(255,138,61,.42);active-transform:scale(.97);
 }
-.btn-primary{
-  background:linear-gradient(135deg,var(--amber),var(--amber-deep));color:#fff;
-  box-shadow:0 10px 28px rgba(255,138,61,.4);
+.btn-outline{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  background:rgba(255,255,255,.07);color:#fff;font-weight:600;font-size:.88rem;
+  padding:.82rem;border-radius:12px;border:1.5px solid rgba(255,255,255,.28);
 }
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(255,138,61,.5)}
-.btn-primary:active{transform:translateY(-1px)}
-.btn-ghost{
-  background:rgba(255,255,255,.06);color:#fff;border:1.5px solid rgba(255,255,255,.35);
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;
+  position:relative;z-index:1;margin-bottom:1.6rem;
 }
-.btn-ghost:hover{background:rgba(255,255,255,.14);transform:translateY(-3px)}
-.hero-stats{display:flex;gap:2.2rem;animation:fadeUp .9s .32s var(--ease) both;flex-wrap:wrap}
-@media (max-width:980px){.hero-stats{justify-content:center}}
-.hstat strong{display:block;font-family:'Sora',sans-serif;font-size:1.7rem;font-weight:800;color:#fff;line-height:1}
-.hstat span{font-size:.75rem;color:rgba(228,244,248,.7);font-weight:600;letter-spacing:.02em}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.hstat{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;padding:.7rem .4rem;text-align:center;
+}
+.hstat strong{display:block;font-family:'Sora',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;line-height:1}
+.hstat span{font-size:.6rem;color:rgba(228,244,248,.7);font-weight:600;letter-spacing:.01em;line-height:1.3;display:block;margin-top:.2rem}
 
-/* ---- hero visual / live tracker ---- */
-.hero-visual{position:relative;animation:fadeUp 1s .2s var(--ease) both}
-.visual-photo{
-  border-radius:var(--r-lg);overflow:hidden;box-shadow:0 30px 60px -15px rgba(2,16,28,.55);
-  border:1px solid rgba(255,255,255,.12);position:relative;
+/* ---- HERO ILLUSTRATION ---- */
+.hero-illus-wrap{
+  border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 20px 40px -10px rgba(2,16,28,.55);position:relative;z-index:1;margin-bottom:1rem;
 }
-.visual-photo img{width:100%;height:420px;object-fit:cover;display:block}
-.visual-photo::after{
-  content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,37,57,0) 50%,rgba(6,37,57,.55) 100%);
-}
+
+/* ---- TRACK CARD ---- */
 .track-card{
-  position:absolute;left:-1.4rem;bottom:-1.6rem;width:min(280px,82%);
-  background:rgba(14,42,58,.92);backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:1rem 1.1rem;
-  box-shadow:0 20px 40px -12px rgba(2,16,28,.5);
-  animation:floatCard 5s ease-in-out infinite;
+  background:rgba(14,42,58,.94);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:.9rem 1rem;
+  position:relative;z-index:1;box-shadow:0 14px 30px -8px rgba(2,16,28,.45);
 }
-@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@media (max-width:980px){.track-card{left:50%;transform:translateX(-50%);bottom:-1.8rem}}
-.track-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem}
-.track-label{display:flex;align-items:center;gap:.4rem;color:var(--teal-soft);font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-.track-eta{color:#fff;font-family:'Sora',sans-serif;font-weight:800;font-size:.9rem}
-.track-map{
-  position:relative;height:78px;border-radius:10px;overflow:hidden;
+.tc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem}
+.tc-label{display:flex;align-items:center;gap:.4rem;color:var(--teal-soft);font-size:.62rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.tc-eta{color:#fff;font-family:'Sora',sans-serif;font-weight:800;font-size:.86rem}
+.tc-map{
+  height:66px;border-radius:10px;overflow:hidden;position:relative;margin-bottom:.65rem;
   background:
-    linear-gradient(90deg, rgba(63,211,232,.13) 1px, transparent 1px) 0 0/22px 22px,
-    linear-gradient(0deg, rgba(63,211,232,.13) 1px, transparent 1px) 0 0/22px 22px,
-    #0E3650;
-  margin-bottom:.7rem;
+    linear-gradient(90deg,rgba(63,211,232,.12) 1px,transparent 1px) 0 0/20px 20px,
+    linear-gradient(0deg,rgba(63,211,232,.12) 1px,transparent 1px) 0 0/20px 20px,
+    #0C3350;
 }
-.track-route{position:absolute;top:50%;left:8%;right:8%;height:2px;background:repeating-linear-gradient(90deg,var(--teal-soft) 0 6px,transparent 6px 11px);}
-.track-pin{position:absolute;top:50%;width:13px;height:13px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(255,138,61,.25);transform:translate(-50%,-50%);}
-.track-pin.start{left:8%;background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.25)}
-.track-pin.end{left:92%}
-.track-pin.tech{
-  left:8%;animation:moveTech 4.5s ease-in-out infinite;z-index:2;
+.tc-route{position:absolute;top:50%;left:8%;right:8%;height:2px;background:repeating-linear-gradient(90deg,var(--teal-soft) 0 5px,transparent 5px 9px)}
+.tc-dot{position:absolute;top:50%;width:11px;height:11px;border-radius:50%;transform:translate(-50%,-50%)}
+.tc-start{left:8%;background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.22)}
+.tc-end{left:92%;background:var(--amber);box-shadow:0 0 0 4px rgba(255,138,61,.22)}
+.tc-tech{
+  position:absolute;top:50%;left:8%;z-index:2;transform:translate(-50%,-50%);
+  width:24px;height:24px;border-radius:50%;background:var(--teal);
+  display:flex;align-items:center;justify-content:center;font-size:.75rem;
+  animation:techGo 4.5s ease-in-out infinite, tcPulse 1.8s infinite;
 }
-.track-pin.tech::after{
-  content:'🔧';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;
+@keyframes techGo{0%{left:8%}50%{left:88%}100%{left:8%}}
+@keyframes tcPulse{0%{box-shadow:0 0 0 0 rgba(0,182,216,.5)}70%{box-shadow:0 0 0 8px rgba(0,182,216,0)}100%{box-shadow:0 0 0 0 rgba(0,182,216,0)}}
+.tc-person{display:flex;align-items:center;gap:.6rem}
+.tc-av{
+  width:32px;height:32px;border-radius:50%;border:2px solid var(--teal-soft);overflow:hidden;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
 }
-@keyframes moveTech{0%{left:8%}50%{left:88%}100%{left:8%}}
-.track-row{display:flex;align-items:center;gap:.6rem}
-.track-av{
-  width:34px;height:34px;border-radius:50%;flex-shrink:0;object-fit:cover;border:2px solid var(--teal-soft);
-}
-.track-name{color:#fff;font-size:.82rem;font-weight:700}
-.track-sub{color:rgba(228,244,248,.65);font-size:.7rem}
+.tc-name{color:#fff;font-size:.78rem;font-weight:700;line-height:1.1}
+.tc-sub{color:rgba(228,244,248,.6);font-size:.65rem}
 
-/* ===================== SECTION SHELL ===================== */
-section{padding:5.5rem 0}
-@media (max-width:720px){section{padding:3.6rem 0}}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:.5rem;color:var(--amber-deep);font-size:.72rem;font-weight:800;
-  letter-spacing:.12em;text-transform:uppercase;margin-bottom:.8rem;
+/* ============ SECTION BASE ============ */
+section{padding:2.4rem 0}
+.eyebrow-label{
+  display:inline-flex;align-items:center;gap:.4rem;color:var(--amber-deep);
+  font-size:.64rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:.5rem;
 }
-.eyebrow::before{content:'';width:18px;height:2px;background:var(--amber-deep);display:inline-block}
-.sec-title{font-size:2.1rem;font-weight:800;color:var(--ocean-deep);margin-bottom:.7rem;line-height:1.15}
-.sec-sub{color:var(--slate);font-size:1.02rem;max-width:580px;line-height:1.6}
-.sec-head{margin-bottom:2.6rem}
-.sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
-.sec-head.center .sec-sub{margin-left:auto;margin-right:auto}
+.eyebrow-label::before{content:'';width:14px;height:2px;background:var(--amber-deep);display:inline-block}
+.sec-title{font-size:1.45rem;font-weight:800;color:var(--ocean-deep);margin-bottom:.5rem;line-height:1.15}
+.sec-sub{color:var(--slate);font-size:.86rem;line-height:1.6}
+.sec-head{margin-bottom:1.6rem;text-align:center}
 
-/* ===================== ABOUT ===================== */
+/* ============ ABOUT ============ */
 .about{background:var(--white)}
-.about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:3.2rem;align-items:center}
-@media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:2.2rem}}
-.about-photo-wrap{position:relative}
-.about-photo{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-soft)}
-.about-photo img{width:100%;height:430px;object-fit:cover}
-.badge-float{
-  position:absolute;bottom:-1.3rem;right:-1.1rem;background:var(--white);border-radius:16px;
-  padding:.9rem 1.2rem;box-shadow:0 16px 30px -8px rgba(10,53,86,.22);display:flex;align-items:center;gap:.7rem;
+.about-illus-wrap{
+  border-radius:14px;overflow:hidden;margin-bottom:1.2rem;
+  border:1px solid var(--line);box-shadow:0 8px 24px -8px rgba(10,53,86,.14);
+  position:relative;
+}
+.about-badge{
+  position:absolute;bottom:.8rem;right:.8rem;background:var(--white);border-radius:12px;
+  padding:.65rem .9rem;box-shadow:0 8px 20px -4px rgba(10,53,86,.22);
+  border:1px solid var(--line);display:flex;align-items:center;gap:.5rem;
+}
+.about-badge .num{font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:var(--ocean);line-height:1}
+.about-badge .lbl{font-size:.64rem;color:var(--slate);font-weight:600;line-height:1.3}
+.about-copy p{color:var(--slate);font-size:.875rem;line-height:1.72;margin-bottom:.9rem}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:1.2rem}
+.trust-item{
+  background:var(--frost);border-radius:10px;padding:.7rem .5rem;text-align:center;
   border:1px solid var(--line);
 }
-@media (max-width:480px){.badge-float{right:auto;left:1rem;bottom:-1.1rem}}
-.badge-float .num{font-family:'Sora',sans-serif;font-size:1.7rem;font-weight:800;color:var(--ocean)}
-.badge-float .lbl{font-size:.72rem;color:var(--slate);font-weight:600;line-height:1.3}
-.about-copy p{color:var(--slate);line-height:1.75;margin-bottom:1.1rem;font-size:1rem}
-.trust-row{display:flex;gap:1.6rem;margin-top:1.6rem;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:.6rem}
-.trust-ico{
-  width:42px;height:42px;border-radius:11px;background:var(--frost);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;
-}
-.trust-item strong{display:block;font-size:.88rem;color:var(--ink);font-weight:700}
-.trust-item span{font-size:.74rem;color:var(--slate)}
+.trust-ico{font-size:1.3rem;margin-bottom:.3rem}
+.trust-item strong{display:block;font-size:.72rem;color:var(--ink);font-weight:700;line-height:1.2}
+.trust-item span{font-size:.6rem;color:var(--slate);line-height:1.3;display:block;margin-top:.15rem}
 
-/* ===================== SERVICES ===================== */
+/* ============ SERVICES ============ */
 .services{background:var(--frost)}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-@media (max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.svc-grid{grid-template-columns:1fr}}
+.svc-list{display:flex;flex-direction:column;gap:.75rem}
 .svc-card{
-  background:var(--white);border-radius:var(--r-md);padding:1.8rem 1.6rem;border:1px solid var(--line);
-  transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s;position:relative;overflow:hidden;
+  background:var(--white);border-radius:12px;border:1px solid var(--line);
+  padding:1rem 1.1rem;display:flex;align-items:flex-start;gap:.9rem;
+  box-shadow:0 2px 12px rgba(10,53,86,.06);position:relative;overflow:hidden;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease);
 }
 .svc-card::before{
-  content:'';position:absolute;top:0;left:0;width:4px;height:0;background:linear-gradient(180deg,var(--teal),var(--amber));
-  transition:height .35s var(--ease);
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--teal),var(--amber));border-radius:0 2px 2px 0;
 }
-.svc-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-soft);border-color:transparent}
-.svc-card:hover::before{height:100%}
-.svc-ico{
-  width:54px;height:54px;border-radius:14px;background:linear-gradient(145deg,var(--frost),#fff);
-  display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.1rem;
-  box-shadow:inset 0 0 0 1px var(--line);transition:transform .35s var(--ease);
+.svc-ico-wrap{
+  width:48px;height:48px;border-radius:12px;background:var(--frost);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  border:1px solid var(--line);
 }
-.svc-card:hover .svc-ico{transform:scale(1.08) rotate(-4deg)}
-.svc-card h3{font-size:1.08rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
-.svc-card p{color:var(--slate);font-size:.88rem;line-height:1.55;margin-bottom:1rem}
-.svc-price{font-size:.78rem;font-weight:800;color:var(--ocean);background:var(--frost);display:inline-block;padding:.3rem .7rem;border-radius:8px}
-.svc-card:hover .svc-price{background:var(--ocean);color:#fff}
+.svc-info h3{font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.2rem;line-height:1.2}
+.svc-info p{font-size:.78rem;color:var(--slate);line-height:1.5;margin-bottom:.4rem}
+.svc-price{
+  font-size:.7rem;font-weight:800;color:var(--ocean);background:var(--frost);
+  display:inline-block;padding:.22rem .55rem;border-radius:6px;border:1px solid var(--line);
+}
+/* Offer badge */
+.offer-badge{
+  background:linear-gradient(135deg,var(--ocean-deep),var(--ocean));
+  border-radius:14px;padding:1.1rem;margin:0 1.1rem 1.5rem;
+  border:1px solid rgba(63,211,232,.2);display:flex;align-items:center;gap:.9rem;
+}
+.offer-badge .tag{
+  background:var(--amber);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:.22rem .5rem;border-radius:5px;margin-bottom:.3rem;display:inline-block;
+}
+.offer-badge h4{color:#fff;font-size:.95rem;font-weight:800;line-height:1.2;margin-bottom:.15rem}
+.offer-badge .price{color:var(--teal-soft);font-family:'Sora',sans-serif;font-size:1.25rem;font-weight:800}
+.offer-badge .oldp{color:rgba(228,244,248,.5);text-decoration:line-through;font-size:.72rem;margin-left:.35rem}
+.offer-ico{font-size:2rem;flex-shrink:0}
 
-/* ===================== LIVE TRACKER STRIP ===================== */
-.tracker-strip{
-  background:linear-gradient(120deg,var(--ocean-deep),var(--ocean) 60%,#0B4565);
-  position:relative;overflow:hidden;
+/* ============ TRACKER ============ */
+.tracker{
+  background:linear-gradient(145deg,var(--ocean-deep),var(--ocean));
+  padding:2.4rem 1.1rem;
 }
-.tracker-strip::before{
-  content:'';position:absolute;top:-30%;left:60%;width:50%;height:140%;
-  background:radial-gradient(circle,rgba(0,182,216,.18),transparent 65%);
+.tracker .eyebrow-label{color:var(--teal-soft)}
+.tracker .eyebrow-label::before{background:var(--teal-soft)}
+.tracker h2{color:#fff;font-size:1.4rem;font-weight:800;margin-bottom:.6rem;line-height:1.15}
+.tracker p{color:rgba(228,244,248,.82);font-size:.84rem;line-height:1.65;margin-bottom:1.1rem}
+.tr-list{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.4rem}
+.tr-list li{
+  display:flex;align-items:flex-start;gap:.55rem;color:rgba(228,244,248,.9);
+  font-size:.82rem;line-height:1.5;list-style:none;
 }
-.tracker-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;z-index:1}
-@media (max-width:900px){.tracker-grid{grid-template-columns:1fr;gap:2.2rem}}
-.tracker-copy .eyebrow{color:var(--teal-soft)}
-.tracker-copy .eyebrow::before{background:var(--teal-soft)}
-.tracker-copy h2{color:#fff;font-size:2rem;margin-bottom:1rem}
-.tracker-copy p{color:rgba(228,244,248,.82);line-height:1.7;margin-bottom:1.5rem;max-width:480px}
-.tracker-list{display:flex;flex-direction:column;gap:.85rem}
-.tracker-list li{display:flex;gap:.7rem;align-items:flex-start;color:rgba(228,244,248,.9);font-size:.92rem;list-style:none}
-.tracker-list li .check{
-  width:20px;height:20px;border-radius:50%;background:rgba(74,222,128,.18);color:#4ADE80;
-  display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;margin-top:.1rem;
+.tr-check{
+  width:18px;height:18px;border-radius:50%;background:rgba(74,222,128,.18);color:#4ADE80;
+  display:flex;align-items:center;justify-content:center;font-size:.6rem;flex-shrink:0;margin-top:.1rem;
 }
-.tracker-demo{
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);
-  padding:1.4rem;backdrop-filter:blur(10px);
+.tracker-demo-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;padding:1rem;
 }
-.demo-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
-.demo-head h4{color:#fff;font-size:.95rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
-.demo-live{display:flex;align-items:center;gap:.4rem;font-size:.68rem;color:#4ADE80;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
-.demo-map{
-  position:relative;height:200px;border-radius:14px;overflow:hidden;margin-bottom:1rem;
+.tdc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.tdc-head h4{color:#fff;font-size:.86rem;font-weight:700}
+.tdc-live{display:flex;align-items:center;gap:.35rem;font-size:.62rem;color:#4ADE80;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+.tdc-map{
+  height:130px;border-radius:10px;overflow:hidden;position:relative;margin-bottom:.8rem;
   background:
-    linear-gradient(90deg, rgba(63,211,232,.12) 1px, transparent 1px) 0 0/30px 30px,
-    linear-gradient(0deg, rgba(63,211,232,.12) 1px, transparent 1px) 0 0/30px 30px,
-    #0C3450;
+    linear-gradient(90deg,rgba(63,211,232,.1) 1px,transparent 1px) 0 0/25px 25px,
+    linear-gradient(0deg,rgba(63,211,232,.1) 1px,transparent 1px) 0 0/25px 25px,
+    #0C3350;
 }
-.demo-road{position:absolute;top:62%;left:6%;width:88%;height:3px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.5) 0 9px,transparent 9px 16px);border-radius:3px}
-.demo-pin{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.3rem}
-.demo-pin .dot{width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.demo-pin.home .dot{background:#4ADE80;box-shadow:0 0 0 5px rgba(74,222,128,.22)}
-.demo-pin.shop .dot{background:var(--amber);box-shadow:0 0 0 5px rgba(255,138,61,.22)}
-.demo-pin .tag{font-size:.62rem;color:#fff;font-weight:700;background:rgba(6,37,57,.85);padding:.18rem .5rem;border-radius:6px;white-space:nowrap}
-.demo-tech{
-  position:absolute;top:62%;left:14%;transform:translate(-50%,-50%);z-index:3;
-  width:30px;height:30px;border-radius:50%;background:var(--teal);
-  display:flex;align-items:center;justify-content:center;font-size:.95rem;
-  box-shadow:0 0 0 0 rgba(0,182,216,.6);
-  animation:techMove 6s ease-in-out infinite, techPulse 1.8s infinite;
+.tdc-road{position:absolute;top:65%;left:6%;width:88%;height:2px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.45) 0 8px,transparent 8px 14px)}
+.tdc-pin{position:absolute;top:65%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.25rem}
+.tdc-pin .dot{width:12px;height:12px;border-radius:50%}
+.tdc-pin.home .dot{background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.22)}
+.tdc-pin.dest .dot{background:var(--amber);box-shadow:0 0 0 4px rgba(255,138,61,.22)}
+.tdc-pin .tag{font-size:.55rem;color:#fff;background:rgba(6,37,57,.85);padding:.14rem .42rem;border-radius:5px;white-space:nowrap;font-weight:700}
+.tdc-tech{
+  position:absolute;top:65%;left:12%;transform:translate(-50%,-50%);z-index:3;
+  width:26px;height:26px;border-radius:50%;background:var(--teal);
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;
+  animation:tdcMove 5s ease-in-out infinite,tdcPulse 1.8s infinite;
 }
-@keyframes techMove{0%{left:14%}45%{left:84%}55%{left:84%}100%{left:14%}}
-@keyframes techPulse{0%{box-shadow:0 0 0 0 rgba(0,182,216,.55)}70%{box-shadow:0 0 0 10px rgba(0,182,216,0)}100%{box-shadow:0 0 0 0 rgba(0,182,216,0)}}
-.demo-foot{display:flex;align-items:center;gap:.8rem}
-.demo-av{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--teal-soft)}
-.demo-foot strong{display:block;color:#fff;font-size:.86rem}
-.demo-foot span{color:rgba(228,244,248,.65);font-size:.72rem}
-.demo-note{margin-left:auto;font-size:.65rem;color:rgba(228,244,248,.5);text-align:right;line-height:1.3;max-width:120px}
+@keyframes tdcMove{0%{left:12%}45%{left:86%}55%{left:86%}100%{left:12%}}
+@keyframes tdcPulse{0%{box-shadow:0 0 0 0 rgba(0,182,216,.5)}70%{box-shadow:0 0 0 9px rgba(0,182,216,0)}100%{box-shadow:0 0 0 0 rgba(0,182,216,0)}}
+.tdc-foot{display:flex;align-items:center;gap:.65rem}
+.tdc-av{width:34px;height:34px;border-radius:50%;overflow:hidden;border:2px solid var(--teal-soft);flex-shrink:0}
+.tdc-foot strong{color:#fff;font-size:.8rem;display:block}
+.tdc-foot span{color:rgba(228,244,248,.6);font-size:.65rem}
+.tdc-note{margin-left:auto;font-size:.58rem;color:rgba(228,244,248,.45);text-align:right;line-height:1.3}
 
-/* ===================== REVIEWS ===================== */
+/* ============ REVIEWS ============ */
 .reviews{background:var(--white)}
-.rating-banner{
-  display:flex;align-items:center;gap:1.3rem;background:var(--frost);border-radius:var(--r-md);
-  padding:1.3rem 1.7rem;margin-bottom:2.4rem;flex-wrap:wrap;
+.rating-strip{
+  background:var(--frost);border-radius:12px;border:1px solid var(--line);
+  padding:.9rem 1rem;margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:1rem;
 }
-.rating-num{font-family:'Sora',sans-serif;font-size:2.6rem;font-weight:800;color:var(--ocean);line-height:1}
-.rating-stars{color:var(--amber);font-size:1.2rem;letter-spacing:.1em}
-.rating-meta{font-size:.85rem;color:var(--slate);font-weight:600}
-.rev-track-wrap{overflow:hidden;position:relative}
-.rev-track{display:flex;gap:1.2rem;}
+.rating-num{font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:800;color:var(--ocean);line-height:1}
+.rating-stars{color:var(--amber);font-size:1.05rem;letter-spacing:.08em}
+.rating-meta{font-size:.75rem;color:var(--slate);font-weight:600}
+.rev-scroller{overflow-x:auto;margin:0 -1.1rem;padding:0 1.1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.rev-scroller::-webkit-scrollbar{display:none}
+.rev-track{display:flex;gap:.8rem;width:max-content;padding-bottom:.5rem}
 .rev-card{
-  flex:0 0 320px;background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);
-  padding:1.6rem;box-shadow:var(--shadow-card);
+  width:78vw;max-width:290px;background:var(--white);border:1px solid var(--line);
+  border-radius:12px;padding:1.1rem;box-shadow:0 2px 14px rgba(10,53,86,.07);
+  scroll-snap-align:start;flex-shrink:0;
 }
-@media (max-width:560px){.rev-card{flex:0 0 84vw}}
-.rev-stars{color:var(--amber);font-size:.95rem;margin-bottom:.8rem;letter-spacing:.08em}
-.rev-card blockquote{color:var(--ink);font-size:.92rem;line-height:1.6;margin-bottom:1.1rem}
-.rev-person{display:flex;align-items:center;gap:.7rem}
-.rev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(145deg,var(--teal),var(--ocean));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
-.rev-person strong{display:block;font-size:.85rem;color:var(--ink)}
-.rev-person span{font-size:.72rem;color:var(--slate)}
-.rev-controls{display:flex;gap:.6rem;justify-content:center;margin-top:1.6rem}
-.rev-btn{
-  width:42px;height:42px;border-radius:50%;background:var(--frost);display:flex;align-items:center;justify-content:center;
-  color:var(--ocean);font-size:1rem;transition:background .2s,transform .2s;
+.rev-stars{color:var(--amber);font-size:.85rem;margin-bottom:.6rem;letter-spacing:.06em}
+.rev-card blockquote{color:var(--ink);font-size:.82rem;line-height:1.58;margin-bottom:.9rem}
+.rev-person{display:flex;align-items:center;gap:.55rem}
+.rev-av{
+  width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,var(--teal),var(--ocean));
+  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0;
 }
-.rev-btn:hover{background:var(--ocean);color:#fff;transform:scale(1.06)}
+.rev-person strong{display:block;font-size:.78rem;color:var(--ink)}
+.rev-person span{font-size:.65rem;color:var(--slate)}
+.rev-dots{display:flex;justify-content:center;gap:.4rem;margin-top:.9rem}
+.rev-dot{width:6px;height:6px;border-radius:50%;background:var(--line)}
+.rev-dot.a{background:var(--ocean);width:16px;border-radius:3px}
 
-/* ===================== CTA BANNER ===================== */
-.cta-banner{
-  background:linear-gradient(120deg,var(--amber-deep),var(--amber) 70%);
-  position:relative;overflow:hidden;padding:3.6rem 0;
+/* ============ CTA STRIP ============ */
+.cta-strip{
+  background:linear-gradient(120deg,var(--amber-deep),var(--amber));
+  padding:2rem 1.1rem;text-align:center;position:relative;overflow:hidden;
 }
-.cta-banner::before{
-  content:'❄';position:absolute;font-size:14rem;right:-2rem;top:-3rem;color:rgba(255,255,255,.08);transform:rotate(15deg);
+.cta-strip::before{content:'❄';position:absolute;font-size:10rem;right:-1.5rem;top:-2rem;color:rgba(255,255,255,.08);transform:rotate(15deg)}
+.cta-strip h3{color:#fff;font-size:1.35rem;font-weight:800;margin-bottom:.4rem;position:relative;z-index:1}
+.cta-strip p{color:rgba(255,255,255,.88);font-size:.84rem;margin-bottom:1.2rem;position:relative;z-index:1}
+.cta-phone-btn{
+  display:flex;align-items:center;justify-content:center;gap:.7rem;
+  background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.4);
+  padding:.95rem 1.4rem;border-radius:14px;color:#fff;font-weight:800;font-size:1.1rem;
+  position:relative;z-index:1;
 }
-.cta-row{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;z-index:1}
-.cta-row h3{color:#fff;font-size:1.8rem;font-weight:800;margin-bottom:.4rem}
-.cta-row p{color:rgba(255,255,255,.88);font-size:.98rem}
-.cta-phone{
-  display:flex;align-items:center;gap:.8rem;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.4);
-  padding:.9rem 1.6rem;border-radius:14px;color:#fff;font-weight:800;font-size:1.3rem;transition:transform .25s,background .25s;
-}
-.cta-phone:hover{background:rgba(255,255,255,.26);transform:translateY(-3px)}
-.cta-phone span.lbl{display:block;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:.1rem}
+.cta-phone-btn small{display:block;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85;line-height:1;margin-bottom:.1rem}
 
-/* ===================== CONTACT ===================== */
+/* ============ CONTACT ============ */
 .contact{background:var(--frost)}
-.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:2.6rem}
-@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
-.contact-card{background:var(--white);border-radius:var(--r-lg);border:1px solid var(--line);padding:1.8rem;box-shadow:var(--shadow-card);height:fit-content}
-.cinfo-row{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid var(--line)}
+.cinfo-card{
+  background:var(--white);border-radius:14px;border:1px solid var(--line);
+  padding:1.2rem;box-shadow:0 2px 14px rgba(10,53,86,.06);margin-bottom:1rem;
+}
+.cinfo-row{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 0;border-bottom:1px solid var(--line)}
 .cinfo-row:last-of-type{border-bottom:none}
-.cinfo-ico{width:46px;height:46px;border-radius:12px;background:var(--frost);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
-.cinfo-row h4{font-size:.82rem;color:var(--slate);font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.25rem}
-.cinfo-row a, .cinfo-row p{font-size:1rem;color:var(--ink);font-weight:700}
-.map-embed{border-radius:14px;overflow:hidden;margin-top:1.2rem;border:1px solid var(--line)}
-.map-embed iframe{width:100%;height:200px;border:0;display:block}
-.form-card{background:var(--white);border-radius:var(--r-lg);border:1px solid var(--line);padding:1.9rem;box-shadow:var(--shadow-card)}
-.form-card h3{font-size:1.25rem;font-weight:800;color:var(--ink);margin-bottom:.3rem}
-.form-card .sub{color:var(--slate);font-size:.88rem;margin-bottom:1.3rem}
-.fg{margin-bottom:1rem}
-.fg label{display:block;font-size:.78rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.cinfo-ico{width:40px;height:40px;border-radius:10px;background:var(--frost);display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.cinfo-row h4{font-size:.68rem;color:var(--slate);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.18rem}
+.cinfo-row a,.cinfo-row p{font-size:.9rem;color:var(--ink);font-weight:700}
+.map-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--line);margin-top:.9rem}
+.map-wrap iframe{width:100%;height:170px;border:0;display:block}
+.form-card{background:var(--white);border-radius:14px;border:1px solid var(--line);padding:1.2rem;box-shadow:0 2px 14px rgba(10,53,86,.06)}
+.form-card h3{font-size:1.1rem;font-weight:800;color:var(--ink);margin-bottom:.2rem}
+.form-card .sub{color:var(--slate);font-size:.8rem;margin-bottom:1rem}
+.fg{margin-bottom:.85rem}
+.fg label{display:block;font-size:.72rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
 .fg input,.fg textarea,.fg select{
-  width:100%;border:1.5px solid var(--line);border-radius:10px;padding:.78rem .9rem;font-size:.92rem;
-  font-family:inherit;background:var(--ice);transition:border-color .2s,box-shadow .2s;
+  width:100%;border:1.5px solid var(--line);border-radius:9px;padding:.72rem .85rem;
+  font-size:.88rem;font-family:inherit;background:var(--ice);color:var(--ink);
+  transition:border-color .2s;
 }
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,182,216,.15);outline:none}
-.fg textarea{resize:vertical;min-height:90px}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--teal);outline:none}
+.fg textarea{resize:vertical;min-height:80px}
 .submit-btn{
-  width:100%;background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));color:#fff;font-weight:700;
-  padding:1rem;border-radius:12px;font-size:.95rem;display:flex;align-items:center;justify-content:center;gap:.5rem;
-  transition:transform .25s,box-shadow .25s;
+  width:100%;background:linear-gradient(135deg,var(--ocean),var(--ocean-deep));
+  color:#fff;font-weight:700;padding:.9rem;border-radius:11px;font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  box-shadow:0 8px 20px -6px rgba(10,53,86,.4);
 }
-.submit-btn:hover{transform:translateY(-2px);box-shadow:0 14px 26px -8px rgba(10,53,86,.4)}
-.form-note{font-size:.74rem;color:var(--slate);text-align:center;margin-top:.8rem}
+.form-note{font-size:.68rem;color:var(--slate);text-align:center;margin-top:.7rem}
 
-/* ===================== FOOTER ===================== */
-footer{background:var(--ocean-deep);color:rgba(228,244,248,.78);padding:3.4rem 0 1.6rem}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.4rem;margin-bottom:2.2rem}
-@media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:2rem}}
-.foot-brand{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
-.foot-brand strong{color:#fff;font-family:'Sora',sans-serif;font-size:1.05rem}
-footer p{font-size:.86rem;line-height:1.65;max-width:320px}
-footer h5{color:#fff;font-size:.85rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:1rem}
-.foot-links{display:flex;flex-direction:column;gap:.65rem}
-.foot-links a{font-size:.87rem;color:rgba(228,244,248,.78);transition:color .2s}
-.foot-links a:hover{color:var(--teal-soft)}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;font-size:.78rem;color:rgba(228,244,248,.55)}
+/* ============ FOOTER ============ */
+footer{background:var(--ocean-deep);color:rgba(228,244,248,.75);padding:2.2rem 1.1rem 1.4rem}
+.foot-brand{display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem}
+.foot-brand strong{color:#fff;font-family:'Sora',sans-serif;font-size:.95rem}
+footer>div>p{font-size:.8rem;line-height:1.65;margin-bottom:1.4rem}
+.foot-links-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.6rem}
+footer h5{color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.7rem}
+.f-links{display:flex;flex-direction:column;gap:.5rem}
+.f-links a,.f-links span{font-size:.8rem;color:rgba(228,244,248,.75)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1rem;font-size:.7rem;color:rgba(228,244,248,.45);text-align:center;line-height:1.6}
 
-/* ===================== FLOATING ACTIONS ===================== */
-.floaters{position:fixed;right:1.2rem;bottom:1.3rem;z-index:600;display:flex;flex-direction:column;gap:.8rem;align-items:flex-end}
-.float-btn{
-  width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;color:#fff;box-shadow:0 10px 24px rgba(2,16,28,.3);transition:transform .25s var(--ease);
+/* ============ FLOATERS ============ */
+.floaters{position:fixed;right:1rem;bottom:1.1rem;z-index:600;display:flex;flex-direction:column;gap:.65rem}
+.fl-btn{
+  width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:#fff;box-shadow:0 8px 20px rgba(2,16,28,.3);
+  transition:transform .2s var(--ease);
 }
-.float-btn:hover{transform:scale(1.08)}
-.float-wa{background:#25D366}
-.float-call{background:linear-gradient(135deg,var(--ocean),var(--teal))}
-.float-wa::before{
-  content:'';position:absolute;inset:0;border-radius:50%;background:#25D366;animation:ripple 2.2s infinite;z-index:-1;
+.fl-btn:active{transform:scale(.93)}
+.fl-wa{background:#25D366;position:relative}
+.fl-wa::before{
+  content:'';position:absolute;inset:0;border-radius:50%;background:#25D366;
+  animation:rpl 2.2s infinite;z-index:-1;
 }
-@keyframes ripple{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.9);opacity:0}}
+@keyframes rpl{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.85);opacity:0}}
+.fl-call{background:linear-gradient(135deg,var(--ocean),var(--teal))}
 
-/* toast */
+/* ============ TOAST ============ */
 .toast{
-  position:fixed;top:1.2rem;left:50%;transform:translateX(-50%) translateY(-90px);
-  background:var(--ocean-deep);color:#fff;padding:.85rem 1.4rem;border-radius:12px;font-size:.86rem;font-weight:600;
-  z-index:2000;box-shadow:0 12px 26px rgba(2,16,28,.35);transition:transform .4s var(--ease);max-width:90vw;text-align:center;
+  position:fixed;top:1rem;left:50%;transform:translateX(-50%) translateY(-80px);
+  background:var(--ocean-deep);color:#fff;padding:.75rem 1.2rem;border-radius:10px;
+  font-size:.8rem;font-weight:600;z-index:2000;max-width:85vw;text-align:center;
+  box-shadow:0 10px 24px rgba(2,16,28,.35);transition:transform .4s var(--ease);
 }
 .toast.show{transform:translateX(-50%) translateY(0)}
-
-/* generic helper */
-.center-text{text-align:center}
-@media (max-width:720px){
-  .hero h1{font-size:2.2rem}
-  .sec-title{font-size:1.6rem}
-}
 </style>
 </head>
 <body>
 
-<div id="loader"><div class="loader-ring"></div><span class="loader-label">Cooling things down…</span></div>
+<div id="loader">
+  <div class="l-ring"></div>
+  <span class="l-txt">Cooling things down…</span>
+</div>
 
-<header id="siteHeader">
-  <div class="wrap nav-row">
-    <a href="#home" class="brand">
-      <span class="brand-mark">❄️</span>
-      <span class="brand-text"><strong>Jorhat City Service</strong><span>AC · Fridge · Washing Machine</span></span>
-    </a>
-    <nav class="main-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#tracker">Live Tracking</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="head-actions">
-      <a href="tel:08453345670" class="head-call">📞 <span class="txt">08453-345670</span></a>
-      <a href="#contact" class="head-cta">Book Service</a>
+<!-- STICKY HEADER -->
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-ico">❄️</div>
+    <div class="brand-txt">
+      <strong>Jorhat City Service</strong>
+      <small>AC · Fridge · Washing Machine</small>
     </div>
   </div>
+  <a href="tel:08453345670" class="hdr-call">📞 Call Now</a>
 </header>
 
-<!-- ============ HERO ============ -->
-<section class="hero" id="home">
-  <div class="snow-layer" id="snowLayer"></div>
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="hero-eyebrow"><span class="pulse-dot"></span> Same-day technician available now</div>
-      <h1>Fast &amp; reliable <em>AC repair</em> in Jorhat, at your doorstep.</h1>
-      <p class="lead">Expert technicians, transparent pricing, and same-day service for AC, fridge &amp; washing machine repairs — trusted by 500+ families across Jorhat with a perfect 4.9★ rating.</p>
-      <div class="hero-ctas">
-        <a href="tel:08453345670" class="btn btn-primary">📞 Call Now — 08453-345670</a>
-        <a href="#contact" class="btn btn-ghost">🛠️ Book a Service</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hstat"><strong>4.9★</strong><span>46 verified reviews</span></div>
-        <div class="hstat"><strong>500+</strong><span>Happy customers</span></div>
-        <div class="hstat"><strong>Same-Day</strong><span>Doorstep service</span></div>
-      </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="snow-wrap" id="snowWrap"></div>
+
+  <div class="eyebrow-pill"><span class="pulse"></span> Same-day service available</div>
+
+  <h1>Fast &amp; reliable <em>AC repair</em> in Jorhat, at your doorstep.</h1>
+  <p class="lead">Expert technicians, transparent pricing &amp; same-day service for AC, fridge &amp; washing machine — trusted by 500+ families across Jorhat.</p>
+
+  <div class="hero-btns">
+    <a href="tel:08453345670" class="btn-main">📞 Call Now — 84533-45670</a>
+    <a href="#contact" class="btn-outline">🛠️ Book a Service</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hstat"><strong>4.9★</strong><span>46 reviews</span></div>
+    <div class="hstat"><strong>500+</strong><span>Customers</span></div>
+    <div class="hstat"><strong>Same-Day</strong><span>Doorstep</span></div>
+  </div>
+
+  <!-- UNIQUE AI HERO ILLUSTRATION: AC Technician Scene -->
+  <div class="hero-illus-wrap">
+    <svg viewBox="0 0 390 230" width="100%" height="230" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hbg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0B3E62"/>
+          <stop offset="100%" stop-color="#0E4A72"/>
+        </linearGradient>
+        <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1A5580"/>
+          <stop offset="100%" stop-color="#0F3D5E"/>
+        </linearGradient>
+        <radialGradient id="glow1" cx="70%" cy="30%" r="40%">
+          <stop offset="0%" stop-color="#3FD3E8" stop-opacity=".22"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+        <radialGradient id="glow2" cx="15%" cy="85%" r="35%">
+          <stop offset="0%" stop-color="#FF8A3D" stop-opacity=".14"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+        <filter id="blur3" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3"/>
+        </filter>
+        <filter id="blur6" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="6"/>
+        </filter>
+        <clipPath id="sceneClip">
+          <rect width="390" height="230" rx="0"/>
+        </clipPath>
+      </defs>
+      <g clip-path="url(#sceneClip)">
+        <!-- Background sky -->
+        <rect width="390" height="230" fill="url(#hbg)"/>
+        <rect width="390" height="230" fill="url(#glow1)"/>
+        <rect width="390" height="230" fill="url(#glow2)"/>
+        <!-- Room wall -->
+        <rect x="0" y="60" width="390" height="200" fill="url(#wall)"/>
+        <!-- Floor line -->
+        <rect x="0" y="195" width="390" height="35" fill="#0A3050"/>
+        <!-- Floor reflection gradient -->
+        <rect x="0" y="195" width="390" height="35" fill="url(#glow1)" opacity=".3"/>
+
+        <!-- WALL AC UNIT — detailed & unique -->
+        <g transform="translate(108, 20)">
+          <!-- AC body shadow -->
+          <rect x="-3" y="3" width="176" height="72" rx="14" fill="#000" opacity=".25" filter="url(#blur3)"/>
+          <!-- AC body -->
+          <rect width="176" height="72" rx="14" fill="#1B4F72"/>
+          <!-- AC face plate -->
+          <rect x="6" y="6" width="164" height="60" rx="10" fill="#2262A0"/>
+          <!-- Brand strip -->
+          <rect x="6" y="6" width="164" height="18" rx="10" fill="#1A5280"/>
+          <!-- Model name bar -->
+          <rect x="8" y="8" width="80" height="14" rx="6" fill="#3FD3E8" opacity=".18"/>
+          <!-- Status LEDs -->
+          <circle cx="148" cy="15" r="4" fill="#4ADE80">
+            <animate attributeName="opacity" values="1;.4;1" dur="1.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="158" cy="15" r="3" fill="#3FD3E8" opacity=".5"/>
+          <!-- Horizontal louvre slats (7) -->
+          <rect x="10" y="30" width="156" height="3.5" rx="1.8" fill="#1A4F78"/>
+          <rect x="10" y="36" width="156" height="3.5" rx="1.8" fill="#1A4F78"/>
+          <rect x="10" y="42" width="156" height="3.5" rx="1.8" fill="#1A4F78"/>
+          <rect x="10" y="48" width="156" height="3.5" rx="1.8" fill="#1A4F78"/>
+          <rect x="10" y="54" width="156" height="3.5" rx="1.8" fill="#1A4F78"/>
+          <!-- Control panel right -->
+          <rect x="138" y="30" width="32" height="28" rx="5" fill="#143E5E"/>
+          <circle cx="150" cy="38" r="4.5" fill="#FF8A3D" opacity=".9"/>
+          <rect x="140" y="47" width="28" height="3" rx="1.5" fill="#3FD3E8" opacity=".4"/>
+          <rect x="140" y="52" width="18" height="3" rx="1.5" fill="#3FD3E8" opacity=".25"/>
+          <!-- Air flow lines with animation -->
+          <g opacity=".5">
+            <path d="M14 80 Q25 90 14 100" stroke="#3FD3E8" stroke-width="2" stroke-linecap="round" fill="none">
+              <animate attributeName="d" values="M14 80 Q25 90 14 100;M14 80 Q20 90 14 100;M14 80 Q25 90 14 100" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M32 78 Q44 92 32 106" stroke="#3FD3E8" stroke-width="2.2" stroke-linecap="round" fill="none">
+              <animate attributeName="d" values="M32 78 Q44 92 32 106;M32 78 Q38 92 32 106;M32 78 Q44 92 32 106" dur="2.4s" repeatCount="indefinite"/>
+            </path>
+            <path d="M52 80 Q63 93 52 108" stroke="#3FD3E8" stroke-width="2" stroke-linecap="round" fill="none">
+              <animate attributeName="d" values="M52 80 Q63 93 52 108;M52 80 Q58 93 52 108;M52 80 Q63 93 52 108" dur="2.1s" repeatCount="indefinite"/>
+            </path>
+            <path d="M72 79 Q83 92 72 107" stroke="#3FD3E8" stroke-width="1.8" stroke-linecap="round" fill="none">
+              <animate attributeName="d" values="M72 79 Q83 92 72 107;M72 79 Q78 92 72 107;M72 79 Q83 92 72 107" dur="2.6s" repeatCount="indefinite"/>
+            </path>
+            <path d="M92 80 Q100 92 92 106" stroke="#3FD3E8" stroke-width="1.6" stroke-linecap="round" fill="none">
+              <animate attributeName="d" values="M92 80 Q100 92 92 106;M92 80 Q96 92 92 106;M92 80 Q100 92 92 106" dur="2.3s" repeatCount="indefinite"/>
+            </path>
+            <!-- Cold droplets -->
+            <circle cx="22" cy="112" r="2.5" fill="#3FD3E8" opacity=".6">
+              <animate attributeName="cy" values="90;130" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0;.7;0" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="44" cy="95" r="2" fill="#3FD3E8" opacity=".5">
+              <animate attributeName="cy" values="90;135" dur="2.4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0;.6;0" dur="2.4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="64" cy="100" r="2.2" fill="#3FD3E8" opacity=".5">
+              <animate attributeName="cy" values="90;130" dur="2.2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0;.5;0" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <!-- Pipe connection going down-right -->
+          <rect x="155" y="58" width="28" height="8" rx="4" fill="#1A3E5A"/>
+          <rect x="155" y="60" width="28" height="4" rx="2" fill="#3FD3E8" opacity=".2"/>
+        </g>
+
+        <!-- TECHNICIAN — unique, detailed, professional -->
+        <g transform="translate(230,80)">
+          <!-- Shadow -->
+          <ellipse cx="38" cy="148" rx="44" ry="8" fill="#000" opacity=".2" filter="url(#blur6)"/>
+          <!-- Legs -->
+          <rect x="20" y="108" width="16" height="42" rx="7" fill="#0D3A55"/>
+          <rect x="40" y="108" width="16" height="42" rx="7" fill="#0D3A55"/>
+          <!-- Shoes -->
+          <rect x="16" y="145" width="22" height="9" rx="4" fill="#0A2535"/>
+          <rect x="36" y="145" width="22" height="9" rx="4" fill="#0A2535"/>
+          <!-- Uniform body (jumpsuit style) -->
+          <rect x="10" y="52" width="56" height="62" rx="16" fill="#00B6D8"/>
+          <!-- Uniform chest stripe -->
+          <rect x="28" y="52" width="20" height="62" fill="#0099BB" rx="0"/>
+          <rect x="28" y="52" width="20" height="8" fill="#0099BB"/>
+          <!-- ID badge -->
+          <rect x="14" y="64" width="18" height="12" rx="3" fill="#fff" opacity=".18"/>
+          <rect x="16" y="66" width="10" height="2" rx="1" fill="#fff" opacity=".5"/>
+          <rect x="16" y="70" width="7" height="2" rx="1" fill="#fff" opacity=".35"/>
+          <!-- Collar -->
+          <path d="M28 52 L38 65 L48 52" fill="#0092B2"/>
+          <!-- LEFT arm (slightly raised, holding tool) -->
+          <rect x="-6" y="60" width="18" height="48" rx="9" fill="#00B6D8" transform="rotate(-22 5 84)"/>
+          <!-- Glove left -->
+          <ellipse cx="-8" cy="102" rx="9" ry="8" fill="#E8B98A" transform="rotate(-22 5 84)"/>
+          <!-- RIGHT arm (bent, holding gas can) -->
+          <rect x="64" y="55" width="18" height="52" rx="9" fill="#00B6D8" transform="rotate(28 73 81)"/>
+          <!-- Glove right -->
+          <ellipse cx="88" cy="95" rx="9" ry="8" fill="#E8B98A" transform="rotate(28 73 81)"/>
+
+          <!-- GAS CYLINDER in right hand -->
+          <g transform="translate(82,75) rotate(18)">
+            <rect x="0" y="0" width="16" height="36" rx="5" fill="#E4E4E4"/>
+            <rect x="2" y="2" width="12" height="10" rx="3" fill="#3FD3E8"/>
+            <rect x="3" y="14" width="10" height="16" rx="2" fill="#C8C8C8"/>
+            <rect x="4" y="14" width="8" height="6" rx="1" fill="#FF8A3D" opacity=".7"/>
+            <rect x="5" y="0" width="6" height="4" rx="2" fill="#888"/>
+            <!-- Gas gauge -->
+            <circle cx="8" cy="28" r="4" fill="#333"/>
+            <circle cx="8" cy="28" r="2.5" fill="#E8F0FE"/>
+            <line x1="8" y1="28" x2="9.5" y2="26" stroke="#4ADE80" stroke-width="1.2" stroke-linecap="round"/>
+          </g>
+
+          <!-- WRENCH in left hand -->
+          <g transform="translate(-26,94) rotate(-35)">
+            <rect x="0" y="0" width="5" height="28" rx="2.5" fill="#666"/>
+            <rect x="-3" y="-5" width="11" height="9" rx="3" fill="#555"/>
+            <rect x="-3" y="24" width="11" height="7" rx="2" fill="#555"/>
+            <rect x="-1" y="-5" width="7" height="38" rx="2" fill="#888" opacity=".3"/>
+          </g>
+
+          <!-- Head -->
+          <circle cx="38" cy="30" r="22" fill="#E8B98A"/>
+          <!-- Helmet -->
+          <path d="M16 28 Q16 10 38 8 Q60 10 60 28 Q56 20 38 18 Q20 20 16 28Z" fill="#FF8A3D"/>
+          <rect x="14" y="27" width="48" height="5" rx="2" fill="#FF8A3D"/>
+          <!-- Helmet logo -->
+          <circle cx="38" cy="16" r="4" fill="#fff" opacity=".25"/>
+          <!-- Face -->
+          <circle cx="29" cy="33" r="2.5" fill="#5C3A1E"/>
+          <circle cx="47" cy="33" r="2.5" fill="#5C3A1E"/>
+          <!-- Smile -->
+          <path d="M30 42 Q38 47 46 42" stroke="#5C3A1E" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <!-- Safety goggles -->
+          <rect x="22" y="28" width="16" height="11" rx="5" fill="#3FD3E8" opacity=".35" stroke="#555" stroke-width="1.2"/>
+          <rect x="40" y="28" width="16" height="11" rx="5" fill="#3FD3E8" opacity=".35" stroke="#555" stroke-width="1.2"/>
+          <rect x="37" y="31" width="4" height="5" rx="2" fill="#555"/>
+        </g>
+
+        <!-- TOOLBOX on floor -->
+        <g transform="translate(310,158)">
+          <rect x="0" y="10" width="58" height="36" rx="5" fill="#1A3E5A"/>
+          <rect x="0" y="10" width="58" height="10" rx="5" fill="#2262A0"/>
+          <rect x="18" y="5" width="22" height="8" rx="3" fill="#2262A0"/>
+          <rect x="4" y="24" width="12" height="6" rx="2" fill="#3FD3E8" opacity=".5"/>
+          <rect x="20" y="24" width="12" height="6" rx="2" fill="#FF8A3D" opacity=".6"/>
+          <rect x="36" y="24" width="12" height="6" rx="2" fill="#3FD3E8" opacity=".4"/>
+          <!-- Screwdriver sticking out -->
+          <rect x="44" y="2" width="5" height="14" rx="2" fill="#888" transform="rotate(12 46 9)"/>
+          <rect x="42" y="-2" width="5" height="7" rx="1" fill="#e74"/>
+        </g>
+
+        <!-- TEMPERATURE display overlay (top-right) -->
+        <g transform="translate(296, 18)">
+          <rect width="82" height="46" rx="10" fill="rgba(14,42,58,.85)"/>
+          <rect x="1" y="1" width="80" height="44" rx="9" fill="none" stroke="rgba(63,211,232,.25)" stroke-width="1"/>
+          <text x="10" y="16" font-family="monospace" font-size="7" fill="#3FD3E8" opacity=".7" font-weight="bold">TEMPERATURE</text>
+          <text x="12" y="34" font-family="'Sora',sans-serif" font-size="20" fill="#fff" font-weight="800">18°C</text>
+          <circle cx="68" cy="28" r="6" fill="#4ADE80" opacity=".9">
+            <animate attributeName="opacity" values="1;.4;1" dur="1.8s" repeatCount="indefinite"/>
+          </circle>
+          <text x="56" y="44" font-family="monospace" font-size="6" fill="#4ADE80" opacity=".7">COOLING</text>
+        </g>
+
+        <!-- Floating snowflakes (decorative) -->
+        <text x="18" y="44" font-size="14" fill="#3FD3E8" opacity=".22">❄</text>
+        <text x="80" y="175" font-size="10" fill="#3FD3E8" opacity=".18">❄</text>
+        <text x="188" y="52" font-size="8" fill="#3FD3E8" opacity=".16">❄</text>
+        <text x="355" y="80" font-size="11" fill="#3FD3E8" opacity=".14">❄</text>
+
+        <!-- Brand watermark bottom-left -->
+        <text x="10" y="224" font-family="'Sora',sans-serif" font-size="8" fill="rgba(255,255,255,.2)" font-weight="700">Jorhat City Service</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Track card -->
+  <div class="track-card">
+    <div class="tc-top">
+      <span class="tc-label"><span class="pulse"></span> Live Demo</span>
+      <span class="tc-eta">12 min ETA</span>
     </div>
-    <div class="hero-visual">
-      <div class="visual-photo">
-        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900&q=80" alt="AC technician repairing a split air conditioner unit in Jorhat">
+    <div class="tc-map">
+      <div class="tc-route"></div>
+      <div class="tc-dot tc-start"></div>
+      <div class="tc-dot tc-end"></div>
+      <div class="tc-tech">🚐</div>
+    </div>
+    <div class="tc-person">
+      <div class="tc-av">
+        <svg viewBox="0 0 34 34" width="32" height="32"><circle cx="17" cy="17" r="17" fill="#0E2A3A"/><circle cx="17" cy="13.5" r="6" fill="#E8B98A"/><path d="M8 30c1-6 5-9 9-9s8 3 9 9" fill="#00B6D8"/></svg>
       </div>
-      <div class="track-card">
-        <div class="track-top">
-          <span class="track-label"><span class="pulse-dot"></span> Live · Demo</span>
-          <span class="track-eta">12 min ETA</span>
-        </div>
-        <div class="track-map">
-          <div class="track-route"></div>
-          <div class="track-pin start"></div>
-          <div class="track-pin end"></div>
-          <div class="track-pin tech"></div>
-        </div>
-        <div class="track-row">
-          <img class="track-av" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&q=80" alt="Technician avatar">
-          <div><div class="track-name">Biren K. is on the way</div><div class="track-sub">AC Foam Wash · Booking #JCS2291</div></div>
-        </div>
+      <div>
+        <div class="tc-name">Biren K. is on the way</div>
+        <div class="tc-sub">AC Foam Wash · Booking #JCS2291</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ ABOUT ============ -->
+<!-- ABOUT -->
 <section class="about" id="about">
-  <div class="wrap about-grid">
-    <div class="about-photo-wrap reveal">
-      <div class="about-photo">
-        <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800&q=80" alt="Jorhat City Service technician servicing a home appliance">
-      </div>
-      <div class="badge-float">
+  <div class="pad">
+    <div class="sec-head rv" style="text-align:left">
+      <div class="eyebrow-label">About Us</div>
+      <h2 class="sec-title">The team your neighbours already trust</h2>
+    </div>
+
+    <!-- UNIQUE AI ABOUT ILLUSTRATION: Workshop scene -->
+    <div class="about-illus-wrap rv">
+      <svg viewBox="0 0 370 210" width="100%" height="210" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="abg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#E0F6FC"/>
+            <stop offset="100%" stop-color="#C5ECF7"/>
+          </linearGradient>
+          <radialGradient id="spot" cx="60%" cy="25%" r="45%">
+            <stop offset="0%" stop-color="#0A3556" stop-opacity=".05"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </radialGradient>
+        </defs>
+        <rect width="370" height="210" fill="url(#abg)"/>
+        <rect width="370" height="210" fill="url(#spot)"/>
+
+        <!-- Workshop bench -->
+        <rect x="20" y="140" width="330" height="14" rx="5" fill="#B5D8E8"/>
+        <rect x="20" y="154" width="330" height="60" rx="5" fill="#9DC8DC"/>
+        <!-- Bench legs -->
+        <rect x="30" y="154" width="12" height="50" rx="4" fill="#8CB8CC"/>
+        <rect x="325" y="154" width="12" height="50" rx="4" fill="#8CB8CC"/>
+
+        <!-- AC unit on bench being serviced -->
+        <g transform="translate(120,75)">
+          <!-- Unit shadow -->
+          <rect x="-4" y="4" width="134" height="62" rx="10" fill="#000" opacity=".08"/>
+          <!-- Unit body -->
+          <rect width="134" height="62" rx="10" fill="#1B4F72"/>
+          <rect x="5" y="5" width="124" height="52" rx="7" fill="#2364A0"/>
+          <!-- Internal components visible (unit open) -->
+          <rect x="8" y="8" width="60" height="42" rx="5" fill="#1A3E5E"/>
+          <!-- Evaporator coil pattern -->
+          <path d="M12 14 L64 14 M12 20 L64 20 M12 26 L64 26 M12 32 L64 32 M12 38 L64 38 M12 44 L64 44" stroke="#3FD3E8" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+          <!-- Fan blades -->
+          <circle cx="96" cy="30" r="20" fill="#1A3E5E" stroke="#3FD3E8" stroke-width="1" stroke-opacity=".3"/>
+          <path d="M96 10 L100 28 L96 30 L92 28Z" fill="#2E6898" opacity=".8"/>
+          <path d="M116 30 L98 34 L96 30 L98 26Z" fill="#2E6898" opacity=".8"/>
+          <path d="M96 50 L92 32 L96 30 L100 32Z" fill="#2E6898" opacity=".8"/>
+          <path d="M76 30 L94 26 L96 30 L94 34Z" fill="#2E6898" opacity=".8"/>
+          <circle cx="96" cy="30" r="5" fill="#3FD3E8" opacity=".4"/>
+          <circle cx="96" cy="30" r="2" fill="#3FD3E8"/>
+          <!-- Brand tag -->
+          <rect x="8" y="50" width="50" height="8" rx="3" fill="#FF8A3D" opacity=".7"/>
+          <rect x="11" y="52" width="30" height="4" rx="2" fill="#fff" opacity=".3"/>
+        </g>
+
+        <!-- TECHNICIAN 2 (different pose - inspecting/diagnosing) -->
+        <g transform="translate(40,50)">
+          <ellipse cx="35" cy="162" rx="36" ry="7" fill="#000" opacity=".1"/>
+          <!-- Legs (crouched slightly) -->
+          <rect x="16" y="108" width="14" height="52" rx="6" fill="#0D3A55" transform="rotate(-5 23 134)"/>
+          <rect x="34" y="105" width="14" height="52" rx="6" fill="#0D3A55" transform="rotate(5 41 131)"/>
+          <!-- Shoes -->
+          <rect x="10" y="154" width="20" height="9" rx="4" fill="#0A2535"/>
+          <rect x="32" y="152" width="20" height="9" rx="4" fill="#0A2535"/>
+          <!-- Body (uniform) -->
+          <rect x="8" y="50" width="54" height="64" rx="14" fill="#1A5280"/>
+          <!-- Chest logo -->
+          <rect x="12" y="62" width="20" height="12" rx="4" fill="#3FD3E8" opacity=".25"/>
+          <text x="15" y="72" font-family="monospace" font-size="6" fill="#fff" opacity=".5">JCS</text>
+          <!-- Arms — one holding clipboard -->
+          <rect x="-4" y="60" width="15" height="44" rx="7" fill="#1A5280" transform="rotate(-15 3 82)"/>
+          <!-- Clipboard -->
+          <rect x="-18" y="88" width="28" height="36" rx="4" fill="#fff" opacity=".92"/>
+          <rect x="-18" y="88" width="28" height="8" rx="4" fill="#3FD3E8" opacity=".5"/>
+          <rect x="-14" y="100" width="18" height="2.5" rx="1" fill="#0A3556" opacity=".35"/>
+          <rect x="-14" y="105" width="14" height="2.5" rx="1" fill="#0A3556" opacity=".25"/>
+          <rect x="-14" y="110" width="16" height="2.5" rx="1" fill="#0A3556" opacity=".2"/>
+          <rect x="-18" y="85" width="28" height="5" rx="2.5" fill="#666"/>
+          <!-- Right arm -->
+          <rect x="55" y="60" width="15" height="40" rx="7" fill="#1A5280" transform="rotate(20 62 80)"/>
+          <ellipse cx="70" cy="100" rx="8" ry="7" fill="#E8B98A"/>
+          <!-- Head -->
+          <circle cx="35" cy="28" r="20" fill="#E8B98A"/>
+          <!-- Hair -->
+          <path d="M15 26 Q15 8 35 6 Q55 8 55 26 Q51 18 35 16 Q19 18 15 26Z" fill="#2C1810"/>
+          <!-- Face -->
+          <circle cx="27" cy="30" r="2.2" fill="#5C3A1E"/>
+          <circle cx="43" cy="30" r="2.2" fill="#5C3A1E"/>
+          <path d="M28 39 Q35 43 42 39" stroke="#5C3A1E" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <!-- Glasses (specs) -->
+          <rect x="22" y="27" width="13" height="9" rx="4" fill="none" stroke="#333" stroke-width="1.4" opacity=".7"/>
+          <rect x="35" y="27" width="13" height="9" rx="4" fill="none" stroke="#333" stroke-width="1.4" opacity=".7"/>
+          <line x1="35" y1="31.5" x2="35" y2="31.5" stroke="#333" stroke-width="1.4"/>
+        </g>
+
+        <!-- Tools on wall (peg board) -->
+        <g transform="translate(265, 18)" opacity=".85">
+          <rect width="90" height="115" rx="6" fill="#B5D5E5" opacity=".5"/>
+          <!-- Peg holes -->
+          <circle cx="15" cy="10" r="2" fill="#8CB8CC"/>
+          <circle cx="30" cy="10" r="2" fill="#8CB8CC"/>
+          <circle cx="45" cy="10" r="2" fill="#8CB8CC"/>
+          <circle cx="60" cy="10" r="2" fill="#8CB8CC"/>
+          <circle cx="75" cy="10" r="2" fill="#8CB8CC"/>
+          <!-- Hanging spanner -->
+          <rect x="12" y="18" width="6" height="32" rx="3" fill="#888" transform="rotate(10 15 34)"/>
+          <rect x="8" y="14" width="14" height="8" rx="4" fill="#777" transform="rotate(10 15 34)"/>
+          <rect x="8" y="44" width="14" height="6" rx="3" fill="#777" transform="rotate(10 15 34)"/>
+          <!-- Screwdrivers -->
+          <rect x="38" y="16" width="5" height="38" rx="2.5" fill="#888"/>
+          <rect x="36" y="12" width="9" height="8" rx="3" fill="#E74"/>
+          <rect x="46" y="16" width="5" height="38" rx="2.5" fill="#666"/>
+          <rect x="44" y="12" width="9" height="8" rx="3" fill="#2196F3" opacity=".8"/>
+          <!-- Tape measure -->
+          <rect x="60" y="20" width="22" height="22" rx="6" fill="#FF8A3D" opacity=".8"/>
+          <circle cx="71" cy="31" r="7" fill="#E96F1F"/>
+          <circle cx="71" cy="31" r="3" fill="#FFB347"/>
+          <!-- Labels on board -->
+          <text x="5" y="78" font-family="monospace" font-size="7" fill="#0A3556" opacity=".45">GAS TOOLS</text>
+          <text x="5" y="90" font-family="monospace" font-size="6" fill="#0A3556" opacity=".35">REFRIGERANT</text>
+          <!-- Gas pipe coil -->
+          <path d="M8 98 Q25 92 42 100 Q55 108 65 98 Q78 88 82 100" stroke="#3FD3E8" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".6"/>
+        </g>
+
+        <!-- Stars / certification badge -->
+        <g transform="translate(292,140)">
+          <rect width="62" height="34" rx="8" fill="#0A3556" opacity=".85"/>
+          <text x="6" y="12" font-size="7" fill="#FFD700">★★★★★</text>
+          <text x="6" y="24" font-family="'Inter',sans-serif" font-size="7" fill="#fff" opacity=".8">Certified Techs</text>
+        </g>
+      </svg>
+      <div class="about-badge">
         <div class="num">8+</div>
-        <div class="lbl">Years serving<br>Jorhat families</div>
+        <div class="lbl">Years serving<br>Jorhat</div>
       </div>
     </div>
-    <div class="about-copy reveal">
-      <div class="eyebrow">About Jorhat City Service</div>
-      <h2 class="sec-title">The repair team your neighbours already trust</h2>
+
+    <div class="rv">
       <p>Jorhat City Service started with one promise: show up on time, fix it right the first time, and never surprise anyone with the bill. Today our certified technicians handle AC, fridge and washing machine repairs across Jorhat, Golaghat and Titabar — same-day, every day.</p>
-      <p>Every visit comes with upfront pricing, a service warranty, and a technician who explains exactly what went wrong before touching a single screw. That's how we've kept a clean 4.9★ rating across 46 reviews — no shortcuts, no hidden charges.</p>
-      <div class="trust-row">
-        <div class="trust-item"><span class="trust-ico">🏅</span><div><strong>Certified Techs</strong><span>Trained on all major brands</span></div></div>
-        <div class="trust-item"><span class="trust-ico">💯</span><div><strong>4.9★ Rated</strong><span>46 verified reviews</span></div></div>
-        <div class="trust-item"><span class="trust-ico">🛡️</span><div><strong>Warranty Backed</strong><span>On every repair</span></div></div>
-      </div>
+      <p>Every visit comes with upfront pricing, a service warranty, and a technician who explains exactly what went wrong before touching a single screw.</p>
+    </div>
+
+    <div class="trust-grid rv">
+      <div class="trust-item"><div class="trust-ico">🏅</div><strong>Certified<br>Techs</strong><span>All major brands</span></div>
+      <div class="trust-item"><div class="trust-ico">💯</div><strong>4.9★<br>Rated</strong><span>46 reviews</span></div>
+      <div class="trust-item"><div class="trust-ico">🛡️</div><strong>Warranty<br>Backed</strong><span>Every repair</span></div>
     </div>
   </div>
 </section>
 
-<!-- ============ SERVICES ============ -->
+<!-- SERVICES -->
 <section class="services" id="services">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <div class="eyebrow center-text">What we fix</div>
+  <div class="pad">
+    <div class="sec-head rv">
+      <div class="eyebrow-label">What we fix</div>
       <h2 class="sec-title">Our Services</h2>
-      <p class="sec-sub">From a sudden gas leak to a full AMC for the year — one call covers it all.</p>
+      <p class="sec-sub">From gas leak to full AMC — one call covers it all.</p>
     </div>
-    <div class="svc-grid reveal-stagger">
+
+    <!-- Summer Offer Card -->
+    <div class="offer-badge rv">
+      <div class="offer-ico">❄️</div>
+      <div>
+        <span class="tag">Summer Offer</span>
+        <h4>AC Full Service Combo<br>1.5 Ton</h4>
+        <div><span class="price">₹4,099</span><span class="oldp">₹5,500</span></div>
+      </div>
+    </div>
+
+    <div class="svc-list rv">
       <div class="svc-card">
-        <div class="svc-ico">❄️</div>
-        <h3>AC Repair</h3>
-        <p>No cooling, water leakage, strange noise or PCB faults — diagnosed and fixed on the spot.</p>
-        <span class="svc-price">From ₹299</span>
+        <div class="svc-ico-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <rect x="3" y="10" width="34" height="14" rx="5" fill="#0A3556"/>
+            <rect x="7" y="14" width="9" height="6" rx="2" fill="#3FD3E8"/>
+            <rect x="18" y="14" width="9" height="6" rx="2" fill="#3FD3E8"/>
+            <circle cx="31" cy="17" r="3" fill="#FF8A3D"/>
+            <path d="M8 26c-1.5 4-1.5 6.5 0 9M16 26c-.8 4-.8 6.5 0 9M24 26c0 4 0 6.5 0 9M32 26c1.2 4 1.2 6.5 .5 9" stroke="#3FD3E8" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="svc-info">
+          <h3>AC Repair</h3>
+          <p>No cooling, water leak, noise or PCB faults — fixed on the spot.</p>
+          <span class="svc-price">From ₹299</span>
+        </div>
       </div>
       <div class="svc-card">
-        <div class="svc-ico">🧰</div>
-        <h3>AC Installation</h3>
-        <p>Clean, safe split &amp; window AC installation with proper copper piping and drainage.</p>
-        <span class="svc-price">From ₹999</span>
+        <div class="svc-ico-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <rect x="14" y="12" width="13" height="22" rx="3" fill="#0A3556"/>
+            <rect x="17" y="6" width="7" height="8" rx="2" fill="#0A3556"/>
+            <path d="M20.5 18v10" stroke="#3FD3E8" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="20.5" cy="30" r="2" fill="#3FD3E8"/>
+            <path d="M7 11c2 2 2 4 0 6M4 14c2 2 2 4 0 6" stroke="#FF8A3D" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="svc-info">
+          <h3>AC Gas Filling</h3>
+          <p>Pressure-tested refrigerant top-up — full cooling restored.</p>
+          <span class="svc-price">₹2,200–₹3,500</span>
+        </div>
       </div>
       <div class="svc-card">
-        <div class="svc-ico">🔧</div>
-        <h3>AC Gas Filling</h3>
-        <p>Pressure-tested refrigerant top-up for all gas types, restoring full cooling power.</p>
-        <span class="svc-price">₹2,500–₹3,500</span>
+        <div class="svc-ico-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <rect x="3" y="10" width="34" height="14" rx="5" fill="#0A3556"/>
+            <circle cx="10" cy="28" r="2.5" fill="#3FD3E8"/>
+            <circle cx="17" cy="31.5" r="3.5" fill="#3FD3E8"/>
+            <circle cx="25" cy="28" r="2.8" fill="#FF8A3D"/>
+            <circle cx="32" cy="32" r="2" fill="#3FD3E8"/>
+            <circle cx="22" cy="35" r="1.8" fill="#3FD3E8"/>
+          </svg>
+        </div>
+        <div class="svc-info">
+          <h3>AC Jet Wash</h3>
+          <p>High-pressure jet cleaning for deep filter and coil de-scaling.</p>
+          <span class="svc-price">₹699</span>
+        </div>
       </div>
       <div class="svc-card">
-        <div class="svc-ico">🧹</div>
-        <h3>AC Maintenance</h3>
-        <p>Filter, coil and drain-pipe deep cleaning — including our popular foam wash service.</p>
-        <span class="svc-price">₹699 / Foam ₹899</span>
+        <div class="svc-ico-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <rect x="3" y="10" width="34" height="14" rx="5" fill="#0A3556" opacity=".8"/>
+            <path d="M8 26 Q12 30 8 34M14 26 Q18 30 14 34M20 26 Q24 30 20 34" stroke="#3FD3E8" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="32" cy="28" r="5" fill="#3FD3E8" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="svc-info">
+          <h3>AC Foam Wash</h3>
+          <p>Chemical foam deep-clean for maximum cooling efficiency.</p>
+          <span class="svc-price">₹899</span>
+        </div>
       </div>
       <div class="svc-card">
-        <div class="svc-ico">🌀</div>
-        <h3>Washing Machine Repair</h3>
-        <p>Not spinning, not draining, drum issues — front load &amp; top load, all brands.</p>
-        <span class="svc-price">From ₹299</span>
+        <div class="svc-ico-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <rect x="5" y="4" width="30" height="32" rx="4" stroke="#0A3556" stroke-width="2"/>
+            <circle cx="20" cy="24" r="10" stroke="#00B6D8" stroke-width="2"/>
+            <path d="M14 24a6 6 0 0 1 10-3.6" stroke="#FF8A3D" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="11" cy="8.5" r="1.6" fill="#0A3556"/>
+            <circle cx="16" cy="8.5" r="1.6" fill="#0A3556"/>
+          </svg>
+        </div>
+        <div class="svc-info">
+          <h3>Washing Machine Repair</h3>
+          <p>Not spinning, not draining — front load &amp; top load, all brands.</p>
+          <span class="svc-price">From ₹299</span>
+        </div>
       </div>
       <div class="svc-card">
-        <div class="svc-ico">🧊</div>
-        <h3>Fridge Repair</h3>
-        <p>Not cooling, compressor trouble, door seal and thermostat repairs done right.</p>
-        <span class="svc-price">From ₹299</span>
+        <div class="svc-ico-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <rect x="9" y="3" width="22" height="34" rx="3" stroke="#0A3556" stroke-width="2"/>
+            <path d="M9 16h22" stroke="#0A3556" stroke-width="2"/>
+            <rect x="12" y="7" width="2.5" height="5" rx="1" fill="#00B6D8"/>
+            <rect x="12" y="20" width="2.5" height="5" rx="1" fill="#FF8A3D"/>
+            <rect x="17" y="20" width="2.5" height="5" rx="1" fill="#3FD3E8" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="svc-info">
+          <h3>Fridge Repair</h3>
+          <p>Not cooling, compressor, door seal and thermostat repairs.</p>
+          <span class="svc-price">From ₹299</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-ico-wrap">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <rect x="4" y="5" width="20" height="20" rx="3" stroke="#0A3556" stroke-width="2"/>
+            <path d="M9 11h10M9 16h10" stroke="#00B6D8" stroke-width="2" stroke-linecap="round"/>
+            <path d="M25 28l8-8" stroke="#FF8A3D" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="34.5" cy="19" r="3" fill="#FF8A3D"/>
+          </svg>
+        </div>
+        <div class="svc-info">
+          <h3>AC Installation</h3>
+          <p>Split &amp; window AC installation with copper piping and drainage.</p>
+          <span class="svc-price">From ₹999</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ LIVE TRACKER ============ -->
-<section class="tracker-strip" id="tracker">
-  <div class="wrap tracker-grid">
-    <div class="tracker-copy reveal">
-      <div class="eyebrow">Know exactly when we'll arrive</div>
-      <h2>Track your technician live — no more guessing windows</h2>
-      <p>Once your booking is confirmed, you get a live link showing your technician's location and a real-time ETA, just like a cab booking. Below is a demo of how it looks on a real service call.</p>
-      <ul class="tracker-list">
-        <li><span class="check">✓</span> Real-time technician location &amp; ETA</li>
-        <li><span class="check">✓</span> Photo, name &amp; rating of your assigned technician</li>
-        <li><span class="check">✓</span> Instant call or chat the moment they're near</li>
-      </ul>
+<!-- LIVE TRACKER -->
+<section class="tracker" id="tracker">
+  <div class="eyebrow-label">Know when we arrive</div>
+  <h2>Track your technician live</h2>
+  <p>Once booked, you get a live link showing your technician's exact location and ETA — just like a cab booking.</p>
+  <ul class="tr-list">
+    <li><span class="tr-check">✓</span>Real-time technician location &amp; ETA</li>
+    <li><span class="tr-check">✓</span>Photo, name &amp; rating of your technician</li>
+    <li><span class="tr-check">✓</span>Call or chat instantly when they're near</li>
+  </ul>
+  <div class="tracker-demo-card">
+    <div class="tdc-head">
+      <h4>📍 Technician Tracker</h4>
+      <span class="tdc-live"><span class="pulse"></span> Live Demo</span>
     </div>
-    <div class="tracker-demo reveal">
-      <div class="demo-head">
-        <h4>📍 Technician Tracker</h4>
-        <span class="demo-live"><span class="pulse-dot"></span> Live Demo</span>
+    <div class="tdc-map">
+      <div class="tdc-road"></div>
+      <div class="tdc-pin home" style="left:12%;top:65%"><div class="dot"></div><span class="tag">Workshop</span></div>
+      <div class="tdc-pin dest" style="left:86%;top:65%"><div class="dot"></div><span class="tag">Your home</span></div>
+      <div class="tdc-tech">🚐</div>
+    </div>
+    <div class="tdc-foot">
+      <div class="tdc-av">
+        <svg viewBox="0 0 34 34" width="32" height="32"><circle cx="17" cy="17" r="17" fill="#0E2A3A"/><circle cx="17" cy="13" r="6" fill="#E8B98A"/><path d="M8 30c1-6 5-9 9-9s8 3 9 9" fill="#FF8A3D"/></svg>
       </div>
-      <div class="demo-map">
-        <div class="demo-road"></div>
-        <div class="demo-pin home" style="left:14%;top:62%"><div class="dot"></div><span class="tag">Workshop</span></div>
-        <div class="demo-pin shop" style="left:84%;top:62%"><div class="dot"></div><span class="tag">Your home</span></div>
-        <div class="demo-tech">🚐</div>
-      </div>
-      <div class="demo-foot">
-        <img class="demo-av" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&q=80" alt="Technician">
-        <div><strong>Biren Kalita</strong><span>4.9★ · AC Specialist · En route</span></div>
-        <div class="demo-note">Simulated preview for illustration</div>
-      </div>
+      <div><strong>Biren Kalita</strong><span>4.9★ · AC Specialist</span></div>
+      <div class="tdc-note">Simulated demo preview</div>
     </div>
   </div>
 </section>
 
-<!-- ============ REVIEWS ============ -->
+<!-- REVIEWS -->
 <section class="reviews" id="reviews">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <div class="eyebrow center-text">Customer reviews</div>
+  <div class="pad">
+    <div class="sec-head rv">
+      <div class="eyebrow-label">Customer reviews</div>
       <h2 class="sec-title">Loved across Jorhat</h2>
-      <p class="sec-sub">Every review below is from a real completed service call.</p>
+      <p class="sec-sub">Every review is from a real completed service call.</p>
     </div>
-    <div class="rating-banner reveal">
+    <div class="rating-strip rv">
       <div class="rating-num">4.9</div>
       <div>
         <div class="rating-stars">★★★★★</div>
         <div class="rating-meta">based on 46 reviews</div>
       </div>
     </div>
-    <div class="rev-track-wrap reveal">
-      <div class="rev-track" id="revTrack">
+    <div class="rev-scroller rv">
+      <div class="rev-track">
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
-          <blockquote>"AC stopped cooling on the hottest day of the month. Technician arrived within 2 hours and fixed a gas leak — honest pricing, no upselling."</blockquote>
+          <blockquote>"AC stopped cooling on the hottest day. Technician arrived in 2 hours and fixed a gas leak — honest pricing, no upselling."</blockquote>
           <div class="rev-person"><div class="rev-av">RB</div><div><strong>Rajiv Bora</strong><span>AC Gas Filling · Jorhat</span></div></div>
         </div>
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
-          <blockquote>"Booked the foam wash for our office ACs. Cooling improved instantly and the bill matched exactly what they quoted on the phone."</blockquote>
+          <blockquote>"Booked foam wash for our office ACs. Cooling improved instantly and the bill matched exactly what they quoted on the phone."</blockquote>
           <div class="rev-person"><div class="rev-av">PS</div><div><strong>Priya Saikia</strong><span>AC Foam Wash · Jorhat</span></div></div>
         </div>
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
-          <blockquote>"Our washing machine wouldn't drain. The technician explained the issue clearly, fixed it in 30 minutes, and gave a written warranty card."</blockquote>
+          <blockquote>"Washing machine wouldn't drain. Technician explained the issue, fixed it in 30 minutes, gave a written warranty card."</blockquote>
           <div class="rev-person"><div class="rev-av">MD</div><div><strong>Manoj Deka</strong><span>Washing Machine Repair</span></div></div>
         </div>
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
-          <blockquote>"Fridge compressor issue diagnosed correctly on the first visit, unlike two other shops we'd tried before. Genuinely trustworthy team."</blockquote>
+          <blockquote>"Fridge compressor diagnosed correctly on the first visit, unlike two other shops we'd tried before. Genuinely trustworthy."</blockquote>
           <div class="rev-person"><div class="rev-av">AH</div><div><strong>Anupam Hazarika</strong><span>Fridge Repair · Titabar</span></div></div>
         </div>
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
-          <blockquote>"Took the Annual Maintenance Contract for 3 ACs. Reminders come automatically and the technician is always punctual. Highly recommend."</blockquote>
+          <blockquote>"Took the Annual Maintenance Contract for 3 ACs. Reminders come automatically and the technician is always punctual."</blockquote>
           <div class="rev-person"><div class="rev-av">SG</div><div><strong>Sangeeta Gogoi</strong><span>Annual AMC · Golaghat</span></div></div>
         </div>
       </div>
     </div>
-    <div class="rev-controls">
-      <button class="rev-btn" id="revPrev" aria-label="Previous reviews">←</button>
-      <button class="rev-btn" id="revNext" aria-label="Next reviews">→</button>
+    <div class="rev-dots rv" id="revDots">
+      <div class="rev-dot a"></div>
+      <div class="rev-dot"></div>
+      <div class="rev-dot"></div>
+      <div class="rev-dot"></div>
+      <div class="rev-dot"></div>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA BANNER ============ -->
-<section class="cta-banner">
-  <div class="wrap cta-row">
-    <div>
-      <h3>Need AC repair today?</h3>
-      <p>Our technicians are on the road right now across Jorhat — call and get a same-day slot.</p>
-    </div>
-    <a href="tel:08453345670" class="cta-phone">
-      <span>📞</span>
-      <span><span class="lbl">Call now</span>08453-345670</span>
-    </a>
-  </div>
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <h3>Need AC repair today?</h3>
+  <p>Technicians are on the road right now across Jorhat — call and get a same-day slot.</p>
+  <a href="tel:08453345670" class="cta-phone-btn">
+    <span>📞</span>
+    <span><small>Call now</small>84533-45670</span>
+  </a>
 </section>
 
-<!-- ============ CONTACT ============ -->
+<!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="wrap">
-    <div class="sec-head center reveal">
-      <div class="eyebrow center-text">Get in touch</div>
+  <div class="pad">
+    <div class="sec-head rv">
+      <div class="eyebrow-label">Get in touch</div>
       <h2 class="sec-title">Book Your Service</h2>
-      <p class="sec-sub">Call, WhatsApp, or send a request below — we'll confirm your slot within minutes.</p>
+      <p class="sec-sub">Call, WhatsApp or fill the form below — we confirm within minutes.</p>
     </div>
-    <div class="contact-grid">
-      <div class="contact-card reveal">
-        <div class="cinfo-row">
-          <div class="cinfo-ico">📞</div>
-          <div><h4>Call Us</h4><a href="tel:08453345670">08453-345670</a></div>
-        </div>
-        <div class="cinfo-row">
-          <div class="cinfo-ico">📍</div>
-          <div><h4>Address</h4><p>07, Jorhat City, PIN 785001, Assam</p></div>
-        </div>
-        <div class="cinfo-row">
-          <div class="cinfo-ico">🕒</div>
-          <div><h4>Hours</h4><p>Mon – Sun · 7AM – 9PM</p></div>
-        </div>
-        <div class="map-embed">
-          <iframe src="https://www.google.com/maps?q=Jorhat,Assam,785001&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Jorhat City Service location map"></iframe>
-        </div>
+
+    <div class="cinfo-card rv">
+      <div class="cinfo-row">
+        <div class="cinfo-ico">📞</div>
+        <div><h4>Call Us</h4><a href="tel:08453345670">84533-45670</a></div>
       </div>
-      <div class="form-card reveal">
-        <h3>Request a Booking</h3>
-        <div class="sub">Fill this in and we'll call you back to confirm — no payment needed now.</div>
-        <form id="bookingForm">
-          <div class="fg"><label>Full Name *</label><input type="text" id="cName" placeholder="Your name" required></div>
-          <div class="fg"><label>Phone Number *</label><input type="tel" id="cPhone" placeholder="9XXXXXXXXX" required></div>
-          <div class="fg"><label>Service Needed</label>
-            <select id="cService">
-              <option>AC Repair</option>
-              <option>AC Installation</option>
-              <option>AC Gas Filling</option>
-              <option>AC Maintenance / Foam Wash</option>
-              <option>Washing Machine Repair</option>
-              <option>Fridge Repair</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="fg"><label>Message</label><textarea id="cMsg" placeholder="Briefly describe the issue (optional)"></textarea></div>
-          <button type="submit" class="submit-btn">🛠️ Request Service</button>
-        </form>
-        <div class="form-note">We'll WhatsApp or call you back within minutes during business hours.</div>
+      <div class="cinfo-row">
+        <div class="cinfo-ico">💬</div>
+        <div><h4>WhatsApp</h4><a href="https://wa.me/918453345670" target="_blank">+91 84533 45670</a></div>
       </div>
+      <div class="cinfo-row">
+        <div class="cinfo-ico">📍</div>
+        <div><h4>Address</h4><p>07, Jorhat City, PIN 785001, Assam</p></div>
+      </div>
+      <div class="cinfo-row">
+        <div class="cinfo-ico">🕒</div>
+        <div><h4>Hours</h4><p>Mon – Sun · 7AM – 9PM</p></div>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps?q=Jorhat,Assam,785001&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Jorhat City Service location"></iframe>
+      </div>
+    </div>
+
+    <div class="form-card rv">
+      <h3>Request a Booking</h3>
+      <div class="sub">Fill this in — we'll call you back. No payment needed now.</div>
+      <form id="bookForm">
+        <div class="fg"><label>Full Name *</label><input type="text" id="fName" placeholder="Your name" required></div>
+        <div class="fg"><label>Phone Number *</label><input type="tel" id="fPhone" placeholder="9XXXXXXXXX" required></div>
+        <div class="fg"><label>Service Needed</label>
+          <select id="fService">
+            <option>AC Repair</option>
+            <option>AC Gas Filling</option>
+            <option>AC Jet Wash (₹699)</option>
+            <option>AC Foam Wash (₹899)</option>
+            <option>AC Full Service Combo (₹4,099)</option>
+            <option>AC Installation</option>
+            <option>Washing Machine Repair</option>
+            <option>Fridge Repair</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>Message (optional)</label><textarea id="fMsg" placeholder="Briefly describe the issue…"></textarea></div>
+        <button type="submit" class="submit-btn">🛠️ Request Service via WhatsApp</button>
+      </form>
+      <div class="form-note">We'll WhatsApp or call you back within minutes during business hours.</div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <div class="foot-brand"><span class="brand-mark">❄️</span><strong>Jorhat City Service</strong></div>
-        <p>Trusted AC, fridge &amp; washing machine repair across Jorhat, Golaghat and Titabar. Same-day service, transparent pricing, every time.</p>
-      </div>
+  <div>
+    <div class="foot-brand"><span>❄️</span><strong>Jorhat City Service</strong></div>
+    <p>Trusted AC, fridge &amp; washing machine repair across Jorhat, Golaghat and Titabar. Same-day service, transparent pricing.</p>
+    <div class="foot-links-grid">
       <div>
         <h5>Quick Links</h5>
-        <div class="foot-links">
+        <div class="f-links">
           <a href="#about">About Us</a>
           <a href="#services">Services</a>
           <a href="#tracker">Live Tracking</a>
@@ -822,119 +1165,91 @@ footer h5{color:#fff;font-size:.85rem;font-weight:700;letter-spacing:.04em;text-
       </div>
       <div>
         <h5>Contact</h5>
-        <div class="foot-links">
-          <a href="tel:08453345670">📞 08453-345670</a>
-          <a href="https://wa.me/918453345670" target="_blank">💬 WhatsApp Us</a>
-          <span style="font-size:.87rem">📍 07, Jorhat City, PIN 785001</span>
-          <span style="font-size:.87rem">🕒 Mon–Sun, 7AM–9PM</span>
+        <div class="f-links">
+          <a href="tel:08453345670">📞 84533-45670</a>
+          <a href="https://wa.me/918453345670" target="_blank">💬 WhatsApp</a>
+          <span>📍 07, Jorhat City</span>
+          <span>🕒 Mon–Sun, 7AM–9PM</span>
         </div>
       </div>
     </div>
-    <div class="foot-bottom">
-      <span>© 2026 Jorhat City Service. All rights reserved.</span>
-      <span>Built for fast, honest appliance repair in Jorhat.</span>
-    </div>
+    <div class="foot-bottom">© 2026 Jorhat City Service. All rights reserved.<br>Fast, honest appliance repair in Jorhat, Assam.</div>
   </div>
 </footer>
 
+<!-- FLOATERS -->
 <div class="floaters">
-  <a href="https://wa.me/918453345670?text=Hello%2C%20I%20need%20appliance%20repair%20service%20in%20Jorhat" target="_blank" class="float-btn float-wa" aria-label="Chat on WhatsApp">💬</a>
-  <a href="tel:08453345670" class="float-btn float-call" aria-label="Call now">📞</a>
+  <a href="https://wa.me/918453345670?text=Hello%2C%20I%20need%20appliance%20repair%20service%20in%20Jorhat" target="_blank" class="fl-btn fl-wa" aria-label="WhatsApp">💬</a>
+  <a href="tel:08453345670" class="fl-btn fl-call" aria-label="Call">📞</a>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-/* ---------- loader ---------- */
-window.addEventListener('load', function(){
-  setTimeout(function(){ document.getElementById('loader').classList.add('done'); }, 500);
+/* Loader */
+window.addEventListener('load',function(){
+  setTimeout(function(){ document.getElementById('loader').classList.add('done'); },500);
 });
 
-/* ---------- header scroll state ---------- */
-var header = document.getElementById('siteHeader');
-window.addEventListener('scroll', function(){
-  if(window.scrollY > 40){ header.classList.add('scrolled'); }
-  else{ header.classList.remove('scrolled'); }
-});
-
-/* ---------- snow particles in hero ---------- */
+/* Snow particles */
 (function(){
-  var layer = document.getElementById('snowLayer');
-  var count = window.innerWidth < 700 ? 16 : 28;
-  for(var i=0;i<count;i++){
+  var wrap = document.getElementById('snowWrap');
+  for(var i=0;i<18;i++){
     var s = document.createElement('div');
-    s.className = 'snow';
-    var size = (Math.random()*3.5+1.5).toFixed(1);
-    s.style.width = size+'px';
-    s.style.height = size+'px';
-    s.style.left = (Math.random()*100)+'%';
-    s.style.animationDuration = (Math.random()*9+7)+'s';
-    s.style.animationDelay = (Math.random()*8)+'s';
-    layer.appendChild(s);
+    s.className='snow-p';
+    var sz=(Math.random()*3+1.5).toFixed(1);
+    s.style.width=sz+'px'; s.style.height=sz+'px';
+    s.style.left=(Math.random()*100)+'%';
+    s.style.animationDuration=(Math.random()*9+8)+'s';
+    s.style.animationDelay=(Math.random()*8)+'s';
+    wrap.appendChild(s);
   }
 })();
 
-/* ---------- scroll reveal ---------- */
+/* Scroll reveal */
 (function(){
-  var els = document.querySelectorAll('.reveal, .reveal-stagger');
-  if(!('IntersectionObserver' in window)){
-    els.forEach(function(el){ el.classList.add('in'); });
-    return;
-  }
-  var obs = new IntersectionObserver(function(entries){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('in');
-        obs.unobserve(entry.target);
-      }
+      if(entry.isIntersecting){entry.target.classList.add('in');obs.unobserve(entry.target);}
     });
-  }, {threshold:0.15});
-  els.forEach(function(el){ obs.observe(el); });
+  },{threshold:0.1});
+  els.forEach(function(e){obs.observe(e);});
 })();
 
-/* ---------- reviews horizontal scroll controls ---------- */
+/* Review dots scroll sync */
 (function(){
-  var track = document.getElementById('revTrack');
-  var prev = document.getElementById('revPrev');
-  var next = document.getElementById('revNext');
-  if(!track) return;
-  function cardWidth(){
-    var card = track.querySelector('.rev-card');
-    return card ? card.offsetWidth + 19.2 : 320;
-  }
-  next.addEventListener('click', function(){ track.scrollBy({left: cardWidth(), behavior:'smooth'}); });
-  prev.addEventListener('click', function(){ track.scrollBy({left: -cardWidth(), behavior:'smooth'}); });
+  var scroller=document.querySelector('.rev-scroller');
+  var dots=document.querySelectorAll('.rev-dot');
+  if(!scroller||!dots.length) return;
+  scroller.addEventListener('scroll',function(){
+    var cards=scroller.querySelectorAll('.rev-card');
+    var idx=Math.round(scroller.scrollLeft/(cards[0]?cards[0].offsetWidth+12.8:290));
+    dots.forEach(function(d,i){d.classList.toggle('a',i===idx);});
+  });
 })();
 
-/* ---------- toast helper ---------- */
+/* Toast */
 function showToast(msg){
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 3800);
+  var t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},3800);
 }
 
-/* ---------- booking form (frontend only, opens WhatsApp) ---------- */
-document.getElementById('bookingForm').addEventListener('submit', function(e){
+/* Booking form */
+document.getElementById('bookForm').addEventListener('submit',function(e){
   e.preventDefault();
-  var name = document.getElementById('cName').value.trim();
-  var phone = document.getElementById('cPhone').value.trim();
-  var service = document.getElementById('cService').value;
-  var msg = document.getElementById('cMsg').value.trim();
-  if(!name || !phone){
-    showToast('Please enter your name and phone number.');
-    return;
-  }
-  var text = 'New Booking Request — Jorhat City Service\n' +
-    'Name: ' + name + '\n' +
-    'Phone: ' + phone + '\n' +
-    'Service: ' + service + '\n' +
-    (msg ? ('Message: ' + msg + '\n') : '');
-  window.open('https://wa.me/918453345670?text=' + encodeURIComponent(text), '_blank');
+  var name=document.getElementById('fName').value.trim();
+  var phone=document.getElementById('fPhone').value.trim();
+  var service=document.getElementById('fService').value;
+  var msg=document.getElementById('fMsg').value.trim();
+  if(!name||!phone){showToast('Please enter your name and phone number.');return;}
+  var text='New Booking — Jorhat City Service\nName: '+name+'\nPhone: '+phone+'\nService: '+service+(msg?'\nMessage: '+msg:'');
+  window.open('https://wa.me/918453345670?text='+encodeURIComponent(text),'_blank');
   showToast('✅ Opening WhatsApp to confirm your booking…');
   this.reset();
 });
 </script>
-
 </body>
 </html>
